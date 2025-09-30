@@ -14,7 +14,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician6FireCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
-import tactician.effects.cards.arcfire.TacticianFireballEffect;
+import tactician.effects.cards.fire.ArcfireBallEffect;
 import tactician.powers.LoseFocusPower;
 import tactician.powers.weapons.Weapon6FirePower;
 import tactician.util.CardStats;
@@ -44,7 +44,7 @@ public class Arcfire extends Tactician6FireCard {
         AbstractDungeon.effectList.add(new PlayVoiceEffect("Arcfire"));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
-        addToBot(new VFXAction(p, new TacticianFireballEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.50F));
+        addToBot(new VFXAction(p, new ArcfireBallEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.50F));
         addToBot(new PlaySoundAction("tactician:Arcfire_Hit", 1.33f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));

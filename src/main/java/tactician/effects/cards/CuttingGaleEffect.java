@@ -32,7 +32,6 @@ public class CuttingGaleEffect extends AbstractGameEffect {
 	public void update() {
 		if (!fired) {
 			AbstractDungeon.actionManager.addToTop(new PlaySoundAction(this.soundKey, volume));
-			// AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.x, this.y, NONE)); // TODO: Implement Axe and Lance effects this way?
 			fired = true;
 		}
 		this.timer -= Gdx.graphics.getDeltaTime();

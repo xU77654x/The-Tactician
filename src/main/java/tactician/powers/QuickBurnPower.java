@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
-import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -38,7 +37,7 @@ public class QuickBurnPower extends AbstractPower {
 	public void updateDescription() { this.description = DESCRIPTIONS[0]; }
 
 	@Override
-	public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:QuickBurn", 1.00f)); }
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public void onCardDraw(AbstractCard card) { if (card.type == AbstractCard.CardType.ATTACK) { card.setCostForTurn(-9); }}

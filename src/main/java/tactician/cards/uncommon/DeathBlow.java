@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeathBlowPower;
@@ -28,6 +29,7 @@ public class DeathBlow extends TacticianCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		addToBot(new PlaySoundAction("tactician:StatIncreaseFE", 1.00f));
 		addToBot(new ApplyPowerAction(p, p, new DeathBlowPower(this.magicNumber), this.magicNumber));
 		if (this.upgraded) {
 			addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));

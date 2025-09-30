@@ -1,4 +1,4 @@
-package tactician.effects.cards.arcfire;
+package tactician.effects.cards.fire;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.GhostlyWeakFireEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
 
-public class TacticianFireballEffect extends AbstractGameEffect {
+public class ArcfireBallEffect extends AbstractGameEffect {
 	private float x;
 	private float y;
 	private final float startX;
@@ -24,7 +24,7 @@ public class TacticianFireballEffect extends AbstractGameEffect {
 	private final float volume = 1.00F;
 	private float vfxTimer = 0.0F;
 
-	public TacticianFireballEffect(float startX, float startY, float targetX, float targetY) {
+	public ArcfireBallEffect(float startX, float startY, float targetX, float targetY) {
 		this.startingDuration = 0.5F;
 		this.duration = 0.5F;
 		this.startX = startX;
@@ -43,12 +43,12 @@ public class TacticianFireballEffect extends AbstractGameEffect {
 		if (this.vfxTimer < 0.0F) {
 			this.vfxTimer = 0.016F;
 			AbstractDungeon.effectsQueue.add(new LightFlareParticleEffect(this.x, this.y, Color.ORANGE));
-			AbstractDungeon.effectsQueue.add(new TacticianFireBurstParticleEffect(this.x, this.y));
+			AbstractDungeon.effectsQueue.add(new ArcfireBurstParticleEffect(this.x, this.y));
 		}
 		this.duration -= Gdx.graphics.getDeltaTime();
 		if (this.duration < 0.0F) {
 			this.isDone = true;
-			AbstractDungeon.effectsQueue.add(new TacticianIgniteEffect(this.x, this.y));
+			AbstractDungeon.effectsQueue.add(new ArcfireIgniteEffect(this.x, this.y));
 			AbstractDungeon.effectsQueue.add(new GhostlyWeakFireEffect(this.x, this.y));
 		}
 	}

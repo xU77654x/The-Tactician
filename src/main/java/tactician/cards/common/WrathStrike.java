@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.Tactician1SwordCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
-import tactician.effects.cards.Tactician1SwordLanceEffect;
+import tactician.effects.cards.TacticianSwordLanceEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon1SwordPower;
 import tactician.util.CardStats;
@@ -43,7 +43,7 @@ public class WrathStrike extends Tactician1SwordCard {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
         AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY + 25, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 25, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
     }

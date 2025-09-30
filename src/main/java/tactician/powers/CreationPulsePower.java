@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import tactician.TacticianMod;
-import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -40,7 +39,7 @@ public class CreationPulsePower extends AbstractPower implements OnReceivePowerP
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]; }
 
 	@Override
-	public void playApplyPowerSfx() { addToBot(new PlaySoundAction("tactician:CreationPulse", 1.00f)); }
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) { return true; }

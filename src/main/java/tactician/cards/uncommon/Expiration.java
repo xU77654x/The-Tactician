@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.Circlet;
 import com.megacrit.cardcrawl.relics.MedicalKit;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.TempBlueCandle;
 import tactician.cards.cardchoice.TempMedicalKit;
@@ -44,6 +45,7 @@ public class Expiration extends TacticianCard {
             addToTop(new EasyModalChoiceAction(easyCardList));
         }
         else { addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F)); }
+        addToBot(new PlaySoundAction("tactician:Expiration", 1.25f));
         addToBot(new ApplyPowerAction(p, p, new ExpirationPower(this.magicNumber)));
     }
 

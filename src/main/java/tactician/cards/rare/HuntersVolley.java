@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
-import tactician.effects.cards.Tactician4BowEffect;
+import tactician.effects.cards.TacticianBowEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon4BowPower;
 import tactician.util.CardStats;
@@ -44,10 +44,10 @@ public class HuntersVolley extends Tactician4BowCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Bow"));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:HuntersVolley_Hit1", 1.00f, Color.SCARLET.cpy())));
+        addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:HuntersVolley_Hit1", 1.00f, Color.SCARLET.cpy())));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new WaitAction(0.25F));
-        addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:HuntersVolley_Hit2", 1.50f, Color.SCARLET.cpy())));
+        addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:HuntersVolley_Hit2", 1.50f, Color.SCARLET.cpy())));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
 
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {

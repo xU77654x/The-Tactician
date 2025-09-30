@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import tactician.actions.PlaySoundAction;
 
-public class Tactician4BowEffect extends AbstractGameEffect {
+public class TacticianBowEffect extends AbstractGameEffect {
 	private final float x;
 	private final float y;
 	private final String soundKey;
@@ -22,7 +22,7 @@ public class Tactician4BowEffect extends AbstractGameEffect {
 	private static final float DUR = 0.4F;
 	private final TextureAtlas.AtlasRegion img;
 
-	public Tactician4BowEffect(float x, float y, String soundKey, float volume, Color color) {
+	public TacticianBowEffect(float x, float y, String soundKey, float volume, Color color) {
 		this.img = ImageMaster.DAGGER_STREAK;
 		this.x = x - MathUtils.random(320.0F, 360.0F) - this.img.packedWidth / 2.0F;
 		this.y = y + MathUtils.random(-25.0F, 25.0F) * Settings.scale - this.img.packedHeight / 2.0F;

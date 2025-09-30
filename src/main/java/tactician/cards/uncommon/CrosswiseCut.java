@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.Tactician1SwordCard;
 import tactician.character.TacticianRobin;
-import tactician.effects.cards.Tactician1SwordLanceEffect;
+import tactician.effects.cards.TacticianSwordLanceEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon1SwordPower;
 import tactician.util.CardStats;
@@ -41,9 +41,9 @@ public class CrosswiseCut extends Tactician1SwordCard {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
         // AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword")); Disabled due to the voice overpowering the sound effects regardless of volume.
         calculateCardDamage(m);
-        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut1", 1.50F, 135.0F, -375.0F, -375F, 3.0F, Color.ROYAL), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut1", 1.50F, 135.0F, -375.0F, -375F, 3.0F, Color.ROYAL), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut2", 1.55F, 225.0F, 375.0F, -375F, 3.0F, Color.ROYAL), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut2", 1.55F, 225.0F, 375.0F, -375F, 3.0F, Color.ROYAL), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
     }

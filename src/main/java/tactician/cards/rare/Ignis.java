@@ -1,6 +1,7 @@
 package tactician.cards.rare;
 
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
+import tactician.effects.cards.fire.IgnisEffect;
 import tactician.util.CardStats;
 
 public class Ignis extends TacticianCard {
@@ -35,7 +37,7 @@ public class Ignis extends TacticianCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int oldStrength = 0;
         int oldFocus = 0;
-        addToTop(new PlaySoundAction("tactician:Ignis", 1.33f));
+        addToBot(new VFXAction(new IgnisEffect(p, "tactician:Ignis", 1.50f)));
 
         if (this.p.hasPower(StrengthPower.POWER_ID)) { oldStrength = this.p.getPower(StrengthPower.POWER_ID).amount; }
         if (this.p.hasPower(FocusPower.POWER_ID)) { oldFocus = this.p.getPower(FocusPower.POWER_ID).amount; }

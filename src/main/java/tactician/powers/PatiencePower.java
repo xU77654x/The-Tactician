@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
-import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -38,7 +37,7 @@ public class PatiencePower extends AbstractPower {
     }
 
     @Override
-    public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:Patience", 0.90f)); }
+    public void playApplyPowerSfx() {  }
 
     @Override
     public void atStartOfTurnPostDraw() {

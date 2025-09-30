@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.FiendishBlowPower;
@@ -28,6 +29,7 @@ public class FiendishBlow extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToTop(new PlaySoundAction("tactician:StatIncreaseFE", 1.00f));
         addToBot(new ApplyPowerAction(p, p, new FiendishBlowPower(this.magicNumber), this.magicNumber));
         if (this.upgraded) {
             addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));

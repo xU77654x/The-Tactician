@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.vfx.UpgradeShineParticleEffect;
 import com.megacrit.cardcrawl.vfx.combat.AnimatedSlashEffect;
 import tactician.actions.PlaySoundAction;
 
-public class Tactician1SwordLanceEffect extends AbstractGameEffect {
+public class TacticianSwordLanceEffect extends AbstractGameEffect {
 	private final float x;
 	private final float y;
 	private final String soundKey;
@@ -21,7 +21,7 @@ public class Tactician1SwordLanceEffect extends AbstractGameEffect {
 	private final float scale;
 	private final Color color;
 
-	public Tactician1SwordLanceEffect(float x, float y, String soundKey, float volume, float angle, float velocityX, float velocityY, float scale, Color color) {
+	public TacticianSwordLanceEffect(float x, float y, String soundKey, float volume, float angle, float velocityX, float velocityY, float scale, Color color) {
 		this.x = x;
 		this.y = y;
 		this.soundKey = soundKey;

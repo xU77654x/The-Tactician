@@ -32,7 +32,7 @@ public class Luna extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.15f));
+        addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.15f));
         addToBot(new VFXAction(new LunaEffect()));
         addToBot(new ApplyPowerAction(p, p, new LunaPower(this.magicNumber), this.magicNumber));
         addToBot(new WaitAction(1.00F));

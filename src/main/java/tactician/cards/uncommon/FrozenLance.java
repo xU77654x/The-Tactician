@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 import tactician.cards.Tactician2LanceCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
-import tactician.effects.cards.Tactician1SwordLanceEffect;
+import tactician.effects.cards.TacticianSwordLanceEffect;
 import tactician.powers.weapons.Weapon2LancePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -51,7 +51,7 @@ public class FrozenLance extends Tactician2LanceCard {
         if (this.p.hasPower(DexterityPower.POWER_ID)) { dex = (this.p.getPower(DexterityPower.POWER_ID)).amount; }
         addToBot(new GainBlockAction(p, this.block));
         addToBot(new VFXAction(new BlizzardEffect(((dex * 2) + 3), AbstractDungeon.getMonsters().shouldFlipVfx()), 0.2F));
-        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FrozenLance", 1.15F, 255F, 0F, 0F, 3.0F, Color.CYAN), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FrozenLance", 1.15F, 255F, 0F, 0F, 3.0F, Color.CYAN), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
     }
 

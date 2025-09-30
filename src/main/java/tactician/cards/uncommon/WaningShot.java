@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
-import tactician.effects.cards.Tactician4BowEffect;
+import tactician.effects.cards.TacticianBowEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon4BowPower;
 import tactician.util.CardStats;
@@ -50,7 +50,7 @@ public class WaningShot extends Tactician4BowCard {
         calculateCardDamage(m);
         addToBot(new WaitAction(0.50F));
         if (Settings.FAST_MODE) { addToBot(new WaitAction(1.00F)); }
-        addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:CurvedShot", 1.25f, Color.SALMON.cpy())));
+        addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:CurvedShot", 1.25f, Color.SALMON.cpy())));
         addToBot(new PlaySoundAction("tactician:WaningShot_Hit", 1.25f));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
 

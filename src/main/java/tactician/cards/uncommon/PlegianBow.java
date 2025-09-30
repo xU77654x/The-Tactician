@@ -16,7 +16,7 @@ import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon4Bow;
 import tactician.cards.cardchoice.Weapon8Dark;
 import tactician.character.TacticianRobin;
-import tactician.effects.cards.Tactician4BowEffect;
+import tactician.effects.cards.TacticianBowEffect;
 import tactician.powers.weapons.Weapon4BowPower;
 import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;
@@ -50,20 +50,20 @@ public class PlegianBow extends TacticianCard {
                 weapon = 4;
                 if (!p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:PlegianBow", 1.00f, Color.PINK.cpy())));
+                addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:PlegianBow", 1.00f, Color.PINK.cpy())));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             easyCardList.add(new Weapon8Dark(() ->  {
                 weapon = 8;
                 if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:PlegianBow", 1.00f, Color.PURPLE.cpy())));
+                addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:PlegianBow", 1.00f, Color.PURPLE.cpy())));
                 addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
         else {
-            addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:PlegianBow", 1.00f, Color.PINK.cpy())));
+            addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:PlegianBow", 1.00f, Color.PINK.cpy())));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         }
         addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, this.magicNumber), this.magicNumber));

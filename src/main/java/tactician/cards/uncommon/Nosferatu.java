@@ -1,5 +1,6 @@
 package tactician.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,6 +12,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician8DarkCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.TacticianDarkEffect;
 import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -35,11 +37,9 @@ public class Nosferatu extends Tactician8DarkCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // addToBot(new VFXAction(new OrbFlareEffect(Dark, OrbFlareEffect.OrbFlareColor.DARK), 0.6F));
-        // TODO: Dark attack effect.
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
         calculateCardDamage(m);
-        addToBot(new PlaySoundAction("tactician:Nosferatu", 1.50f));
+
         AbstractDungeon.effectList.add(new PlayVoiceEffect("Nosferatu"));
         addToBot(new NosferatuAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL)));
     }

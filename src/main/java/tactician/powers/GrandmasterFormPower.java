@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import tactician.TacticianMod;
-import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -40,7 +39,7 @@ public class GrandmasterFormPower extends AbstractPower {
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
 	@Override
-	public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:GrandmasterForm", 0.40f)); }
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public void stackPower(int stackAmount) {

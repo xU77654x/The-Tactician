@@ -14,7 +14,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
-import tactician.effects.cards.Tactician4BowEffect;
+import tactician.effects.cards.TacticianBowEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon4BowPower;
 import tactician.util.CardStats;
@@ -45,7 +45,7 @@ public class CurvedShot extends Tactician4BowCard {
         AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Bow"));
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, this.block));
-        addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:CurvedShot", 1.25f, Color.BROWN.cpy())));
+        addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:CurvedShot", 1.25f, Color.BROWN.cpy())));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new PlaySoundAction("tactician:Strike_Neutral", 1.00f));
 

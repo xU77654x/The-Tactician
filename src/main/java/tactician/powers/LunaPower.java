@@ -41,7 +41,7 @@ public class LunaPower extends AbstractPower {
 	}
 
 	@Override
-	public void playApplyPowerSfx() { } // This is present in the Luna card due to the timing of the effects.
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public void onUseCard(AbstractCard c, UseCardAction action) {

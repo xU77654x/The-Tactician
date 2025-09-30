@@ -10,11 +10,11 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician8DarkCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.TacticianDarkEffect;
 import tactician.powers.weapons.Weapon8DarkPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -44,8 +44,8 @@ public class Flux extends Tactician8DarkCard {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        addToBot(new VFXAction(new DarkOrbActivateEffect(m.drawX, m.drawY + 133), 0.05F));
+        addToBot(new VFXAction(new TacticianDarkEffect(m.hb.cX, m.hb.cY, null, 1.00F, 6.67F, 0)));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override

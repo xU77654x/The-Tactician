@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
-import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -36,5 +35,5 @@ public class ChaosStylePower extends AbstractPower {
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
 	@Override
-	public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:ChaosStyle", 1.00f)); }
+	public void playApplyPowerSfx() { }
 }

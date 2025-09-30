@@ -1,4 +1,4 @@
-package tactician.effects.cards.arcfire;
+package tactician.effects.cards.fire;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
-public class TacticianFireBurstParticleEffect extends AbstractGameEffect {
+public class ArcfireBurstParticleEffect extends AbstractGameEffect {
 	private final TextureAtlas.AtlasRegion img;
 	private static final float DUR = 1.0F;
 	private float x;
@@ -20,7 +20,7 @@ public class TacticianFireBurstParticleEffect extends AbstractGameEffect {
 	private final float floor;
 	private static final float GRAVITY = 180.0F * Settings.scale;
 
-	public TacticianFireBurstParticleEffect(float x, float y) {
+	public ArcfireBurstParticleEffect(float x, float y) {
 		int roll = MathUtils.random(0, 2);
 		if (roll == 0) { this.img = ImageMaster.TORCH_FIRE_1; }
 		else if (roll == 1) { this.img = ImageMaster.TORCH_FIRE_2; }

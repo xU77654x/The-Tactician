@@ -44,7 +44,7 @@ public class KillingEdgePower extends AbstractPower {
 	}
 
 	@Override
-	public void playApplyPowerSfx() { addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f)); }
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {

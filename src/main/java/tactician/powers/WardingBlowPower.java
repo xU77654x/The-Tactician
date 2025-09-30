@@ -33,12 +33,10 @@ public class WardingBlowPower extends AbstractPower {
 	}
 
 	@Override
-	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-	}
+	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
 	@Override
-	public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:StatIncreaseFE", 1.00f)); }
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public void atStartOfTurnPostDraw() {

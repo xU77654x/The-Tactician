@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.WardingBlowPower;
@@ -28,6 +29,7 @@ public class WardingBlow extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new PlaySoundAction("tactician:StatIncreaseFE", 1.00f));
         addToBot(new ApplyPowerAction(p, p, new WardingBlowPower(this.magicNumber), this.magicNumber));
         if (this.upgraded) {
             addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));

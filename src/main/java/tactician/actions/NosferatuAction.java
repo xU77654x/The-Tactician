@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
+import tactician.effects.cards.TacticianDarkEffect;
 
 public class NosferatuAction extends AbstractGameAction {
     private DamageInfo info;
@@ -27,12 +28,11 @@ public class NosferatuAction extends AbstractGameAction {
         }
         tickDuration();
         if (this.isDone) {
-            // AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AbstractGameAction.AttackEffect.BLUNT_HEAVY, false));
-            addToBot(new VFXAction(new DarkOrbActivateEffect(this.target.drawX, this.target.drawY + 133), 0.05F));
             this.target.damage(this.info);
             if (this.target.lastDamageTaken > 0) { addToTop(new AddTemporaryHPAction(this.source, this.source, this.target.lastDamageTaken)); }
             if ((AbstractDungeon.getCurrRoom()).monsters.areMonstersBasicallyDead()) { AbstractDungeon.actionManager.clearPostCombatActions(); }
             else { addToTop(new WaitAction(0.1F)); }
+            addToTop(new VFXAction(new TacticianDarkEffect(target.hb.cX, target.hb.cY, "tactician:Nosferatu", 2.50F, 2F, 10)));
         }
     }
 }
