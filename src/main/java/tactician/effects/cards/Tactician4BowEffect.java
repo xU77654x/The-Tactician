@@ -13,22 +13,19 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import tactician.actions.PlaySoundAction;
 
 public class Tactician4BowEffect extends AbstractGameEffect {
-	private float x;
-	private float y;
-	private String soundKey;
-	private float volume;
-	private Color color;
+	private final float x;
+	private final float y;
+	private final String soundKey;
+	private final float volume;
+	private final Color color;
 	private boolean fired;
-	private float destY;
 	private static final float DUR = 0.4F;
-	private TextureAtlas.AtlasRegion img;
-	private boolean forcedAngle = false;
+	private final TextureAtlas.AtlasRegion img;
 
 	public Tactician4BowEffect(float x, float y, String soundKey, float volume, Color color) {
 		this.img = ImageMaster.DAGGER_STREAK;
 		this.x = x - MathUtils.random(320.0F, 360.0F) - this.img.packedWidth / 2.0F;
-		this.destY = y;
-		this.y = this.destY + MathUtils.random(-25.0F, 25.0F) * Settings.scale - this.img.packedHeight / 2.0F;
+		this.y = y + MathUtils.random(-25.0F, 25.0F) * Settings.scale - this.img.packedHeight / 2.0F;
 		this.soundKey = soundKey;
 		this.volume = volume;
 		this.color = color;
@@ -52,7 +49,8 @@ public class Tactician4BowEffect extends AbstractGameEffect {
 
 	public void render(SpriteBatch sb) {
 		sb.setColor(this.color);
-		if (!this.forcedAngle) {
+		boolean forcedAngle = false;
+		if (!forcedAngle) {
 			sb.draw(this.img, this.x, this.y, this.img.packedWidth * 0.85F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale, this.scale * 1.5F, this.rotation);
 			sb.setBlendFunction(770, 1);
 			sb.draw(this.img, this.x, this.y, this.img.packedWidth * 0.85F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale * 0.75F, this.scale * 0.75F, this.rotation);

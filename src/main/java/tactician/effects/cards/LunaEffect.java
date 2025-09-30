@@ -9,8 +9,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import tactician.actions.PlaySoundAction;
-import tactician.effects.PlayVoiceEffect;
 
 public class LunaEffect extends AbstractGameEffect {
 	private float x;

@@ -15,13 +15,13 @@ import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
 public class TacticianFireballEffect extends AbstractGameEffect {
 	private float x;
 	private float y;
-	private float startX;
-	private float startY;
-	private float targetX;
-	private float targetY;
+	private final float startX;
+	private final float startY;
+	private final float targetX;
+	private final float targetY;
 	private AbstractMonster m;
 	private String soundKey;
-	private float volume = 1.00F;
+	private final float volume = 1.00F;
 	private float vfxTimer = 0.0F;
 
 	public TacticianFireballEffect(float startX, float startY, float targetX, float targetY) {
@@ -35,6 +35,7 @@ public class TacticianFireballEffect extends AbstractGameEffect {
 		this.y = startY;
 	}
 
+	@Override
 	public void update() {
 		this.x = Interpolation.fade.apply(this.targetX, this.startX, this.duration / this.startingDuration);
 		this.y = Interpolation.fade.apply(this.targetY, this.startY, this.duration / this.startingDuration);
@@ -52,7 +53,9 @@ public class TacticianFireballEffect extends AbstractGameEffect {
 		}
 	}
 
+	@Override
 	public void render(SpriteBatch sb) {}
 
+	@Override
 	public void dispose() {}
 }

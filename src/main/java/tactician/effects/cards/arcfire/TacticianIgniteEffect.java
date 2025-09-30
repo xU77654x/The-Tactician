@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
 
 public class TacticianIgniteEffect extends AbstractGameEffect {
 	private static final int COUNT = 25;
-	private float x;
-	private float y;
+	private final float x;
+	private final float y;
 
 	public TacticianIgniteEffect(float x, float y) {
 		this.x = x;

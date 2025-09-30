@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import tactician.actions.PlaySoundAction;
 import tactician.powers.KillingEdgePower;
 import static tactician.TacticianMod.makeID;
 

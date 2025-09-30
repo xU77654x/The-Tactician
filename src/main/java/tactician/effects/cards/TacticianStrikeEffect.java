@@ -10,9 +10,9 @@ import tactician.actions.PlaySoundAction;
 import tactician.util.Wiz;
 
 public class TacticianStrikeEffect extends AbstractGameEffect {
-	private float x;
-	private float y;
-	private AbstractMonster m;
+	private final float x;
+	private final float y;
+	private final AbstractMonster m;
 
 	public TacticianStrikeEffect(AbstractMonster m, float x, float y, Color color) {
 		this.x = x;
@@ -22,6 +22,7 @@ public class TacticianStrikeEffect extends AbstractGameEffect {
 		this.startingDuration = 0.0F;
 	}
 
+	@Override
 	public void update() {
 		AbstractDungeon.effectsQueue.add(new AnimatedSlashEffect(this.x, this.y, 0.0F, 0.0F, 315.0F, 2.0F, this.color, Color.LIGHT_GRAY));
 		if ( Wiz.playerWeaponCalc(m, 9) > 0) { AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Strike_Strong", 1.25f)); }
@@ -30,7 +31,9 @@ public class TacticianStrikeEffect extends AbstractGameEffect {
 		this.isDone = true;
 	}
 
+	@Override
 	public void render(SpriteBatch sb) {}
 
+	@Override
 	public void dispose() {}
 }

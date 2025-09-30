@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
-import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.WardingBlowPower;

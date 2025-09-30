@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.Circlet;
 import com.megacrit.cardcrawl.relics.MedicalKit;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.TempBlueCandle;
 import tactician.cards.cardchoice.TempMedicalKit;
@@ -18,7 +17,6 @@ import tactician.character.TacticianRobin;
 import tactician.powers.ExpirationPower;
 import tactician.util.CardStats;
 import tactician.util.FragileRelics;
-
 import java.util.ArrayList;
 
 public class Expiration extends TacticianCard {

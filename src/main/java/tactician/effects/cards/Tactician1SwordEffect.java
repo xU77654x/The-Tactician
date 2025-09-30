@@ -11,15 +11,15 @@ import com.megacrit.cardcrawl.vfx.combat.AnimatedSlashEffect;
 import tactician.actions.PlaySoundAction;
 
 public class Tactician1SwordEffect extends AbstractGameEffect {
-	private float x;
-	private float y;
-	private String soundKey;
-	private float volume;
-	private float angle;
-	private float velocityX;
-	private float velocityY;
-	private float scale;
-	private Color color;
+	private final float x;
+	private final float y;
+	private final String soundKey;
+	private final float volume;
+	private final float angle;
+	private final float velocityX;
+	private final float velocityY;
+	private final float scale;
+	private final Color color;
 
 	public Tactician1SwordEffect(float x, float y, String soundKey, float volume, float angle, float velocityX, float velocityY, float scale, Color color) {
 		this.x = x;
@@ -35,6 +35,7 @@ public class Tactician1SwordEffect extends AbstractGameEffect {
 		this.duration = this.startingDuration;
 	}
 
+	@Override
 	public void update() {
 		AbstractDungeon.actionManager.addToTop(new PlaySoundAction(this.soundKey, volume));
 		AbstractDungeon.effectsQueue.add(new AnimatedSlashEffect(this.x, this.y - 30.0F * Settings.scale, velocityX, velocityY, angle, scale, color, Color.LIGHT_GRAY));
@@ -42,7 +43,9 @@ public class Tactician1SwordEffect extends AbstractGameEffect {
 		this.isDone = true;
 	}
 
+	@Override
 	public void render(SpriteBatch sb) {}
 
+	@Override
 	public void dispose() {}
 }

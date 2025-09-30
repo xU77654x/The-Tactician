@@ -7,17 +7,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.WindyParticleEffect;
 import tactician.actions.PlaySoundAction;
 
-import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.NONE;
-
 public class CuttingGaleEffect extends AbstractGameEffect {
-	private float x;
-	private float y;
-	private String soundKey;
-	private float volume;
+	private final float x;
+	private final float y;
+	private final String soundKey;
+	private final float volume;
 	private boolean fired;
 	private int count = 0;
 	private float timer = 0.0F;
@@ -31,6 +28,7 @@ public class CuttingGaleEffect extends AbstractGameEffect {
 		this.duration = 1.5F;
 	}
 
+	@Override
 	public void update() {
 		if (!fired) {
 			AbstractDungeon.actionManager.addToTop(new PlaySoundAction(this.soundKey, volume));
@@ -50,11 +48,13 @@ public class CuttingGaleEffect extends AbstractGameEffect {
 		}
 	}
 
+	@Override
 	public void render(SpriteBatch sb) {
 		sb.setColor(0.5F, 1.0F, 1.0F, 1.0F);
 		sb.draw(ImageMaster.INTENT_MAGIC_L, this.x - 256F, this.y - 256F, 128.0F * this.scale * 4, 128.0F * this.scale * 4, 0.0F,0.0F, 1F, 1F);
 	}
 	// TODO: This sprite needs to fade in and fade out.
 
+	@Override
 	public void dispose() {}
 }
