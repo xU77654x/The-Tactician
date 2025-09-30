@@ -1,6 +1,7 @@
 package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
@@ -13,6 +14,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician3AxeCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.WildAbandonEffect;
 import tactician.powers.weapons.Weapon3AxePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -42,8 +44,8 @@ public class WildAbandon extends Tactician3AxeCard {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);
-                addToBot(new PlaySoundAction("tactician:WildAbandon", 1.10f)); // The sound effect plays for each enemy it hits.
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+                addToBot(new VFXAction(new WildAbandonEffect(mo.hb.cX, mo.hb.cY,"tactician:WildAbandon", 1.10f)));
+                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }
         }
         addToBot(new ExhaustAction(1, false));

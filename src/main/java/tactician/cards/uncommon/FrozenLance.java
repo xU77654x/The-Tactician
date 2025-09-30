@@ -1,5 +1,6 @@
 package tactician.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -16,6 +17,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician2LanceCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.Tactician1SwordLanceEffect;
 import tactician.powers.weapons.Weapon2LancePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -46,10 +48,12 @@ public class FrozenLance extends Tactician2LanceCard {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
         AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
         calculateCardDamage(m);
+        int dex = 0;
+        if (this.p.hasPower(DexterityPower.POWER_ID)) { dex = (this.p.getPower(DexterityPower.POWER_ID)).amount; }
         addToBot(new GainBlockAction(p, this.block));
-        addToBot(new VFXAction(new BlizzardEffect((damage / 4), AbstractDungeon.getMonsters().shouldFlipVfx()), 0.2F));
-        addToBot(new PlaySoundAction("tactician:FrozenLance", 1.25f));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new VFXAction(new BlizzardEffect(((dex * 2) + 3), AbstractDungeon.getMonsters().shouldFlipVfx()), 0.2F));
+        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FrozenLance", 1.15F, 255F, 0F, 0F, 3.0F, Color.CYAN), 0.00F));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override

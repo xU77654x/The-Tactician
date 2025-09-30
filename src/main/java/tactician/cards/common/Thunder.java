@@ -1,6 +1,7 @@
 package tactician.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,6 +13,7 @@ import tactician.cards.Tactician7ThunderCard;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.BoltingEffect;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -40,9 +42,12 @@ public class Thunder extends Tactician7ThunderCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
         calculateCardDamage(m);
-        addToTop(new PlaySoundAction("tactician:Thunder", 1.25f));
+
+        int loops = 2;
+        if (this.upgraded) { loops += 1; }
+        addToBot(new VFXAction(new BoltingEffect(m.hb.cX, m.hb.cY,"tactician:Thunder", 1.25f, loops)));
         AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new MakeTempCardInHandAction(new Hex(), 1));
         addToBot(new ExhaustAction(this.magicNumber, false, true, this.upgraded));
     }

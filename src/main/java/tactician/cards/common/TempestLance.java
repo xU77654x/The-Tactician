@@ -1,6 +1,8 @@
 package tactician.cards.common;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -14,6 +16,7 @@ import tactician.cards.Tactician2LanceCard;
 import tactician.cards.other.Anathema;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.Tactician1SwordLanceEffect;
 import tactician.powers.weapons.Weapon2LancePower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -41,8 +44,8 @@ public class TempestLance extends Tactician2LanceCard {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
         AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
         calculateCardDamage(m);
-        addToTop(new PlaySoundAction("tactician:TempestLance", 1.15f));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:TempestLance", 1.15F, 300F, 0F, 0F, 4.0F, Color.NAVY), 0.00F));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));
     }
 

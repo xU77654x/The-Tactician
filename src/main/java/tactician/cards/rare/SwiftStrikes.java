@@ -1,6 +1,8 @@
 package tactician.cards.rare;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -13,6 +15,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician2LanceCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.Tactician1SwordLanceEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon2LancePower;
 import tactician.util.CardStats;
@@ -41,10 +44,10 @@ public class SwiftStrikes extends Tactician2LanceCard {
         AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new PlaySoundAction("tactician:SwiftStrikes_Hit1", 1.12f));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new PlaySoundAction("tactician:SwiftStrikes_Hit2", 1.12f));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY + 20, "tactician:SwiftStrikes_Hit1", 1.12F, 225F, 0F, 0F, 4.25F, Color.SKY), 0.00F));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+        addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY + 20, "tactician:SwiftStrikes_Hit2", 1.12F, 220F, 0F, 0F, 4.25F, Color.SKY), 0.00F));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
     }
 

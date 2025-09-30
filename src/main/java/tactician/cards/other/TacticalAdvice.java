@@ -16,7 +16,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
-import tactician.effects.cards.Tactician1SwordEffect;
+import tactician.effects.cards.Tactician1SwordLanceEffect;
 import tactician.effects.cards.Tactician4BowEffect;
 import tactician.effects.cards.arcfire.TacticianFireballEffect;
 import tactician.powers.DeflectPower;
@@ -52,7 +52,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
         if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { // Wrath Strike
             AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
             calculateCardDamage(m);
-            addToBot(new VFXAction(new Tactician1SwordEffect(m.hb.cX, m.hb.cY, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET), 0.00F));
+            addToBot(new VFXAction(new Tactician1SwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET), 0.00F));
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         }
