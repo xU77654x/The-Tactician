@@ -14,7 +14,7 @@ import tactician.TacticianMod;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
-public class LoseFocusPower extends AbstractPower implements CloneablePowerInterface {
+public class LoseFocusPower extends AbstractPower {
     public static final String POWER_ID = TacticianMod.makeID("LoseFocusPower");
     private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/LoseFocus_Large.png"));
     private static final Texture tex32 = TextureLoader.getTexture(powerPath("LoseFocus.png"));
@@ -34,21 +34,20 @@ public class LoseFocusPower extends AbstractPower implements CloneablePowerInter
         updateDescription();
     }
 
+    @Override
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
+    @Override
     public void stackPower(int stackAmount) {
         this.fontScale = 8.0F;
         this.amount += stackAmount;
     }
 
+    @Override
     public void atEndOfTurn(boolean isPlayer) {
         addToBot(new ApplyPowerAction(this.owner, this.owner, new FocusPower(this.owner, -this.amount), -this.amount));
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, ID));
-    }
-
-    public AbstractPower makeCopy() {
-        return new LoseFocusPower(this.amount);
     }
 }

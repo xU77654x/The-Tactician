@@ -24,15 +24,17 @@ public class PartOfThePlan extends TacticianCard {
 
     public PartOfThePlan() {
         super(ID, info);
-        setMagic(2, 0);
+        setMagic(2, 1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, true, false, false)); }
-        if (this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, false)); }
-        addToBot(new PlaySoundAction("tactician:PartOfThePlan", 1.50f));
-        if (!p.hasPower(BarricadePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new BarricadePower(p))); }
+        if (!this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, false, false, false)); }
+        if (this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, false, true, true)); }
+        if (!p.hasPower(BarricadePower.POWER_ID)) {
+            addToBot(new PlaySoundAction("tactician:PartOfThePlan", 1.50f));
+            addToBot(new ApplyPowerAction(p, p, new BarricadePower(p)));
+        }
         for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { if (!mo.hasPower(BarricadePower.POWER_ID)) { addToBot(new ApplyPowerAction(mo, p, new BarricadePower(mo))); }}
     }
 

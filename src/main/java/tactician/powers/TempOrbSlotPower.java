@@ -33,10 +33,13 @@ public class TempOrbSlotPower extends AbstractPower {
 		this.updateDescription();
 	}
 
+	@Override
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
+	@Override
 	public void onInitialApplication() { addToBot(new IncreaseMaxOrbAction(1)); }
 
+	@Override
 	public void atStartOfTurn() {
 		this.amount--;
 		if (this.amount == 0) {
@@ -44,6 +47,4 @@ public class TempOrbSlotPower extends AbstractPower {
 			addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
 		}
 	}
-
-	public AbstractPower makeCopy() { return new TempOrbSlotPower(this.amount); }
 }

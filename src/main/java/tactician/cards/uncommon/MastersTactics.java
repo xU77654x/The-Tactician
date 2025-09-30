@@ -32,8 +32,8 @@ public class MastersTactics extends TacticianCard {
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new PlaySoundAction("tactician:MastersTactics", 1.00f));
         addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber));
+        addToBot(new PlaySoundAction("tactician:MastersTactics", 1.00f));
         addToBot(new DrawCardAction(this.magicNumber));
     }
 

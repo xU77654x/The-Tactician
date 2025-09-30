@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,6 +16,9 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.Tactician1SwordEffect;
+import tactician.effects.cards.Tactician4BowEffect;
+import tactician.effects.cards.arcfire.TacticianFireballEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.LoseFocusPower;
 import tactician.powers.weapons.*;
@@ -50,8 +52,8 @@ public class TacticalAdvice extends Tactician9CopyCard {
         if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { // Wrath Strike
             AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
             calculateCardDamage(m);
-            addToBot(new PlaySoundAction("tactician:WrathStrike", 1.33f));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToBot(new VFXAction(new Tactician1SwordEffect(m.hb.cX, m.hb.cY, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET), 0.00F));
+            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { // Tempest Lance
@@ -72,9 +74,10 @@ public class TacticalAdvice extends Tactician9CopyCard {
         else if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { // Curved Shot
             AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Bow"));
             calculateCardDamage(m);
-            addToTop(new PlaySoundAction("tactician:CurvedShot", 1.25f));
             addToBot(new GainBlockAction(p, this.block));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            addToBot(new VFXAction(new Tactician4BowEffect(m.hb.cX, m.hb.cY, "tactician:CurvedShot", 1.25f, Color.BROWN.cpy())));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+            addToBot(new PlaySoundAction("tactician:Strike_Neutral", 1.00f));
             if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID) && (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount >= this.magicNumber)) {
                 addToBot(new ReducePowerAction(p, p, AbstractDungeon.player.getPower(DeflectPower.POWER_ID), this.magicNumber));
                 addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, 2, false), this.magicNumber));
@@ -91,11 +94,9 @@ public class TacticalAdvice extends Tactician9CopyCard {
             addToTop(new PlaySoundAction("tactician:Arcfire_Cast", 1.33f));
             AbstractDungeon.effectList.add(new PlayVoiceEffect("Arcfire"));
             calculateCardDamage(m);
-            addToBot(new WaitAction(1.0F));
-            addToBot(new WaitAction(1.0F));
-            addToBot(new WaitAction(1.0F));
+            addToBot(new VFXAction(p, new TacticianFireballEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.50F));
             addToBot(new PlaySoundAction("tactician:Arcfire_Hit", 1.33f));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));
         }

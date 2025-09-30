@@ -1,6 +1,7 @@
 package tactician.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
@@ -15,6 +16,7 @@ import tactician.actions.RandomExhumeAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.CuttingGaleEffect;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -40,14 +42,8 @@ public class CuttingGale extends Tactician5WindCard {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
         AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
         calculateCardDamage(m);
-        addToBot(new PlaySoundAction("tactician:CuttingGale_Jab", 1.00f));
-        addToBot(new WaitAction(0.05F));
-        addToBot(new PlaySoundAction("tactician:CuttingGale_Jab", 1.00f));
-        addToBot(new WaitAction(0.05F));
-        addToBot(new PlaySoundAction("tactician:CuttingGale_Jab", 1.00f));
-        addToBot(new WaitAction(0.05F));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new PlaySoundAction("tactician:CuttingGale_Finish", 1.00f));
+        addToBot(new VFXAction(new CuttingGaleEffect(m.hb.cX, m.hb.cY, "tactician:CuttingGale", 1.00f)));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new RandomExhumeAction(1, false));
         if (this.upgraded) { addToBot(new ExhaustAction(1, true)); }
         else { addToBot(new ExhaustAction(1, false)); }

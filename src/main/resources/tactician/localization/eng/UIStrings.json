@@ -31,5 +31,8 @@
   },
   "${modID}:BasicRightClick": {
     "TEXT": ["Mutate", "On right-click, this card Purges and adds another card to your hand."]
+  },
+  "${modID}:WeaponTriangleChart": {
+    "TEXT": ["Weapon Triangle Chart", "Click or hover over this icon to visualize the weapon triangle at the top of your screen. Click again to remove the diagram."]
   }
 }

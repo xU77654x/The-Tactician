@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.StrikeDefendSFXAction;
+import tactician.actions.DefendSFXAction;
 import tactician.cards.Tactician7ThunderCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon7ThunderPower;
@@ -36,7 +36,7 @@ public class Defend7Thunder extends Tactician7ThunderCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
         calculateCardDamage(m);
-        addToBot(new StrikeDefendSFXAction(0, m));
+        addToBot(new DefendSFXAction(m));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 

@@ -1,6 +1,5 @@
 package tactician.powers;
 
-import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -13,7 +12,7 @@ import tactician.TacticianMod;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
-public class ShovePower extends AbstractPower implements CloneablePowerInterface {
+public class ShovePower extends AbstractPower {
 	public static final String POWER_ID = TacticianMod.makeID("ShovePower");
 	private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Boon_Large.png"));
 	private static final Texture tex32 = TextureLoader.getTexture(powerPath("Boon.png"));
@@ -33,16 +32,15 @@ public class ShovePower extends AbstractPower implements CloneablePowerInterface
 		updateDescription();
 	}
 
-	public void atEndOfRound() {
-		if (this.amount == 0) { addToBot((new RemoveSpecificPowerAction(this.owner, this.owner, ShovePower.POWER_ID))); }
-		else { addToBot(new ReducePowerAction(this.owner, this.owner, ShovePower.POWER_ID, 1)); }
-	}
-
+	@Override
 	public void updateDescription() {
 		if (this.amount == 1) { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[1]; }
 		else { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]; }
 	}
 
 	@Override
-	public AbstractPower makeCopy() { return new ShovePower(this.amount); }
+	public void atEndOfRound() {
+		if (this.amount == 0) { addToBot((new RemoveSpecificPowerAction(this.owner, this.owner, ShovePower.POWER_ID))); }
+		else { addToBot(new ReducePowerAction(this.owner, this.owner, ShovePower.POWER_ID, 1)); }
+	}
 }

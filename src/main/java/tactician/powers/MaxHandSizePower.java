@@ -31,34 +31,41 @@ public class MaxHandSizePower extends AbstractPower {
 		updateDescription();
 	}
 
+	@Override
+	public void updateDescription() {
+		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+	}
+
+	@Override
+	public void playApplyPowerSfx() {}
+
+		@Override
 	public void onInitialApplication() {
 		super.onInitialApplication();
 		BaseMod.MAX_HAND_SIZE += this.amount;
 	}
 
+	@Override
 	public void onRemove() {
 		super.onRemove();
 		BaseMod.MAX_HAND_SIZE -= this.amount;
 	}
 
+	@Override
 	public void stackPower(int stackAmount) {
 		super.stackPower(stackAmount);
 		BaseMod.MAX_HAND_SIZE += stackAmount;
 	}
 
+	@Override
 	public void reducePower(int reduceAmount) {
 		super.reducePower(reduceAmount);
 		BaseMod.MAX_HAND_SIZE -= reduceAmount;
 	}
 
+	@Override
 	public void onVictory() {
 		super.onVictory();
 		BaseMod.MAX_HAND_SIZE -= this.amount;
 	}
-
-	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-	}
-
-	public AbstractPower makeCopy() { return new MaxHandSizePower(this.amount); }
 }

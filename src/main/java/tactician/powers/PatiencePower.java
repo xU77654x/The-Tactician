@@ -1,5 +1,5 @@
 package tactician.powers;
-import basemod.interfaces.CloneablePowerInterface;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -8,10 +8,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
+import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
-public class PatiencePower extends AbstractPower implements CloneablePowerInterface {
+public class PatiencePower extends AbstractPower {
     public static final String POWER_ID = TacticianMod.makeID("PatiencePower");
     private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Patience_Large.png"));
     private static final Texture tex32 = TextureLoader.getTexture(powerPath("Patience.png"));
@@ -31,16 +32,17 @@ public class PatiencePower extends AbstractPower implements CloneablePowerInterf
         updateDescription();
     }
 
-    public void atStartOfTurnPostDraw() {
-        flash();
-        addToBot(new ApplyPowerAction(this.owner, this.owner, new DeflectPower(this.amount), this.amount));
-    }
-
+    @Override
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
-    public AbstractPower makeCopy() {
-        return new PatiencePower(this.amount);
+    @Override
+    public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:Patience", 0.90f)); }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        flash();
+        addToBot(new ApplyPowerAction(this.owner, this.owner, new DeflectPower(this.amount), this.amount));
     }
 }

@@ -10,10 +10,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
+import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
-public class PresciencePower extends AbstractPower implements CloneablePowerInterface {
+public class PresciencePower extends AbstractPower {
     public static final String POWER_ID = TacticianMod.makeID("PresciencePower");
     private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Prescience_Large.png"));
     private static final Texture tex32 = TextureLoader.getTexture(powerPath("Prescience.png"));
@@ -34,8 +35,15 @@ public class PresciencePower extends AbstractPower implements CloneablePowerInte
         updateDescription();
     }
 
+    public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
+
+    @Override
+    public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:Prescience", 1.10f)); }
+
+    @Override
     public void atStartOfTurn() { this.cardsPlayed = 0; }
 
+    @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() <= 1 && (card.type == AbstractCard.CardType.ATTACK)) {
             addToBot(new ApplyPowerAction(this.owner, this.owner, new DeflectPower(this.amount)));
@@ -43,8 +51,4 @@ public class PresciencePower extends AbstractPower implements CloneablePowerInte
             flash();
         }
     }
-
-    public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
-
-    public AbstractPower makeCopy() { return new PresciencePower(this.amount); }
 }

@@ -19,7 +19,6 @@ import tactician.util.Wiz;
 import static tactician.TacticianMod.powerPath;
 
 public class Weapon3AxePower extends AbstractPower {
-
 	public static final String POWER_ID = TacticianMod.makeID("Weapon3AxePower");
 	private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Weapon3Axe_Large.png"));
 	private static final Texture tex32 = TextureLoader.getTexture(powerPath("Weapon3Axe.png"));
@@ -41,6 +40,12 @@ public class Weapon3AxePower extends AbstractPower {
 		this.p = AbstractDungeon.player;
 		priority = -1000;
 	}
+
+	@Override
+	public void updateDescription() { this.description = DESCRIPTIONS[0];}
+
+	@Override
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public void onInitialApplication() {
@@ -70,9 +75,4 @@ public class Weapon3AxePower extends AbstractPower {
 
 	@Override
 	public void onVictory() { Wiz.setNextCombatWeapon(3); }
-
-	@Override
-	public void updateDescription() { this.description = DESCRIPTIONS[0];}
-
-	public AbstractPower makeCopy() { return new Weapon3AxePower(this.owner); }
 }

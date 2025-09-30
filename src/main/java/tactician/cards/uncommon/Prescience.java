@@ -27,10 +27,7 @@ public class Prescience extends TacticianCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new PlaySoundAction("tactician:Prescience", 1.10f));
-        addToBot(new ApplyPowerAction(p, p, new PresciencePower(this.magicNumber), this.magicNumber));
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new PresciencePower(this.magicNumber), this.magicNumber)); }
 
     @Override
     public AbstractCard makeCopy() {

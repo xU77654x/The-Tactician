@@ -384,8 +384,8 @@
   },
   "${modID}:PartOfThePlan": {
     "NAME": "Part of the Plan",
-    "DESCRIPTION": "Play this as your first card only. {@@}Exhaust !M! random card{!M!|1=|@=s}. EVERYONE gets Barricade.",
-    "UPGRADE_DESCRIPTION": "{@@}Exhaust !M! card{!M!|1=|@=s}. NL EVERYONE gets Barricade."
+    "DESCRIPTION": "Play this as your NL first card only. NL {@@}Exhaust !M! card{!M!|1=|@=s}. NL EVERYONE gets Barricade.",
+    "UPGRADE_DESCRIPTION": "{@@}Exhaust up to !M! card{!M!|1=|@=s}. NL EVERYONE gets Barricade."
   },
   "${modID}:MasterSeal": {
     "NAME": "Master Seal",

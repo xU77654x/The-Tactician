@@ -46,8 +46,6 @@ public class Expiration extends TacticianCard {
             addToTop(new EasyModalChoiceAction(easyCardList));
         }
         else { addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F)); }
-
-        addToBot(new PlaySoundAction("tactician:Expiration", 1.25f));
         addToBot(new ApplyPowerAction(p, p, new ExpirationPower(this.magicNumber)));
     }
 

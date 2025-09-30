@@ -19,7 +19,6 @@ import tactician.util.Wiz;
 import static tactician.TacticianMod.powerPath;
 
 public class Weapon7ThunderPower extends AbstractPower {
-
 	public static final String POWER_ID = TacticianMod.makeID("Weapon7ThunderPower");
 	private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Weapon7Thunder_Large.png"));
 	private static final Texture tex32 = TextureLoader.getTexture(powerPath("Weapon7Thunder.png"));
@@ -41,6 +40,12 @@ public class Weapon7ThunderPower extends AbstractPower {
 		this.p = AbstractDungeon.player;
 		priority = -1000;
 	}
+
+	@Override
+	public void updateDescription() { this.description = DESCRIPTIONS[0];}
+
+	@Override
+	public void playApplyPowerSfx() { }
 
 	@Override
 	public void onInitialApplication() {
@@ -70,9 +75,4 @@ public class Weapon7ThunderPower extends AbstractPower {
 
 	@Override
 	public void onVictory() { Wiz.setNextCombatWeapon(7); }
-
-	@Override
-	public void updateDescription() { this.description = DESCRIPTIONS[0];}
-
-	public AbstractPower makeCopy() { return new Weapon7ThunderPower(this.owner); }
 }

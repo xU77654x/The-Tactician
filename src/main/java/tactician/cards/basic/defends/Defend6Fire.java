@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.StrikeDefendSFXAction;
+import tactician.actions.DefendSFXAction;
 import tactician.cards.Tactician6FireCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon6FirePower;
@@ -36,7 +36,7 @@ public class Defend6Fire extends Tactician6FireCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
-        addToBot(new StrikeDefendSFXAction(0, m));
+        addToBot(new DefendSFXAction(m));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 

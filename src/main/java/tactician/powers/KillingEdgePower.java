@@ -37,6 +37,16 @@ public class KillingEdgePower extends AbstractPower {
 		this.updateDescription();
 	}
 
+	@Override
+	public void updateDescription() {
+		if (this.amount == 1) { this.description = DESCRIPTIONS[0]; }
+		else { this.description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2]; }
+	}
+
+	@Override
+	public void playApplyPowerSfx() { addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f)); }
+
+	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card.type == AbstractCard.CardType.ATTACK) {
 			addToBot(new WaitAction(1.0F));
@@ -44,16 +54,13 @@ public class KillingEdgePower extends AbstractPower {
 		}
 	}
 
-	public void updateDescription() {
-		if (this.amount == 1) { this.description = DESCRIPTIONS[0]; }
-		else { this.description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2]; }
-	}
-
+	@Override
 	public float atDamageGive(float damage, DamageInfo.DamageType type) {
 		if (type == DamageInfo.DamageType.NORMAL) { return damage * 3.0F; }
 		return damage;
 	}
 
+	@Override
 	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
 		if (target != this.owner && info.type == DamageInfo.DamageType.NORMAL) { addToTop(new PlaySoundAction("tactician:CriticalHitFE8", 1.50f)); }
 	}

@@ -1,11 +1,13 @@
 package tactician.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import tactician.actions.EasyXCostAction;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
@@ -37,6 +39,7 @@ public class Acrobat extends TacticianCard {
             return true;
         }));
         if (this.upgraded) { addToBot(new DrawCardAction(this.magicNumber)); }
+        addToBot(new VFXAction(p, new PlasmaOrbActivateEffect(p.hb.cX, p.hb.cY + 25), 0.0F));
         addToBot(new MakeTempCardInDrawPileAction(new Hex(), 1, true, true));
     }
 

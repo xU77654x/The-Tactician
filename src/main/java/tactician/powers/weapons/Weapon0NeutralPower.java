@@ -18,7 +18,6 @@ import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
 public class Weapon0NeutralPower extends AbstractPower {
-
 	public static final String POWER_ID = TacticianMod.makeID("Weapon0NeutralPower");
 	private static final Texture tex84 = TextureLoader.getTexture(powerPath("large/Weapon0Neutral_Large.png"));
 	private static final Texture tex32 = TextureLoader.getTexture(powerPath("Weapon0Neutral.png"));
@@ -42,6 +41,12 @@ public class Weapon0NeutralPower extends AbstractPower {
 	}
 
 	@Override
+	public void updateDescription() { this.description = DESCRIPTIONS[0]; }
+
+	@Override
+	public void playApplyPowerSfx() {}
+
+	@Override
 	public void onInitialApplication() {
 		super.onInitialApplication();
 		if (owner.hasPower(Weapon1SwordPower.POWER_ID)) { addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, Weapon1SwordPower.POWER_ID)); }
@@ -61,6 +66,4 @@ public class Weapon0NeutralPower extends AbstractPower {
 			if (owner != this.p) {if (this.p.hasPower(ZealPower.POWER_ID)) { return damage -3; }}}
 		return damage;
 	}
-
-	public void updateDescription() { this.description = DESCRIPTIONS[0];}
 }

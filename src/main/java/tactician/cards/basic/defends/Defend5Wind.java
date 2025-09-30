@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import tactician.actions.StrikeDefendSFXAction;
+import tactician.actions.DefendSFXAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.weapons.Weapon5WindPower;
@@ -36,7 +36,7 @@ public class Defend5Wind extends Tactician5WindCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
         calculateCardDamage(m);
-        addToBot(new StrikeDefendSFXAction(0, m));
+        addToBot(new DefendSFXAction(m));
         addToBot(new GainBlockAction(p, p, this.block));
     }
 

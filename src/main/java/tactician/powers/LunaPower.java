@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
+import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -39,6 +40,9 @@ public class LunaPower extends AbstractPower {
 		if (this.amount == 1) { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[1]; }
 		else { this.description = DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3] + DESCRIPTIONS[1]; }
 	}
+
+	@Override
+	public void playApplyPowerSfx() { } // This is present in the Luna card due to the timing of the effects.
 
 	@Override
 	public void onUseCard(AbstractCard c, UseCardAction action) {

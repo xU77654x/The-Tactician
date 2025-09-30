@@ -30,7 +30,6 @@ public class FiendishBlow extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new FiendishBlowPower(this.magicNumber), this.magicNumber));
-        addToTop(new PlaySoundAction("tactician:StatIncreaseFE", 1.00f));
         if (this.upgraded) {
             addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));

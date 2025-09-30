@@ -40,7 +40,6 @@ public class KillingEdge extends BaseRelic {
 				this.pulse = true;
 				AbstractDungeon.player.hand.refreshHandLayout();
 				addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-				addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f));
 				addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
 			}
 		}
@@ -52,7 +51,6 @@ public class KillingEdge extends BaseRelic {
 			beginPulse();
 			this.pulse = true;
 			AbstractDungeon.player.hand.refreshHandLayout();
-			addToTop(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f));
 			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
 		}
 	}

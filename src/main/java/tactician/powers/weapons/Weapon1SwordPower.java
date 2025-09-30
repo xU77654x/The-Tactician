@@ -42,6 +42,12 @@ public class Weapon1SwordPower extends AbstractPower {
 	}
 
 	@Override
+	public void updateDescription() { this.description = DESCRIPTIONS[0];}
+
+	@Override
+	public void playApplyPowerSfx() { }
+
+	@Override
 	public void onInitialApplication() {
 		super.onInitialApplication();
 		if (owner.hasPower(Weapon0NeutralPower.POWER_ID)) { addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, Weapon0NeutralPower.POWER_ID)); }
@@ -69,9 +75,4 @@ public class Weapon1SwordPower extends AbstractPower {
 
 	@Override
 	public void onVictory() { Wiz.setNextCombatWeapon(1); }
-
-	@Override
-	public void updateDescription() { this.description = DESCRIPTIONS[0];}
-
-	public AbstractPower makeCopy() { return new Weapon1SwordPower(this.owner); }
 }

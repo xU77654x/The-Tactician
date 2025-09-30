@@ -36,6 +36,7 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
+import tactician.util.WeaponTypeChart;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -51,7 +52,8 @@ public class TacticianMod implements
         EditKeywordsSubscriber,
         PostInitializeSubscriber,
         AddAudioSubscriber,
-        OnStartBattleSubscriber
+        OnStartBattleSubscriber,
+        StartGameSubscriber
 
 {
     public static ModInfo info;
@@ -72,6 +74,7 @@ public class TacticianMod implements
     public static ModLabeledToggleButton globalRelics;
     public static ModLabeledToggleButton tempStatPatch;
     public static SpireConfig modConfig = null;
+    public static WeaponTypeChart weaponTriangleChart;
 
     // This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
@@ -104,6 +107,7 @@ public class TacticianMod implements
 
     @Override
     public void receivePostInitialize() {
+        weaponTriangleChart = new WeaponTypeChart();
         ModPanel settingsPanel = new ModPanel();
         Texture badgeTexture = TextureLoader.getTexture(imagePath("TacticianBadge.png")); //  Load the icon image in the Mods submenu.
         // Set up the mod information displayed in the in-game mods menu. The information used is taken from your pom.xml file.
@@ -149,6 +153,14 @@ public class TacticianMod implements
         settingsPanel.addUIElement(tempStatPatch);
 
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, settingsPanel);
+    }
+
+    @Override
+    public void receiveStartGame() {
+        BaseMod.removeTopPanelItem(weaponTriangleChart);
+        if (AbstractDungeon.player.chosenClass == TACTICIAN) {
+            BaseMod.addTopPanelItem(weaponTriangleChart);
+        }
     }
 
     @Override
@@ -342,8 +354,7 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:WildAbandon", "tactician/audio/effect/WildAbandon.ogg");
         BaseMod.addAudio("tactician:WaningShot_Draw", "tactician/audio/effect/WaningShot_Draw.ogg");
         BaseMod.addAudio("tactician:WaningShot_Hit", "tactician/audio/effect/WaningShot_Hit.ogg");
-        BaseMod.addAudio("tactician:CuttingGale_Jab", "tactician/audio/effect/CuttingGale_Jab.ogg");
-        BaseMod.addAudio("tactician:CuttingGale_Finish", "tactician/audio/effect/CuttingGale_Finish.ogg");
+        BaseMod.addAudio("tactician:CuttingGale", "tactician/audio/effect/CuttingGale.ogg");
         BaseMod.addAudio("tactician:DyingBlaze", "tactician/audio/effect/DyingBlaze.ogg");
         BaseMod.addAudio("tactician:Bolting", "tactician/audio/effect/Bolting.ogg");
         BaseMod.addAudio("tactician:Nosferatu", "tactician/audio/effect/Nosferatu.ogg");

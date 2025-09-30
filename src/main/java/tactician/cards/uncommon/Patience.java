@@ -26,13 +26,8 @@ public class Patience extends TacticianCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new PlaySoundAction("tactician:Patience", 0.90f));
-        addToBot(new ApplyPowerAction(p, p, new PatiencePower(this.magicNumber), this.magicNumber));
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new ApplyPowerAction(p, p, new PatiencePower(this.magicNumber), this.magicNumber)); }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new Patience();
-    }
+    public AbstractCard makeCopy() { return new Patience(); }
 }

@@ -1,6 +1,7 @@
 package tactician.cards.rare;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -8,6 +9,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.FlameBarrierEffect;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician6FireCard;
 import tactician.character.TacticianRobin;
@@ -40,12 +43,14 @@ public class Bolganone extends Tactician6FireCard {
         AbstractDungeon.effectList.add(new PlayVoiceEffect("Bolganone"));
         calculateCardDamage(m);
         addToBot(new PlaySoundAction("tactician:Bolganone", 1.50f));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new VFXAction(new FlameBarrierEffect(m.hb.cX, m.hb.cY - 50), 0.0F));
+        addToBot(new VFXAction(new InflameEffect(m), 0.25F));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
 
         int deflect = 0;
         if (Wiz.playerWeaponCalc(m, 9) > 0) {
             addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
-            deflect += 4;
+            deflect += this.magicNumber;
         }
         if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) { deflect += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount; }
 

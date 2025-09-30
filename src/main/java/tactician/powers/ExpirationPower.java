@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
+import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -34,8 +35,13 @@ public class ExpirationPower extends AbstractPower {
 		this.updateDescription();
 	}
 
+	@Override
 	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
+	@Override
+	public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:Expiration", 1.25f)); }
+
+	@Override
 	public void onExhaust(AbstractCard card) {
 		addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
 	}

@@ -172,6 +172,11 @@ public class TacticianRobin extends CustomPlayer {
         return panels;
     }
 
+
+    public void receiveStartGame() {
+
+    }
+
     private final Color cardRenderColor = Color.PURPLE.cpy(); // Used for some vfx on moving cards (sometimes) (maybe)
     private final Color cardTrailColor = Color.LIGHT_GRAY.cpy(); // Used for card trail vfx during gameplay.
     private final Color slashAttackColor = Color.LIGHT_GRAY.cpy(); // Used for a screen tint effect when you attack the heart.

@@ -34,7 +34,7 @@ public class FrozenLance extends Tactician2LanceCard {
 
     public FrozenLance() {
         super(ID, info);
-        setDamage(8, 0);
+        setDamage(7, 0);
         setBlock(2, 0);
         setMagic(3, 2);
         this.p = AbstractDungeon.player;

@@ -48,7 +48,6 @@ public class Thoron extends Tactician7ThunderCard {
                 calculateCardDamage(mo);
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-                // if (this.upgraded) { addToBot(new RemoveSpecificPowerAction(mo, mo, BarricadePower.POWER_ID)); }
             }
             if (this.upgraded) { addToBot(new MakeTempCardInHandAction(new Hex(), 1)); }
             else { addToBot(new MakeTempCardInDrawPileAction(new Hex(), 1, true, true)); }

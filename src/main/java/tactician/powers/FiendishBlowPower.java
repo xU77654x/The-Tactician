@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import tactician.TacticianMod;
+import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -32,17 +33,18 @@ public class FiendishBlowPower extends AbstractPower {
 		updateDescription();
 	}
 
-	public void atStartOfTurnPostDraw() {
-		flash();
-		addToBot(new ApplyPowerAction(this.owner, this.owner, new FocusPower(this.owner, this.amount), this.amount));
-		addToBot(new ApplyPowerAction(this.owner, this.owner, new LoseFocusPower(this.amount), this.amount));
-	}
-
+	@Override
 	public void updateDescription() {
 		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
 	}
 
-	public AbstractPower makeCopy() {
-		return new FiendishBlowPower(this.amount);
+	@Override
+	public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:StatIncreaseFE", 1.00f)); }
+
+	@Override
+	public void atStartOfTurnPostDraw() {
+		flash();
+		addToBot(new ApplyPowerAction(this.owner, this.owner, new FocusPower(this.owner, this.amount), this.amount));
+		addToBot(new ApplyPowerAction(this.owner, this.owner, new LoseFocusPower(this.amount), this.amount));
 	}
 }

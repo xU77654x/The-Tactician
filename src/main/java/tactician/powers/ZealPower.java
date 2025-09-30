@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
+import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import static tactician.TacticianMod.powerPath;
 
@@ -33,14 +34,18 @@ public class ZealPower extends AbstractPower {
 		priority = -999;
 	}
 
+	@Override
+	public void updateDescription() {
+		if (this.amount > 1) { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]; }
+		else { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[1]; }
+	}
+
+	@Override
+	public void playApplyPowerSfx() { addToTop(new PlaySoundAction("tactician:Zeal", 1.00f)); }
+
+	@Override
 	public void atEndOfRound() {
 		if (this.amount == 0) { addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this)); }
 		else { addToBot(new ReducePowerAction(this.owner, this.owner, this, 1)); }
-	}
-
-	public void updateDescription() {
-		if (this.amount > 1) {
-			this.description = DESCRIPTIONS[0] + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]; }
-		else { this.description = DESCRIPTIONS[0] + DESCRIPTIONS[1]; }
 	}
 }
