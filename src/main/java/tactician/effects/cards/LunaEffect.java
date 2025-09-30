@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class LunaEffect extends AbstractGameEffect {
-	private float x;
-	private float y;
-	private TextureAtlas.AtlasRegion img;
-	private Color altColor;
+	private final float x;
+	private final float y;
+	private final TextureAtlas.AtlasRegion img;
+	private final Color altColor;
 	public LunaEffect() {
 		this.img = ImageMaster.CRYSTAL_IMPACT;
 		this.x = AbstractDungeon.player.hb.cX - this.img.packedWidth / 2.0F;
