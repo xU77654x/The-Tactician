@@ -15,9 +15,9 @@ import tactician.actions.PlaySoundAction;
 public class FlashSparrowEffect extends AbstractGameEffect {
 	private float x;
 	private float y;
-	private float endX;
-	private float endY;
-	private float scaleMultiplier;
+	private final float endX;
+	private final float endY;
+	private final float scaleMultiplier;
 	private final String soundKey;
 	private final float volume;
 	private boolean fired;
