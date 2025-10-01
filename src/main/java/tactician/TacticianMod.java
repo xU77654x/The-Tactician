@@ -6,6 +6,7 @@ import basemod.interfaces.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.beyond.Falling;
+import com.megacrit.cardcrawl.events.city.Ghosts;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.events.exordium.GoldenWing;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -113,11 +114,11 @@ public class TacticianMod implements
         // Set up the mod information displayed in the in-game mods menu. The information used is taken from your pom.xml file.
         // If you want to set up a config panel, that will be done here. The Mod Badges page has a basic example of this, but setting up config is overall a bit complex.
 
-        // Custom events are added here.
         BaseMod.addEvent(new AddEventParams.Builder(GoldenWingTactician.ID, GoldenWingTactician.class).playerClass(TACTICIAN).overrideEvent(GoldenWing.ID).create());
         BaseMod.addEvent(new AddEventParams.Builder(VampiresTactician.ID, VampiresTactician.class).playerClass(TACTICIAN).overrideEvent(Vampires.ID).create());
+        BaseMod.addEvent(new AddEventParams.Builder(GhostsTactician.ID, GhostsTactician.class).playerClass(TACTICIAN).overrideEvent(Ghosts.ID).create());
         BaseMod.addEvent(new AddEventParams.Builder(FallingTactician.ID, FallingTactician.class).playerClass(TACTICIAN).overrideEvent(Falling.ID).create());
-        registerPotions();
+        registerPotions(); // Custom events and potions here.
 
         skipTutorials = new ModLabeledToggleButton("Disable the Tutorial", 350.0F, 750.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, skipTutorialsPlaceholder, settingsPanel, label -> {}, button -> {
             skipTutorialsPlaceholder = button.enabled;

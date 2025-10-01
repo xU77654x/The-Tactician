@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.monsters.ending.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import tactician.powers.weapons.*;
-
 import static com.megacrit.cardcrawl.monsters.AbstractMonster.Intent.*;
 
 public class EnemyWeaponHelper {
@@ -19,17 +18,19 @@ public class EnemyWeaponHelper {
 
 		switch (m.id) {
 			// Standard Act 1
-			case AcidSlime_S.ID:
+			case AcidSlime_S.ID: case ApologySlime.ID:
 				if (intent == DEBUFF) { pow = new Weapon3AxePower(m); }
 				if (intent == ATTACK) { pow = new Weapon5WindPower(m); } break;
 			case AcidSlime_M.ID: case AcidSlime_L.ID:
 				if (intent == DEBUFF) { pow = new Weapon3AxePower(m); }
 				if (intent == ATTACK) { pow = new Weapon5WindPower(m); }
-				if (intent == ATTACK_DEBUFF) { pow = new Weapon8DarkPower(m); } break;
+				if (intent == ATTACK_DEBUFF) { pow = new Weapon8DarkPower(m); }
+				if (intent == UNKNOWN) { pow = new StrengthPower(m, 999); } break;
 			case SpikeSlime_S.ID: pow = new Weapon6FirePower(m); break;
 			case SpikeSlime_M.ID: case SpikeSlime_L.ID:
 				if (intent == DEBUFF) { pow = new Weapon2LancePower(m); }
-				if (intent == ATTACK_DEBUFF | intent == UNKNOWN) { pow = new Weapon6FirePower(m); } break;
+				if (intent == ATTACK_DEBUFF) { pow = new Weapon6FirePower(m); }
+				if (intent == UNKNOWN) { pow = new StrengthPower(m, 999); } break;
 			case Cultist.ID:
 				if (intent == BUFF) { pow = new Weapon8DarkPower(m); }
 				if (intent == ATTACK) { pow = new Weapon1SwordPower(m); } break;
@@ -82,7 +83,7 @@ public class EnemyWeaponHelper {
 				if (intent == STRONG_DEBUFF) { pow = new Weapon8DarkPower(m); } break;
 			case SlimeBoss.ID:
 				if (intent == STRONG_DEBUFF) { pow = new Weapon4BowPower(m); }
-				if (intent == UNKNOWN) { pow = new Weapon7ThunderPower(m); }
+				if (intent == UNKNOWN) { pow = new StrengthPower(m, 999); }
 				if (intent == ATTACK) { pow = new Weapon3AxePower(m); } break;
 			case TheGuardian.ID:
 				if (intent == STRONG_DEBUFF) { pow = new Weapon5WindPower(m); }
@@ -265,12 +266,9 @@ public class EnemyWeaponHelper {
 				if (intent == ATTACK_DEFEND) { pow = new Weapon8DarkPower(m); }
 				if (intent == BUFF) { pow = new Weapon7ThunderPower(m); }
 				if (intent == STRONG_DEBUFF) { pow = new Weapon5WindPower(m); } break;
-			case "downfall:GrowingTotem":
-				pow = new Weapon1SwordPower(m); break;
-			case "downfall:ForgetfulTotem":
-				pow = new Weapon2LancePower(m); break;
-			case "downfall:ChangingTotem":
-				pow = new Weapon3AxePower(m); break;
+			case "downfall:GrowingTotem": pow = new Weapon1SwordPower(m); break;
+			case "downfall:ForgetfulTotem": pow = new Weapon2LancePower(m); break;
+			case "downfall:ChangingTotem": pow = new Weapon3AxePower(m); break;
 			case "downfall:FleeingMerchant":
 				if (intent == DEFEND) { pow = new Weapon4BowPower(m); }
 				if (intent == ATTACK) { pow = new Weapon7ThunderPower(m); }
@@ -330,7 +328,7 @@ public class EnemyWeaponHelper {
 				switch (AbstractDungeon.actNum) {
 					case 1: pow = new Weapon5WindPower(m); break;
 					case 2: if (GameActionManager.turn == 1) { pow = new Weapon8DarkPower(m); }
-							else { pow = new StrengthPower(m, 99); } break;
+							else { pow = new StrengthPower(m, 999); } break;
 					case 3: pow = new Weapon2LancePower(m); break;
 				} break;
 			case "downfall:Defect":

@@ -1,12 +1,14 @@
 package tactician.cards.rare;
 
 import basemod.helpers.BaseModCardTags;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.vfx.combat.SanctityEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
@@ -34,6 +36,7 @@ public class GrandmasterForm extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToTop(new PlaySoundAction("tactician:GrandmasterForm", 0.40f)); // This stays as addToTop.
+        addToBot(new VFXAction(new SanctityEffect(p.hb.cX, p.hb.cY)));
         if (this.upgraded) { addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, 1), 1)); }
         addToBot(new ApplyPowerAction(p, p, new GrandmasterFormPower(this.magicNumber), this.magicNumber));
         AbstractDungeon.effectList.add(new PlayVoiceEffect("GrandmasterForm"));

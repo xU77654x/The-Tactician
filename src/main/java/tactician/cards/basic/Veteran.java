@@ -1,5 +1,6 @@
 package tactician.cards.basic;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.stance.DivinityStanceChangeParticle;
 import tactician.actions.HandSelectAction;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
@@ -51,7 +53,6 @@ public class Veteran extends TacticianCard {
             }, cardStrings.EXTENDED_DESCRIPTION[0],false,false,false));
         }
         addToTop(new PlaySoundAction("tactician:Veteran", 1.10f));
-
     }
 
     @Override

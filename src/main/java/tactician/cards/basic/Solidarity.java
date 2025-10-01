@@ -1,11 +1,13 @@
 package tactician.cards.basic;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.LightBulbEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.other.Hex;
@@ -32,6 +34,7 @@ public class Solidarity extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToTop(new PlaySoundAction("tactician:Solidarity", 0.75f));
+        addToBot(new VFXAction(new LightBulbEffect(p.hb), 0.10F));
         addToBot(new DrawCardAction(2));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         addToBot(new MakeTempCardInHandAction(new Hex(), 1));

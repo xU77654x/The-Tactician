@@ -1,15 +1,18 @@
 package tactician.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
+import com.megacrit.cardcrawl.vfx.stance.DivinityStanceChangeParticle;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
@@ -65,6 +68,11 @@ public class RallySpectrum extends TacticianCard {
         }));
         addToBot(new EasyModalChoiceAction(easyCardList));
         addToBot(new PlaySoundAction("tactician:RallySpectrum", 1.00f));
+        for (int i = 0; i < 6; i++) {
+            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.RED, p.hb.cX, p.hb.cY));
+            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.BLUE, p.hb.cX, p.hb.cY));
+            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.GREEN, p.hb.cX, p.hb.cY));
+        }
     }
 
     @Override

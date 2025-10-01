@@ -1,10 +1,13 @@
 package tactician.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
+import com.megacrit.cardcrawl.vfx.stance.DivinityStanceChangeParticle;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
@@ -35,6 +38,7 @@ public class FiendishBlow extends TacticianCard {
             addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));
         }
+        for (int i = 0; i < 15; i++) { AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.BLUE, p.hb.cX, p.hb.cY)); }
     }
 
     @Override

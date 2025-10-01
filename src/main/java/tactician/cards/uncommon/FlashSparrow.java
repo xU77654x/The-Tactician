@@ -28,8 +28,7 @@ public class FlashSparrow extends Tactician9CopyCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new FlashSparrowAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL))); }
-    // The sound effect and weapon calculation for this card is within FlashSparrowAction.
+    public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new FlashSparrowAction(p, m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL))); }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {

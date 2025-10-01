@@ -1,10 +1,13 @@
 package tactician.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician9CopyCard;
 import tactician.character.TacticianRobin;
@@ -26,12 +29,12 @@ public class Relief extends Tactician9CopyCard {
         setBlock(6, 2);
         tags.add(CustomTags.COPY);
         this.exhaust = true;
-        // this.cardsToPreview = (AbstractCard)new Hex(); // THIS CAUSES A CRASH AT LAUNCH
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
+        AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.SKY, true));
         addToBot(new PlaySoundAction("tactician:Relief", 2.25f));
         addToBot(new GainBlockAction(p, p, this.block));
     }
