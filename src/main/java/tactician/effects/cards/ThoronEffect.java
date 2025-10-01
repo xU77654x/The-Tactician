@@ -16,8 +16,8 @@ public class ThoronEffect extends AbstractGameEffect {
 	private final String soundKey;
 	private final float volume;
 	private float x;
-	private float y;
-	private float vX;
+	private final float y;
+	private final float vX;
 	private static final float FADE_IN_TIME = 0.05F;
 	private static final float FADE_OUT_TIME = 0.5F;
 	private float fadeInTimer = 0.05F;
