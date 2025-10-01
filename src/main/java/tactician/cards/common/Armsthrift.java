@@ -1,9 +1,11 @@
 package tactician.cards.common;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import tactician.actions.ArmsthriftAction;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.actions.PlaySoundAction;
@@ -12,7 +14,6 @@ import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.util.CardStats;
-
 import java.util.ArrayList;
 
 public class Armsthrift extends TacticianCard {
@@ -40,6 +41,7 @@ public class Armsthrift extends TacticianCard {
         easyCardList.add(new UpgradePowers(() -> addToBot(new ArmsthriftAction(2))));
         addToBot(new EasyModalChoiceAction(easyCardList));
         addToTop(new PlaySoundAction("tactician:Armsthrift", 1.25f));
+        addToBot(new VFXAction(new UpgradeShineEffect(p.hb.cX, p.hb.cY)));
     }
 
     @Override

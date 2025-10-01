@@ -28,7 +28,6 @@ public class Thunder extends Tactician7ThunderCard {
             1
     );
 
-
     public Thunder() {
         super(ID, info);
         setDamage(6, 2);

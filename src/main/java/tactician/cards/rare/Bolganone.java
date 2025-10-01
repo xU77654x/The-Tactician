@@ -33,8 +33,8 @@ public class Bolganone extends Tactician6FireCard {
 
     public Bolganone() {
         super(ID, info);
-        setDamage(10, 3);
-        setMagic(4, 0);
+        setDamage(12, 2);
+        setMagic(4, 1);
         tags.add(CustomTags.FIRE);
     }
 

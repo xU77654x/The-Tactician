@@ -35,7 +35,7 @@ public class HuntersVolley extends Tactician4BowCard {
 
     public HuntersVolley() {
         super(ID, info);
-        setDamage(10, 3);
+        setDamage(10, 4);
         setMagic(4, -3);
         tags.add(CustomTags.BOW);
     }
