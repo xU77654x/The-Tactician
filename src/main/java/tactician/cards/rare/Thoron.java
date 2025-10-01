@@ -11,12 +11,12 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician7ThunderCard;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.ThoronEffect;
 import tactician.powers.weapons.Weapon7ThunderPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -40,10 +40,9 @@ public class Thoron extends Tactician7ThunderCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new PlaySoundAction("tactician:Thoron_Cast", 1.00f));
         AbstractDungeon.effectList.add(new PlayVoiceEffect("Thoron"));
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            addToBot(new VFXAction(p, new CleaveEffect(), 0.01F));
+            addToBot(new VFXAction(p, new ThoronEffect("tactician:Thoron_Cast", 1.50f), 0.01F));
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
