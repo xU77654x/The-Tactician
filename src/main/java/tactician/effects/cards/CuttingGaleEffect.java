@@ -17,7 +17,7 @@ public class CuttingGaleEffect extends AbstractGameEffect {
 	private final String soundKey;
 	private final float volume;
 	private boolean fired;
-	private Color windColor;
+	private final Color windColor;
 	private int count = 0;
 	private float timer = 0.0F;
 
