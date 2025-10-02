@@ -40,10 +40,10 @@ public class Smash extends Tactician3AxeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Axe")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Axe"));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:Smash", 1.01f, Color.CHARTREUSE, 2.0F)));
+        addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:Smash", 1.01f, Color.CHARTREUSE.cpy(), 2.0F)));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));

@@ -423,6 +423,8 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:TacticianEnding", "tactician/audio/effect/Tactician_Ending.ogg");
         BaseMod.addAudio("tactician:LevelUpFE8", "tactician/audio/effect/LevelUpFE8.ogg");
         BaseMod.addAudio("tactician:CriticalHitFE8", "tactician/audio/effect/CriticalHitFE8.ogg");
+        BaseMod.addAudio("tactician:WeaponSelect", "tactician/audio/effect/WeaponSelect.ogg");
+        BaseMod.addAudio("tactician:DeflectGain", "tactician/audio/effect/DeflectGain.ogg");
         BaseMod.addAudio("tactician:DeflectReceiveHit", "tactician/audio/effect/DeflectReceiveHit.ogg");
 
         // Male Voice

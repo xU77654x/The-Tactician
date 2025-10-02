@@ -40,7 +40,7 @@ public class Bolganone extends Tactician6FireCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("Bolganone"));
+        addToBot(new VFXAction(new PlayVoiceEffect("Bolganone")));
         calculateCardDamage(m);
         addToBot(new PlaySoundAction("tactician:Bolganone", 1.50f));
         addToBot(new VFXAction(new FlameBarrierEffect(m.hb.cX, m.hb.cY - 50), 0.0F));

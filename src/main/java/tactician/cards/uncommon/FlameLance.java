@@ -49,20 +49,20 @@ public class FlameLance extends TacticianCard {
                 weapon = 2;
                 if (!p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
                 calculateCardDamage(m);
-                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FlameLance", 1.20F, 260.0F, 125F, -25F, 4.67F, Color.BLUE), 0.00F));
+                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FlameLance", 1.20F, 260.0F, 125F, -25F, 4.67F, Color.BLUE.cpy()), 0.00F));
                 addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             easyCardList.add(new Weapon6Fire(() -> {
                 weapon = 6;
                 if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
                 calculateCardDamage(m);
-                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FlameLance", 1.20F, 260.0F, 125F, -25F, 4.67F, Color.ORANGE), 0.00F));
+                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FlameLance", 1.20F, 260.0F, 125F, -25F, 4.67F, Color.ORANGE.cpy()), 0.00F));
                 addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
         else {
-            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FlameLance", 1.20F, 260.0F, 125F, -25F, 4.67F, Color.BLUE), 0.00F));
+            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FlameLance", 1.20F, 260.0F, 125F, -25F, 4.67F, Color.BLUE.cpy()), 0.00F));
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         }
         addToBot(new ApplyPowerAction(p, p, new TempOrbSlotPower(this.magicNumber)));

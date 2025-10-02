@@ -1,6 +1,8 @@
 package tactician.cards.common;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,6 +15,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.TacticianWindEffect;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
@@ -39,9 +42,9 @@ public class Elwind extends Tactician5WindCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
         calculateCardDamage(m);
-        addToTop(new PlaySoundAction("tactician:Elwind", 1.50f));
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("Elwind"));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new VFXAction(new TacticianWindEffect(p.hb.cX, p.hb.cY, "tactician:Elwind", 1.50f, Color.CYAN.cpy(), 0.5F)));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+        addToBot(new VFXAction(new PlayVoiceEffect("Elwind")));
         addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
     }
 

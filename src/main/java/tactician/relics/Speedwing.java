@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -37,7 +38,6 @@ public class Speedwing extends BaseRelic {
         if (this.counter == TURN) {
             flash();
             addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DeflectPower(DEFLECT), DEFLECT));
             this.counter = -1;
             this.grayscale = true;
             AbstractPlayer p = AbstractDungeon.player;
@@ -51,8 +51,10 @@ public class Speedwing extends BaseRelic {
                 easyCardList.add(new Weapon6Fire(() -> { if (!p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); } }));
                 easyCardList.add(new Weapon7Thunder(() -> { if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); } }));
                 easyCardList.add(new Weapon8Dark(() -> { if (!p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); } }));
+                addToBot(new PlaySoundAction("tactician:WeaponSelect", 1.50F));
                 addToBot(new EasyModalChoiceAction(easyCardList));
             }
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DeflectPower(DEFLECT), DEFLECT));
         }
     }
 

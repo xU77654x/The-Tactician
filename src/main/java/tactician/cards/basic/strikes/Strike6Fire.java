@@ -40,7 +40,7 @@ public class Strike6Fire extends Tactician6FireCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) {addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
 		calculateCardDamage(m);
-		addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.ORANGE)));
+		addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.ORANGE.cpy())));
 		addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
 	}
 

@@ -28,7 +28,7 @@ public class IndoorFighter extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:IndoorFighter", 1.25f));
+        addToBot(new PlaySoundAction("tactician:IndoorFighter", 1.25f));
         addToBot(new ExhaustAction(1, false));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
 

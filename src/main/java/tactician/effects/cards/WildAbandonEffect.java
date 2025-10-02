@@ -19,7 +19,7 @@ public class WildAbandonEffect extends AbstractGameEffect {
 	public WildAbandonEffect(float x, float y, String soundKey, float volume) {
 		this.x = x;
 		this.y = y;
-		this.color = Color.FOREST;
+		this.color = Color.FOREST.cpy();
 		this.soundKey = soundKey;
 		this.volume = volume;
 	}

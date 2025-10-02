@@ -41,7 +41,7 @@ public class Strike3Axe extends Tactician3AxeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.GREEN)));
+        addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.GREEN.cpy())));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
     }
 

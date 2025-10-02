@@ -40,10 +40,10 @@ public class WrathStrike extends Tactician1SwordCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Sword")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 25, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 25, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
     }

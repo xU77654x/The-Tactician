@@ -17,7 +17,7 @@
   },
   "${modID}:GhostsTactician": {
     "NAME": "Council of Ghosts",
-    "DESCRIPTIONS": ["You can tell that their interpretation of \"power\" will #pcorrupt #pyou. There must be a way to use their offered resource in a more sensible way. NL After demonstrating some techniques you learned from climbing the Spire, the being look in awe and concoct an interesting idea. NL NL ~\"Perhaps~ ~this~ ~is~ ~what~ ~you~ ~are~ ~willing~ ~to~ ~take~ ~for~ ~now,~ ~hmm?\"~ NL It presents you a #bflickering #bwax #bcandle. NL #r@\"ALL@ #r@THE@ #r@POTENTIAL@ #r@IN@ #r@THE@ #r@WORLD,@ #r@AND@ #r@YOU@ #r@CHOOSE@ #r@THIS!@ #r@HAHAHA!\"@ NL \"When you are ready for #ytrue #ypower, please do come see us again.\""],
+    "DESCRIPTIONS": ["You can tell that their interpretation of \"power\" will #pcorrupt #pyou. There must be a way to use their offered resource in a more sensible way. NL After demonstrating some techniques you learned from climbing the Spire, the beings look with interest and concoct an idea. NL NL ~\"Perhaps~ ~this~ ~is~ ~what~ ~you~ ~are~ ~willing~ ~to~ ~take~ ~for~ ~now,~ ~hmm?\"~ NL It presents you a #bflickering #bwax #bcandle. NL #r@\"ALL@ #r@THE@ #r@POTENTIAL@ #r@IN@ #r@THE@ #r@WORLD,@ #r@AND@ #r@YOU@ #r@CHOOSE@ #r@THIS!@ #r@HAHAHA!\"@ NL \"When you are ready for #ytrue #ypower, please do come see us again.\""],
     "OPTIONS": [
       "[Bargain]: #gGain #g",
       " #gMax #gHP. Gain a Blue Candle."

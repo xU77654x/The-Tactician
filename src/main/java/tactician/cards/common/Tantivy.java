@@ -31,7 +31,7 @@ public class Tantivy extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster M) {
-        addToTop(new PlaySoundAction("tactician:Tantivy", 1.50f));
+        addToBot(new PlaySoundAction("tactician:Tantivy", 1.50f));
         addToBot(new ScryAction(this.magicNumber)); // Scry 3 > 6
         addToBot(new DrawCardAction(p, 1)); // Draw 1.
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, customVar("magicTempDex")), customVar("magicTempDex"))); // Gain 2 > 3 Dexterity

@@ -42,6 +42,22 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
     }
 
     @Override
+    public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
+
+    @Override
+    public void playApplyPowerSfx() { }
+
+    @Override
+    public void onInitialApplication() { addToTop(new PlaySoundAction("tactician:DeflectGain", 1.67F)); }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        this.fontScale = 8.0F;
+        this.amount += stackAmount;
+        addToTop(new PlaySoundAction("tactician:DeflectGain", 1.67F));
+    }
+
+    @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
             flash();
@@ -75,9 +91,6 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
         }
         return damageAmount;
     }
-
-    @Override
-    public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
 
     public AbstractPower makeCopy() { return new DeflectPower(this.amount); }
 }

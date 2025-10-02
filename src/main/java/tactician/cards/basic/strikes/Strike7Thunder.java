@@ -40,7 +40,7 @@ public class Strike7Thunder extends Tactician7ThunderCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) {addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
 		calculateCardDamage(m);
-		addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.YELLOW)));
+		addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.YELLOW.cpy())));
 		addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
 	}
 

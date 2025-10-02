@@ -38,7 +38,7 @@ public class FiendishBlow extends TacticianCard {
             addToBot(new ApplyPowerAction(p, p, new FocusPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(this.magicNumber), this.magicNumber));
         }
-        for (int i = 0; i < 15; i++) { AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.BLUE, p.hb.cX, p.hb.cY)); }
+        for (int i = 0; i < 15; i++) { AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.BLUE.cpy(), p.hb.cX, p.hb.cY)); }
     }
 
     @Override

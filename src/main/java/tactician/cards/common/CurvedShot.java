@@ -41,8 +41,8 @@ public class CurvedShot extends Tactician4BowCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Bow")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Bow"));
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, this.block));
         addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:CurvedShot", 1.25f, Color.BROWN.cpy())));

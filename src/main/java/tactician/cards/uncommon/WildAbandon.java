@@ -38,8 +38,8 @@ public class WildAbandon extends Tactician3AxeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Axe")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Axe"));
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
                 calculateCardDamage(mo);

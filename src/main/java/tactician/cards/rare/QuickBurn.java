@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.VerticalAuraEffect;
@@ -36,12 +35,12 @@ public class QuickBurn extends TacticianCard {
 		if (!p.hasPower(QuickBurnPower.POWER_ID)) {
 			addToBot(new PlaySoundAction("tactician:QuickBurn", 1.00f));
 			addToBot(new ApplyPowerAction(p, p, new QuickBurnPower(p)));
-			addToBot(new VFXAction(p, new VerticalAuraEffect(Color.FIREBRICK, p.hb.cX, p.hb.cY), 0.33F));
-			addToBot(new VFXAction(p, new VerticalAuraEffect(Color.YELLOW, p.hb.cX, p.hb.cY), 0.33F));
-			addToBot(new VFXAction(p, new VerticalAuraEffect(Color.CORAL, p.hb.cX, p.hb.cY), 0.0F));
-			addToBot(new VFXAction(p, new BorderLongFlashEffect(Color.RED), 0.0F, true));
+			addToBot(new VFXAction(p, new VerticalAuraEffect(Color.FIREBRICK.cpy(), p.hb.cX, p.hb.cY), 0.33F));
+			addToBot(new VFXAction(p, new VerticalAuraEffect(Color.YELLOW.cpy(), p.hb.cX, p.hb.cY), 0.33F));
+			addToBot(new VFXAction(p, new VerticalAuraEffect(Color.CORAL.cpy(), p.hb.cX, p.hb.cY), 0.0F));
+			addToBot(new VFXAction(p, new BorderLongFlashEffect(Color.RED.cpy()), 0.0F, true));
 
-			AbstractDungeon.effectList.add(new PlayVoiceEffect("QuickBurn"));
+			addToBot(new VFXAction(new PlayVoiceEffect("QuickBurn")));
 		}
 	}
 

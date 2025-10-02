@@ -40,8 +40,8 @@ public class Arcfire extends Tactician6FireCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Arcfire_Cast", 1.33f));
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("Arcfire"));
+        addToBot(new PlaySoundAction("tactician:Arcfire_Cast", 1.33f));
+        addToBot(new VFXAction(new PlayVoiceEffect("Arcfire")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
         calculateCardDamage(m);
         addToBot(new VFXAction(p, new ArcfireBallEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.50F));

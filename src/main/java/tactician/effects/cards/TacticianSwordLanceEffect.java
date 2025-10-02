@@ -38,7 +38,7 @@ public class TacticianSwordLanceEffect extends AbstractGameEffect {
 	@Override
 	public void update() {
 		AbstractDungeon.actionManager.addToTop(new PlaySoundAction(this.soundKey, volume));
-		AbstractDungeon.effectsQueue.add(new AnimatedSlashEffect(this.x, this.y - 30.0F * Settings.scale, velocityX, velocityY, angle, scale, color, Color.LIGHT_GRAY));
+		AbstractDungeon.effectsQueue.add(new AnimatedSlashEffect(this.x, this.y - 30.0F * Settings.scale, velocityX, velocityY, angle, scale, color, Color.LIGHT_GRAY.cpy()));
 		for (int i = 0; i < 3; i++) { AbstractDungeon.effectsQueue.add(new UpgradeShineParticleEffect(this.x + MathUtils.random(-40.0F, 40.0F) * Settings.scale, this.y + MathUtils.random(-40.0F, 40.0F) * Settings.scale)); }
 		this.isDone = true;
 	}

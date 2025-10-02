@@ -52,20 +52,20 @@ public class LevinSword extends TacticianCard {
                 weapon = 1;
                 if (!p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:LevinSword", 1.33F, 280.0F, 125F, 25F, 4.67F, Color.RED), 0.00F));
+                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:LevinSword", 1.33F, 280.0F, 125F, 25F, 4.67F, Color.RED.cpy()), 0.00F));
                 addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             easyCardList.add(new Weapon7Thunder(() ->  {
                 weapon = 7;
                 if (!p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:LevinSword", 1.33F, 280.0F, 125F, 25F, 4.67F, Color.YELLOW), 0.00F));
+                addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:LevinSword", 1.33F, 280.0F, 125F, 25F, 4.67F, Color.YELLOW.cpy()), 0.00F));
                 addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             addToTop(new EasyModalChoiceAction(easyCardList));
         }
         else {
-            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:LevinSword", 1.33F, 280.0F, 125F, 25F, 4.67F, Color.RED), 0.00F));
+            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:LevinSword", 1.33F, 280.0F, 125F, 25F, 4.67F, Color.RED.cpy()), 0.00F));
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         }
 

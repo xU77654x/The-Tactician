@@ -40,8 +40,8 @@ public class DyingBlaze extends Tactician6FireCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_MiscMagic")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon6FirePower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
         calculateCardDamage(m);
         addToBot(new VFXAction(p, new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.00F));
         addToBot(new PlaySoundAction("tactician:DyingBlaze", 1.00f));

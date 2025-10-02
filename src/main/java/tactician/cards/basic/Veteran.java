@@ -32,6 +32,7 @@ public class Veteran extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new PlaySoundAction("tactician:Veteran", 1.10f));
         if (this.upgraded) {
             addToBot(new ExhaustAction(1, false));
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
@@ -50,7 +51,6 @@ public class Veteran extends TacticianCard {
                 }
             }, cardStrings.EXTENDED_DESCRIPTION[0],false,false,false));
         }
-        addToTop(new PlaySoundAction("tactician:Veteran", 1.10f));
     }
 
     @Override

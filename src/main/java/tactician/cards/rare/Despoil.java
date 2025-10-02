@@ -47,7 +47,7 @@ public class Despoil extends TacticianCard {
         }
 
         m = Wiz.getRandomEnemy();
-        addToTop(new PlaySoundAction("tactician:Despoil", 1.25f)); // TODO: Don't play the sound if all potion slots are full.
+        addToBot(new PlaySoundAction("tactician:Despoil", 1.25f)); // TODO: Don't play the sound if all potion slots are full.
         for (int i = 0; i < 20; i++) { AbstractDungeon.effectList.add(new GainPennyEffect(p, m.hb.cX, m.hb.cY, p.hb.cX, p.hb.cY, false)); }
 
         addToBot(new ObtainPotionAction(potion));

@@ -37,10 +37,10 @@ public class CuttingGale extends Tactician5WindCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_MiscMagic")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new CuttingGaleEffect(m.hb.cX, m.hb.cY, "tactician:CuttingGale", 1.00f)));
+        addToBot(new VFXAction(new CuttingGaleEffect(m.hb.cX, m.hb.cY, "tactician:CuttingGale", 1.50f)));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new RandomExhumeAction(1, false));
         if (this.upgraded) { addToBot(new ExhaustAction(1, true)); }

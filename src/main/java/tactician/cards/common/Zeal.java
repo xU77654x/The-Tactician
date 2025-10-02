@@ -32,7 +32,7 @@ public class Zeal extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Zeal", 1.00f));
+        addToBot(new PlaySoundAction("tactician:Zeal", 1.00f));
         addToBot(new ApplyPowerAction(p, p, new ZealPower(magicNumber), magicNumber));
     }
 

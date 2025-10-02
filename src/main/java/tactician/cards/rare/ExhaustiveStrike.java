@@ -41,12 +41,12 @@ public class ExhaustiveStrike extends Tactician3AxeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Axe"));
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Axe")));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:ExhaustiveStrike_Hit1", 1.25f, Color.OLIVE, 1.67F)));
+        addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:ExhaustiveStrike_Hit1", 1.25f, Color.OLIVE.cpy(), 1.67F)));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new WaitAction(0.67F));
-        addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:ExhaustiveStrike_Hit2", 1.25f, Color.OLIVE, 1.67F)));
+        addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:ExhaustiveStrike_Hit2", 1.25f, Color.OLIVE.cpy(), 1.67F)));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         int exhaustAmount = magicNumber;
         if (Wiz.playerWeaponCalc(m, 9) > 0) { exhaustAmount += 3; }

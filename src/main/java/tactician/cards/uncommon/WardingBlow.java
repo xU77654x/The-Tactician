@@ -38,7 +38,7 @@ public class WardingBlow extends TacticianCard {
             addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, this.magicNumber), this.magicNumber));
         }
-        for (int i = 0; i < 15; i++) { AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.TEAL, p.hb.cX, p.hb.cY)); }
+        for (int i = 0; i < 15; i++) { AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.TEAL.cpy(), p.hb.cX, p.hb.cY)); }
     }
 
     @Override

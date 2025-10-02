@@ -33,14 +33,13 @@ public class Armsthrift extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
-
+        addToBot(new PlaySoundAction("tactician:Armsthrift", 1.25f));
         ArrayList<AbstractCard> easyCardList = new ArrayList<>();
         easyCardList.add(new UpgradeAttacks(() -> addToBot(new ArmsthriftAction(0))));
         easyCardList.add(new UpgradeSkills(() -> addToBot(new ArmsthriftAction(1))));
         easyCardList.add(new UpgradePowers(() -> addToBot(new ArmsthriftAction(2))));
         addToBot(new EasyModalChoiceAction(easyCardList));
-        addToTop(new PlaySoundAction("tactician:Armsthrift", 1.25f));
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         addToBot(new VFXAction(new UpgradeShineEffect(p.hb.cX, p.hb.cY)));
     }
 

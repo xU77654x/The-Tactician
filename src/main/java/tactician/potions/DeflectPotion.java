@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
@@ -36,7 +37,6 @@ public class DeflectPotion extends BasePotion {
 	@Override
 	public void use(AbstractCreature target) {
 		if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DeflectPower(potency), potency));
 			if (AbstractDungeon.player instanceof TacticianRobin) {
 				ArrayList<AbstractCard> easyCardList = new ArrayList<>();
 				easyCardList.add(new Weapon1Sword(() -> { if (!AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon1SwordPower(AbstractDungeon.player))); } }));
@@ -47,8 +47,10 @@ public class DeflectPotion extends BasePotion {
 				easyCardList.add(new Weapon6Fire(() -> { if (!AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon6FirePower(AbstractDungeon.player))); } }));
 				easyCardList.add(new Weapon7Thunder(() -> { if (!AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon7ThunderPower(AbstractDungeon.player))); } }));
 				easyCardList.add(new Weapon8Dark(() -> { if (!AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon8DarkPower(AbstractDungeon.player))); } }));
+				addToBot(new PlaySoundAction("tactician:WeaponSelect", 1.50F));
 				addToBot(new EasyModalChoiceAction(easyCardList));
 			}
+			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DeflectPower(potency), potency));
 		}
 	}
 

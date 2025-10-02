@@ -40,10 +40,10 @@ public class TempestLance extends Tactician2LanceCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Lance")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:TempestLance", 1.15F, 300F, 0F, 0F, 4.0F, Color.NAVY), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:TempestLance", 1.15F, 300F, 0F, 0F, 4.0F, Color.NAVY.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));
     }

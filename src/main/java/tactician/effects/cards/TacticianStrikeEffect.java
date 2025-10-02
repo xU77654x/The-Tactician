@@ -24,7 +24,7 @@ public class TacticianStrikeEffect extends AbstractGameEffect {
 
 	@Override
 	public void update() {
-		AbstractDungeon.effectsQueue.add(new AnimatedSlashEffect(this.x, this.y, 0.0F, 0.0F, 315.0F, 2.0F, this.color, Color.LIGHT_GRAY));
+		AbstractDungeon.effectsQueue.add(new AnimatedSlashEffect(this.x, this.y, 0.0F, 0.0F, 315.0F, 2.0F, this.color, Color.LIGHT_GRAY.cpy()));
 		if ( Wiz.playerWeaponCalc(m, 9) > 0) { AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Strike_Strong", 1.25f)); }
 		else if ( Wiz.playerWeaponCalc(m, 9) < 0) { AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Strike_Weak", 1.10f)); }
 		else { AbstractDungeon.actionManager.addToTop(new PlaySoundAction("tactician:Strike_Neutral", 1.20f)); }

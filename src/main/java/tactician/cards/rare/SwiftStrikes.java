@@ -40,12 +40,12 @@ public class SwiftStrikes extends Tactician2LanceCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Lance")));
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 20, "tactician:SwiftStrikes_Hit1", 1.12F, 225F, 0F, 0F, 4.25F, Color.SKY), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 20, "tactician:SwiftStrikes_Hit1", 1.12F, 225F, 0F, 0F, 4.25F, Color.SKY.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 20, "tactician:SwiftStrikes_Hit2", 1.12F, 220F, 0F, 0F, 4.25F, Color.SKY), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 20, "tactician:SwiftStrikes_Hit2", 1.12F, 220F, 0F, 0F, 4.25F, Color.SKY.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
     }

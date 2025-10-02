@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
+import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
@@ -44,6 +45,7 @@ public class DebugWeapon extends TacticianCard {
 		easyCardList.add(new Weapon6Fire(() -> addToBot(new ApplyPowerAction(m, p, new Weapon6FirePower(m)))));
 		easyCardList.add(new Weapon7Thunder(() -> addToBot(new ApplyPowerAction(m, p, new Weapon7ThunderPower(m)))));
 		easyCardList.add(new Weapon8Dark(() -> addToBot(new ApplyPowerAction(m, p, new Weapon8DarkPower(m)))));
+		addToBot(new PlaySoundAction("tactician:WeaponSelect", 1.50F));
 		addToBot(new EasyModalChoiceAction(easyCardList));
 	}
 

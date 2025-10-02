@@ -38,17 +38,17 @@ public class Astra extends Tactician1SwordCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Sword")));
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX + 40, m.hb.cY + 30, "tactician:Astra_Hit1", 1.25F, 198.0F, 0F, 0F, 2.5F, Color.YELLOW), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX + 40, m.hb.cY + 30, "tactician:Astra_Hit1", 1.25F, 198.0F, 0F, 0F, 2.5F, Color.YELLOW.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX - 20, m.hb.cY - 50, "tactician:Astra_Hit2", 1.25F, 54.0F, 0F, 0F, 2.5F, Color.GREEN), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX - 20, m.hb.cY - 50, "tactician:Astra_Hit2", 1.25F, 54.0F, 0F, 0F, 2.5F, Color.GREEN.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 30, "tactician:Astra_Hit3", 1.25F, 270.0F, 0F, 0F, 2.5F, Color.BLUE), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY + 30, "tactician:Astra_Hit3", 1.25F, 270.0F, 0F, 0F, 2.5F, Color.BLUE.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX + 20, m.hb.cY - 50, "tactician:Astra_Hit4", 1.25F, 124.0F, 0F, 0F, 2.25F, Color.PURPLE), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX + 20, m.hb.cY - 50, "tactician:Astra_Hit4", 1.25F, 124.0F, 0F, 0F, 2.25F, Color.PURPLE.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX - 40, m.hb.cY + 30, "tactician:Astra_Hit5", 1.25F, 342.0F, 0F, 0F, 3.5F, Color.RED), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX - 40, m.hb.cY + 30, "tactician:Astra_Hit5", 1.25F, 342.0F, 0F, 0F, 3.5F, Color.RED.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
     }

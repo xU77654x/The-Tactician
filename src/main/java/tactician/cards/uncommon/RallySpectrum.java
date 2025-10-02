@@ -69,9 +69,9 @@ public class RallySpectrum extends TacticianCard {
         addToBot(new EasyModalChoiceAction(easyCardList));
         addToBot(new PlaySoundAction("tactician:RallySpectrum", 1.00f));
         for (int i = 0; i < 6; i++) {
-            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.RED, p.hb.cX, p.hb.cY));
-            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.BLUE, p.hb.cX, p.hb.cY));
-            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.GREEN, p.hb.cX, p.hb.cY));
+            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.RED.cpy(), p.hb.cX, p.hb.cY));
+            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.BLUE.cpy(), p.hb.cX, p.hb.cY));
+            AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.GREEN.cpy(), p.hb.cX, p.hb.cY));
         }
     }
 

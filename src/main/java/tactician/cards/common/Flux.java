@@ -39,8 +39,8 @@ public class Flux extends Tactician8DarkCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Flux", 1.00f));
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("Flux"));
+        addToBot(new PlaySoundAction("tactician:Flux", 1.00f));
+        addToBot(new VFXAction(new PlayVoiceEffect("Flux")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, this.block));

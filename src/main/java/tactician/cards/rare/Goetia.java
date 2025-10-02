@@ -39,8 +39,8 @@ public class Goetia extends Tactician8DarkCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Goetia", 1.00f));
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
+        addToBot(new PlaySoundAction("tactician:Goetia", 1.00f));
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_MiscMagic")));
         calculateCardDamage(m);
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new GainBlockAction(p, p, this.block));

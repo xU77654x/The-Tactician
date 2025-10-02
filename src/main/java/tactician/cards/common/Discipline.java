@@ -33,7 +33,7 @@ public class Discipline extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Discipline", 1.25f));
+        addToBot(new PlaySoundAction("tactician:Discipline", 1.25f));
         addToBot(new GainBlockAction(p, p, this.block));
         if (AbstractDungeon.player instanceof TacticianRobin) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();

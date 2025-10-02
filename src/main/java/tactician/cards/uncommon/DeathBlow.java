@@ -38,7 +38,7 @@ public class DeathBlow extends TacticianCard {
 			addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
 			addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
 		}
-		for (int i = 0; i < 15; i++) { AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.RED, p.hb.cX, p.hb.cY)); }
+		for (int i = 0; i < 15; i++) { AbstractDungeon.effectsQueue.add(new DivinityStanceChangeParticle(Color.RED.cpy(), p.hb.cX, p.hb.cY)); }
 	}
 
 	@Override

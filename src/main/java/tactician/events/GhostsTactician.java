@@ -32,7 +32,7 @@ public class GhostsTactician extends AbstractImageEvent {
 		if (this.hpLoss >= AbstractDungeon.player.maxHealth) { this.hpLoss = AbstractDungeon.player.maxHealth - 1; }
 		if (AbstractDungeon.ascensionLevel >= 15) { this.hpGain = 7; }
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[3] + this.hpLoss + vanilla_ES.OPTIONS[1], new Apparition());
-		this.imageEventText.setDialogOption(custom_ES.OPTIONS[0] + this.hpGain + custom_ES.OPTIONS[1]);
+		this.imageEventText.setDialogOption(custom_ES.OPTIONS[0] + this.hpGain + custom_ES.OPTIONS[1], new BlueCandle());
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[2]);
 	}
 

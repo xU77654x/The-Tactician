@@ -1,6 +1,8 @@
 package tactician.cards.rare;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -14,6 +16,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.TacticianWindEffect;
 import tactician.powers.MaxHandSizePower;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
@@ -39,17 +42,21 @@ public class Excalibur extends Tactician5WindCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Excalibur_Cast", 1.25f));
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
+        addToBot(new PlaySoundAction("tactician:Excalibur_Cast", 1.33f));
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_MiscMagic")));
         calculateCardDamage(m);
-        addToBot(new WaitAction(0.75F));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        addToBot(new PlaySoundAction("tactician:Excalibur_Hit", 1.25f));
+        addToBot(new VFXAction(new TacticianWindEffect(p.hb.cX, p.hb.cY, null, 1.33f, Color.TEAL.cpy(), 1.0F)));
+        addToBot(new WaitAction(0.05F));
+        addToBot(new VFXAction(new TacticianWindEffect(p.hb.cX, p.hb.cY, null, 1.33f, Color.TEAL.cpy(), 1.0F)));
+        addToBot(new WaitAction(0.05F));
+        addToBot(new VFXAction(new TacticianWindEffect(p.hb.cX, p.hb.cY, null, 1.33f, Color.TEAL.cpy(), 1.0F)));
+        addToBot(new WaitAction(0.05F));
+        addToBot(new VFXAction(new TacticianWindEffect(p.hb.cX, p.hb.cY, "tactician:Excalibur_Hit", 1.33f, Color.TEAL.cpy(), 1.0F)));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+
         addToBot(new ApplyPowerAction(p, p, new DrawPower(p, 1), 1));
         if (Wiz.playerWeaponCalc(m, 9) > 0) { addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber)); }
-        // if (this.upgraded) { addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber)); }
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
-
     }
 
     @Override

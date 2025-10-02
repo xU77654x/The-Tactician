@@ -35,7 +35,7 @@ public class Reposition extends Tactician9CopyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
-        addToTop(new PlaySoundAction("tactician:Reposition", 1.25f));
+        addToBot(new PlaySoundAction("tactician:Reposition", 1.25f));
         addToBot(new GainBlockAction(p, p, this.block));
         if (p.hasPower(DexterityPower.POWER_ID)) {
             int dex = p.getPower(DexterityPower.POWER_ID).amount;

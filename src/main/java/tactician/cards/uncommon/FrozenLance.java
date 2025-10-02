@@ -44,14 +44,14 @@ public class FrozenLance extends Tactician2LanceCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Lance")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon2LancePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon2LancePower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
         calculateCardDamage(m);
         int dex = 0;
         if (this.p.hasPower(DexterityPower.POWER_ID)) { dex = (this.p.getPower(DexterityPower.POWER_ID)).amount; }
         addToBot(new GainBlockAction(p, this.block));
         addToBot(new VFXAction(new BlizzardEffect(((dex * 2) + 3), AbstractDungeon.getMonsters().shouldFlipVfx()), 0.2F));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FrozenLance", 1.15F, 255F, 0F, 0F, 3.0F, Color.CYAN), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:FrozenLance", 1.15F, 255F, 0F, 0F, 3.0F, Color.CYAN.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
     }
 

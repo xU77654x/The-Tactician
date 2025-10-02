@@ -1,5 +1,6 @@
 package tactician.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -36,8 +37,7 @@ public class Nosferatu extends Tactician8DarkCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon8DarkPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon8DarkPower(p))); }
         calculateCardDamage(m);
-
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("Nosferatu"));
+        addToBot(new VFXAction(new PlayVoiceEffect("Nosferatu")));
         addToBot(new NosferatuAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL)));
     }
 

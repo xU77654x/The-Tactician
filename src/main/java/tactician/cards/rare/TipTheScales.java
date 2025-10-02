@@ -1,5 +1,6 @@
 package tactician.cards.rare;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -42,7 +43,7 @@ public class TipTheScales extends TacticianCard {
     @Override
     public void triggerOnExhaust() {
         addToTop(new PlaySoundAction("tactician:TipTheScales", 1.33f));
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("TipTheScales"));
+        addToBot(new VFXAction(new PlayVoiceEffect("TipTheScales")));
         addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.magicNumber), this.magicNumber));
     }

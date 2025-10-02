@@ -41,7 +41,7 @@ public class Strike4Bow extends Tactician4BowCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon4BowPower.POWER_ID)) {addToBot(new ApplyPowerAction(p, p, new Weapon4BowPower(p))); }
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.PINK)));
+        addToBot(new VFXAction(new TacticianStrikeEffect(m, m.hb.cX, m.hb.cY, Color.PINK.cpy())));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
     }
 

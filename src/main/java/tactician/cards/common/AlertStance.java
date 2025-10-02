@@ -33,7 +33,7 @@ public class AlertStance extends TacticianCard {
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new ApplyPowerAction(p, p, new EquilibriumPower(p, this.magicNumber), this.magicNumber));
         addToBot(new PressEndTurnButtonAction());
-        addToTop(new PlaySoundAction("tactician:AlertStance", 1.25f));
+        addToBot(new PlaySoundAction("tactician:AlertStance", 1.25f));
     }
 
     @Override

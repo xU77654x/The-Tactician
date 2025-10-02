@@ -29,7 +29,7 @@ public class OutdoorFighter extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:OutdoorFighter", 1.50f));
+        addToBot(new PlaySoundAction("tactician:OutdoorFighter", 1.50f));
         addToBot(new DrawCardAction(this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(customVar("magicDeflect"))));
     }

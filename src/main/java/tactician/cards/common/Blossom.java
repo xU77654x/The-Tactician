@@ -31,9 +31,10 @@ public class Blossom extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new PlaySoundAction("tactician:Blossom", 0.80f));
         addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, 1, false), 1));
         addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, this.magicNumber), this.magicNumber));
-        addToTop(new PlaySoundAction("tactician:Blossom", 1.00f));
+
     }
 
     protected Texture getPortraitImage() {

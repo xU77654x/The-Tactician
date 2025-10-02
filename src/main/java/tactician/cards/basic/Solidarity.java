@@ -33,7 +33,7 @@ public class Solidarity extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToTop(new PlaySoundAction("tactician:Solidarity", 0.75f));
+        addToBot(new PlaySoundAction("tactician:Solidarity", 0.75f));
         addToBot(new VFXAction(new LightBulbEffect(p.hb), 0.10F));
         addToBot(new DrawCardAction(2));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));

@@ -49,29 +49,29 @@ public class TacticalAdvice extends Tactician9CopyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { // Wrath Strike
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Sword"));
+            addToBot(new VFXAction(new PlayVoiceEffect("CA_Sword")));
             calculateCardDamage(m);
-            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET), 0.00F));
+            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:WrathStrike", 1.33F, 195.0F, 0F, 0F, 3.5F, Color.SCARLET.cpy()), 0.00F));
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { // Tempest Lance
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Lance"));
+            addToBot(new VFXAction(new PlayVoiceEffect("CA_Lance")));
             calculateCardDamage(m);
-            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:TempestLance", 1.15F, 300F, 0F, 0F, 4.0F, Color.NAVY), 0.00F));
+            addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:TempestLance", 1.15F, 300F, 0F, 0F, 4.0F, Color.NAVY.cpy()), 0.00F));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new MakeTempCardInDrawPileAction(new Anathema(), 1, true, true));
         }
         else if (AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { // Smash
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Axe"));
+            addToBot(new VFXAction(new PlayVoiceEffect("CA_Axe")));
             calculateCardDamage(m);
-            addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:Smash", 1.01f, Color.CHARTREUSE, 2.0F)));
+            addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:Smash", 1.01f, Color.CHARTREUSE.cpy(), 2.0F)));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
             addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { // Curved Shot
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Bow"));
+            addToBot(new VFXAction(new PlayVoiceEffect("CA_Bow")));
             calculateCardDamage(m);
             addToBot(new GainBlockAction(p, this.block));
             addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:CurvedShot", 1.25f, Color.BROWN.cpy())));
@@ -84,14 +84,14 @@ public class TacticalAdvice extends Tactician9CopyCard {
         }
         else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { // Elwind
             calculateCardDamage(m);
-            addToTop(new PlaySoundAction("tactician:Elwind", 1.50f));
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("Elwind"));
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new VFXAction(new TacticianWindEffect(p.hb.cX, p.hb.cY, "tactician:Elwind", 1.50f, Color.CYAN.cpy(), 0.5F)));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+            addToBot(new VFXAction(new PlayVoiceEffect("Elwind")));
             addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
         }
         else if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { // Arcfire
-            addToTop(new PlaySoundAction("tactician:Arcfire_Cast", 1.33f));
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("Arcfire"));
+            addToBot(new PlaySoundAction("tactician:Arcfire_Cast", 1.33f));
+            addToBot(new VFXAction(new PlayVoiceEffect("Arcfire")));
             calculateCardDamage(m);
             addToBot(new VFXAction(p, new ArcfireBallEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.50F));
             addToBot(new PlaySoundAction("tactician:Arcfire_Hit", 1.33f));
@@ -103,15 +103,15 @@ public class TacticalAdvice extends Tactician9CopyCard {
             calculateCardDamage(m);
             int loops = 2;
             if (this.upgraded) { loops += 1; }
+            addToBot(new VFXAction(new PlayVoiceEffect("Thunder")));
             addToBot(new VFXAction(new BoltingEffect(m.hb.cX, m.hb.cY,"tactician:Thunder", 1.25f, loops)));
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new MakeTempCardInHandAction(new Hex(), 1));
             addToBot(new ExhaustAction(this.magicNumber, false, true, this.upgraded));
         }
         else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { // Flux
-            addToTop(new PlaySoundAction("tactician:Flux", 1.00f));
-            AbstractDungeon.effectList.add(new PlayVoiceEffect("Flux"));
+            addToBot(new PlaySoundAction("tactician:Flux", 1.00f));
+            addToBot(new VFXAction(new PlayVoiceEffect("Flux")));
             calculateCardDamage(m);
             addToBot(new GainBlockAction(p, p, this.block));
             addToBot(new VFXAction(new TacticianDarkEffect(m.hb.cX, m.hb.cY, null, 1.00F, 6.67F, 0)));

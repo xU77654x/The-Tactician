@@ -43,8 +43,8 @@ public class Thunder extends Tactician7ThunderCard {
 
         int loops = 2;
         if (this.upgraded) { loops += 1; }
+        addToBot(new VFXAction(new PlayVoiceEffect("Thunder")));
         addToBot(new VFXAction(new BoltingEffect(m.hb.cX, m.hb.cY,"tactician:Thunder", 1.25f, loops)));
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("Thunder"));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new MakeTempCardInHandAction(new Hex(), 1));
         addToBot(new ExhaustAction(this.magicNumber, false, true, this.upgraded));

@@ -40,7 +40,7 @@ public class Thoron extends Tactician7ThunderCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("Thoron"));
+        addToBot(new VFXAction(new PlayVoiceEffect("Thoron")));
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             addToBot(new VFXAction(p, new ThoronEffect("tactician:Thoron_Cast", 1.50f), 0.01F));
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {

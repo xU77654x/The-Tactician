@@ -42,7 +42,7 @@ public class HuntersVolley extends Tactician4BowCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_Bow"));
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_Bow")));
         calculateCardDamage(m);
         addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:HuntersVolley_Hit1", 1.00f, Color.SCARLET.cpy())));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));

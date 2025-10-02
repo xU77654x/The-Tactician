@@ -1,6 +1,8 @@
 package tactician.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
@@ -17,6 +19,7 @@ import tactician.cards.cardchoice.Weapon3Axe;
 import tactician.cards.cardchoice.Weapon5Wind;
 import tactician.cards.other.Anathema;
 import tactician.character.TacticianRobin;
+import tactician.effects.cards.TacticianAxeEffect;
 import tactician.powers.weapons.Weapon3AxePower;
 import tactician.powers.weapons.Weapon5WindPower;
 import tactician.util.CardStats;
@@ -49,21 +52,21 @@ public class HurricaneAxe extends TacticianCard {
                 weapon = 3;
                 if (!p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
                 calculateCardDamage(m);
-                addToBot(new PlaySoundAction("tactician:HurricaneAxe", 1.50f));
-                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:HurricaneAxe", 1.75f, Color.GREEN.cpy(), 1.875F)));
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             easyCardList.add(new Weapon5Wind(() ->  {
                 weapon = 5;
                 if (!p.hasPower(Weapon5WindPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon5WindPower(p))); }
                 calculateCardDamage(m);
-                addToBot(new PlaySoundAction("tactician:HurricaneAxe", 1.50f));
-                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:HurricaneAxe", 1.75f, Color.CYAN.cpy(), 1.875F)));
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             }));
             addToBot(new EasyModalChoiceAction(easyCardList));
         }
         else {
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-            addToBot(new PlaySoundAction("tactician:HurricaneAxe", 1.50f));
+            addToBot(new VFXAction(new TacticianAxeEffect(m.hb.cX + (m.hb.width / 4.0F), m.hb.cY - (m.hb.height / 4.0F), "tactician:HurricaneAxe", 1.75f, Color.GREEN.cpy(), 1.875F)));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         }
         addToBot(new MakeTempCardInHandAction(new Anathema()));
         addToBot(new ExhaustAction(1, false));

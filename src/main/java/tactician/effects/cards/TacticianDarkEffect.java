@@ -28,7 +28,7 @@ public class TacticianDarkEffect extends AbstractGameEffect {
 	public TacticianDarkEffect(float x, float y, String soundKey, float volume, float imgScale, float swirlCount) {
 		this.x = x;
 		this.y = y;
-		this.color = Color.PURPLE;
+		this.color = Color.PURPLE.cpy();
 		this.soundKey = soundKey;
 		this.volume = volume;
 		this.swirlCount = swirlCount;

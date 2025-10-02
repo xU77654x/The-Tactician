@@ -31,15 +31,11 @@ public class EvenOddRhythm extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (GameActionManager.turn % 2 == 0) { addToBot(new PlaySoundAction("tactician:EvenRhythm", 1.00f)); }
+        else { addToBot(new PlaySoundAction("tactician:OddRhythm", 1.00f)); }
         addToBot(new GainBlockAction(p, p, this.block));
-        if (GameActionManager.turn % 2 == 0) {
-            addToTop(new PlaySoundAction("tactician:EvenRhythm", 1.00f));
-            addToBot(new MakeTempCardInHandAction(new Hex(), 1));
-        }
-        else {
-            addToTop(new PlaySoundAction("tactician:OddRhythm", 1.00f));
-            addToBot(new MakeTempCardInHandAction(new Anathema(), 1));
-        }
+        if (GameActionManager.turn % 2 == 0) { addToBot(new MakeTempCardInHandAction(new Hex(), 1)); }
+        else { addToBot(new MakeTempCardInHandAction(new Anathema(), 1)); }
     }
 
     public void onMoveToDiscard() {

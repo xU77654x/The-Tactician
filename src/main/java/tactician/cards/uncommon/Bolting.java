@@ -39,8 +39,8 @@ public class Bolting extends Tactician7ThunderCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PlayVoiceEffect("CA_MiscMagic")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon7ThunderPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon7ThunderPower(p))); }
-        AbstractDungeon.effectList.add(new PlayVoiceEffect("CA_MiscMagic"));
         calculateCardDamage(m);
 
         int loops = 4;
