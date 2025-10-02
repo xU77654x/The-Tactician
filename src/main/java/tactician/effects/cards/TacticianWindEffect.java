@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.Settings;
@@ -20,9 +19,8 @@ public class TacticianWindEffect extends AbstractGameEffect {
 	private final float volume;
 	private final Color color;
 	private float scale;
-	private float speed;
+	private final float speed;
 	private final float speedStart;
-	private final float speedTarget;
 	private boolean fired;
 	private final TextureAtlas.AtlasRegion img;
 
@@ -39,7 +37,6 @@ public class TacticianWindEffect extends AbstractGameEffect {
 		this.rotation = MathUtils.random(-6.0F, 6.0F);
 		this.renderBehind = false;
 		this.speedStart = 3333.33F;
-		this.speedTarget = 3333.33F * Settings.scale;
 		this.speed = this.speedStart;
 	}
 

@@ -14,14 +14,12 @@ public class CharmEffect extends AbstractGameEffect {
 	private final String soundKey;
 	private final float volume;
 	private final float base_a;
-	private float fadeOutStart;
 
 	public CharmEffect(String soundKey, float volume) {
 		this.soundKey = soundKey;
 		this.volume = volume;
 		this.duration = 1.5F;
 		this.startingDuration = 1.5F;
-		this.fadeOutStart = 0.5F;
 		this.color = Color.YELLOW.cpy();
 		this.base_a = 0.775F;
 	}

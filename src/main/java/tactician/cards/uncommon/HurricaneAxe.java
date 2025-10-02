@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.EasyModalChoiceAction;
-import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.Weapon3Axe;
 import tactician.cards.cardchoice.Weapon5Wind;
