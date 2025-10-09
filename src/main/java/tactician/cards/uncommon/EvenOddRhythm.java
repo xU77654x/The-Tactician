@@ -25,7 +25,7 @@ public class EvenOddRhythm extends TacticianCard {
 
     public EvenOddRhythm() {
         super(ID, info);
-        setBlock(12, 4);
+        setBlock(11, 3);
         this.selfRetain = true;
     }
 

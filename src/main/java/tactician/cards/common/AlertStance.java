@@ -24,7 +24,7 @@ public class AlertStance extends TacticianCard {
 
     public AlertStance() {
         super(ID, info);
-        setBlock(8, 3);
+        setBlock(6, 3);
         setMagic(1, 0);
     }
 
