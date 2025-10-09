@@ -3,6 +3,7 @@ package tactician.cards.uncommon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.FlashSparrowAction;
 import tactician.cards.Tactician9CopyCard;
@@ -29,6 +30,17 @@ public class FlashSparrow extends Tactician9CopyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { addToBot(new FlashSparrowAction(p, m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL))); }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        for (AbstractMonster m : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
+            if (!m.isDeadOrEscaped() && Wiz.playerWeaponCalc(m, 9) > 0) {
+                this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+                break;
+            }
+        }
+    }
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {

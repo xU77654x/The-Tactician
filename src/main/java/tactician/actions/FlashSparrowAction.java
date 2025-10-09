@@ -36,13 +36,13 @@ public class FlashSparrowAction extends AbstractGameAction {
 		else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { color = Color.YELLOW.cpy(); }
 		else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { color = Color.PURPLE.cpy(); }
 
-		addToTop(new VFXAction(new FlashSparrowEffect(target.hb.cX, target.hb.cY, "tactician:FlashSparrow", 1.33f, color)));
-		addToTop(new DamageAction(this.target, this.info, AttackEffect.NONE));
-
 		if ( Wiz.playerWeaponCalc(this.m, 9) > 0) {
 			addToTop(new DrawCardAction(1));
 			addToTop(new GainEnergyAction(1));
 		}
+		addToTop(new DamageAction(this.target, this.info, AttackEffect.NONE));
+		addToTop(new VFXAction(new FlashSparrowEffect(target.hb.cX, target.hb.cY, "tactician:FlashSparrow", 1.33f, color)));
+
 		this.isDone = true;
 	}
 }
