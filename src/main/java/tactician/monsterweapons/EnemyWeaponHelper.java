@@ -314,7 +314,7 @@ public class EnemyWeaponHelper {
 				if (i == BUFF) { w = new Weapon5WindPower(m); } break;
 			case "downfall:NeowBoss": w = new StrengthPower(m, 999); break;
 			case "downfall:NeowBossFinal": case "downfall:Neow4Life30Heal":
-				if (i == ATTACK) { w = new Weapon0NeutralPower(m); } // Neow's attacks are Neutral, unlike the Heart.
+				if (i == ATTACK) { w = new StrengthPower(m, 999); }
 				if (i == STRONG_DEBUFF) { w = new Weapon8DarkPower(m); }
 				if (i == BUFF) { w = new Weapon4BowPower(m); } break;
 
@@ -415,9 +415,12 @@ public class EnemyWeaponHelper {
 				if (i == ATTACK_DEBUFF) { w = new Weapon1SwordPower(m); }
 				if (i == UNKNOWN) { w = new StrengthPower(m, 999); }
 				if (i == STRONG_DEBUFF) { w = new Weapon8DarkPower(m); } break;
-			case "anniv6:ChubbyGremlin": w = new StrengthPower(m, 999); break; // I haven't found this enemy yet.
-			case "anniv6:GremlinHealer": w = new StrengthPower(m, 999); break; // I haven't found this enemy yet.
-			case "anniv6:GremlinRockTosser": w = new StrengthPower(m, 999); break; // I haven't found this enemy yet.
+			case "anniv6:ChubbyGremlin": w = new Weapon1SwordPower(m); break;
+			case "anniv6:GremlinHealer": {
+				if (i == BUFF) { w = new Weapon2LancePower(m); }
+				if (i == ATTACK) { w = new Weapon2LancePower(m); } break;
+			}
+			case "anniv6:GremlinRockTosser": w = new Weapon4BowPower(m); break;
 			case "anniv6:GremlinJerk": w = new Weapon3AxePower(m); break;
 			case "anniv6:GremlinNib": w = new Weapon3AxePower(m); break;
 			case "anniv6:GremlinRiderRed": case "anniv6:GremlinRiderGreen": case "anniv6:GremlinRiderBlue":
@@ -472,14 +475,14 @@ public class EnemyWeaponHelper {
 				if (i == ATTACK_DEBUFF) { w = new Weapon2LancePower(m); } break;
 			case "anniv6:Hydra":
 				if (i == ATTACK_DEBUFF) { w = new Weapon4BowPower(m); }
-				if (i == ATTACK) { w = new StrengthPower(m, 999); } break; // TODO: Patch.
+				if (i == ATTACK) { w = new StrengthPower(m, 999); } break;
 			case "anniv6:Behemoth":
 				if (i == UNKNOWN) { w = new Weapon6FirePower(m); }
 				if (i == MAGIC) { w = new Weapon1SwordPower(m); }
 				if (i == ATTACK) { w = new Weapon5WindPower(m); } break;
 			case "anniv6:Hexasnake":
 				if (i == STRONG_DEBUFF) { w = new Weapon2LancePower(m); }
-				if (i == ATTACK_DEBUFF) { w = new StrengthPower(m, 999); } break; // TODO: Patch.
+				if (i == ATTACK_DEBUFF) { w = new StrengthPower(m, 999); } break;
 			case "anniv6:PrimevalQueen":
 				if (i == ATTACK) { w = new Weapon4BowPower(m); }
 				if (i == UNKNOWN) { w = new Weapon7ThunderPower(m); }

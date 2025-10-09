@@ -2,6 +2,7 @@ package tactician.relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -22,7 +23,6 @@ public class Speedwing extends BaseRelic {
     private static final RelicTier RARITY = RelicTier.COMMON;
     private static final LandingSound SOUND = LandingSound.CLINK;
     private static final int DEFLECT = 8; // This is used rather than a hard-coded value due to the description.
-    private static final int TURN = 1;
 
     public Speedwing() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
@@ -33,9 +33,9 @@ public class Speedwing extends BaseRelic {
     public void atBattleStart() { this.counter = 0; }
 
     @Override
-    public void atTurnStartPostDraw() {
+    public void onUseCard(AbstractCard c, UseCardAction action) {
         if (!this.grayscale) { this.counter++; }
-        if (this.counter == TURN) {
+        if (this.counter != -1) {
             flash();
             addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
             this.counter = -1;
@@ -60,7 +60,7 @@ public class Speedwing extends BaseRelic {
 
     @Override
     public void onVictory() {
-        this.counter = -1;
+        this.counter = 0;
         this.grayscale = false;
     }
 

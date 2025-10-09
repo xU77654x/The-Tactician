@@ -332,7 +332,7 @@
   },
   "${modID}:ExhaustiveStrike": {
     "NAME": "Exhaustive Strike",
-    "DESCRIPTION": "${modID}:Favor. NL Deal !D! damage twice. NL {@@}Exhaust up to !M! card{!M!|1=|@=s}, increased by 3 if you are weapon-strong"
+    "DESCRIPTION": "${modID}:Favor. NL Deal !D! damage twice. NL {@@}Exhaust up to !M! card{!M!|1=|@=s}, increased by 3 if you are weapon-strong."
   },
   "${modID}:HuntersVolley": {
     "NAME": "Hunter's Volley",

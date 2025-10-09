@@ -8,7 +8,7 @@
     "NAME": "Speedwing",
     "FLAVOR": "\"Even I couldn't have seen this coming!\"",
     "DESCRIPTIONS": ["At the start of combat, gain #b",
-      " #y${modID}:Deflect and select a weapon type to equip."]
+      " #y${modID}:Deflect. The first time you play a card each combat, select a weapon type to equip."]
   },
   "${modID}:SeraphRobe": {
     "NAME": "Seraph Robe",
