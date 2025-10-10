@@ -4,10 +4,12 @@ import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.red.Exhume;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RandomExhumeAction extends AbstractGameAction {
     private final int count;
@@ -40,7 +42,7 @@ public class RandomExhumeAction extends AbstractGameAction {
             cardsToReturn.shuffle();
             List<AbstractCard> cardsToExhaust = new ArrayList<>();
             for (AbstractCard c : cardsToReturn.group) {
-                if (c.type != AbstractCard.CardType.STATUS && !c.hasTag(AbstractCard.CardTags.HEALING)) {
+                if (c.type != AbstractCard.CardType.STATUS && !c.hasTag(AbstractCard.CardTags.HEALING) && !Objects.equals(c.cardID, Exhume.ID)) {
                     exhumeRandom(c);
                     cardsReturned++;
                     cardsToExhaust.add(c);
@@ -49,7 +51,7 @@ public class RandomExhumeAction extends AbstractGameAction {
             }
             if (cardsReturned < this.count)
                 for (AbstractCard c : cardsToReturn.group) {
-                    if (c.type != AbstractCard.CardType.STATUS && !c.hasTag(AbstractCard.CardTags.HEALING)) {
+                    if (c.type != AbstractCard.CardType.STATUS && !c.hasTag(AbstractCard.CardTags.HEALING) && !Objects.equals(c.cardID, Exhume.ID)) {
                         exhumeRandom(c);
                         cardsReturned++;
                         cardsToExhaust.add(c);
