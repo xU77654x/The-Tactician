@@ -58,12 +58,10 @@ public class TacticianMod implements
 
 {
     public static ModInfo info;
-    public static String modID; // Edit your pom.xml to change this
+    public static String modID;
     static { loadModInfo(); }
     private static final String resourcesFolder = checkResourcesPath();
-    public static final Logger logger = LogManager.getLogger(modID); // Used to output to the console.
-
-    // This is used to prefix the IDs of various objects like cards and relics, to avoid conflicts between different mods using the same name for things.
+    public static final Logger logger = LogManager.getLogger(modID);
     public static String makeID(String id) { return modID + ":" + id; }
 
     public static Properties defaultSettings = new Properties();
@@ -280,8 +278,7 @@ public class TacticianMod implements
 	private static void loadModInfo() {
         Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo)->{
             AnnotationDB annotationDB = Patcher.annotationDBMap.get(modInfo.jarURL);
-            if (annotationDB == null)
-                return false;
+            if (annotationDB == null) { return false; }
             Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
             return initializers.contains(TacticianMod.class.getName());
         }).findFirst();

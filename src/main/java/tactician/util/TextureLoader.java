@@ -7,7 +7,6 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import java.util.HashMap;
 import java.util.Locale;
-
 import static tactician.TacticianMod.*;
 
 public class TextureLoader {

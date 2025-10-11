@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-
 import java.util.function.BiFunction;
 
 public class EasyXCostAction extends AbstractGameAction {
@@ -41,6 +40,7 @@ public class EasyXCostAction extends AbstractGameAction {
 			isDone = xActionUpdate.apply(effect, params) || duration < 0.0f;
 			firstUpdate = false;
 			if (!this.freeToPlayOnce) { AbstractDungeon.player.energy.use(EnergyPanel.totalCount); }
-		} else { isDone = xActionUpdate.apply(effect, params) || duration < 0.0f; }
+		}
+		else { isDone = xActionUpdate.apply(effect, params) || duration < 0.0f; }
 	}
 }

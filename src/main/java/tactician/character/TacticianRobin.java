@@ -23,7 +23,6 @@ import tactician.cards.basic.strikes.*;
 import tactician.relics.SecretBook;
 import java.util.ArrayList;
 import java.util.List;
-
 import static tactician.TacticianMod.characterPath;
 import static tactician.TacticianMod.makeID;
 

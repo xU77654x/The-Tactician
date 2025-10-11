@@ -458,9 +458,7 @@ public abstract class TacticianCard extends CustomCard {
             if (isMultiDamage) {
                 ArrayList<AbstractMonster> monsters = AbstractDungeon.getCurrRoom().monsters.monsters;
                 for (LocalVarInfo var : cardVariables.values()) {
-                    if (var.aoeValue == null || var.aoeValue.length != monsters.size())
-                        var.aoeValue = new int[monsters.size()];
-
+                    if (var.aoeValue == null || var.aoeValue.length != monsters.size()) { var.aoeValue = new int[monsters.size()]; }
                     for (int i = 0; i < monsters.size(); ++i) {
                         m = monsters.get(i);
                         var.aoeValue[i] = var.calculation.apply(this, m, var.base);
@@ -495,8 +493,7 @@ public abstract class TacticianCard extends CustomCard {
         public void setIsModified(AbstractCard c, boolean v) {
             if (c instanceof TacticianCard) {
                 LocalVarInfo var = ((TacticianCard) c).getCustomVar(localKey);
-                if (var != null)
-                    var.forceModified = v;
+                if (var != null) { var.forceModified = v; }
             }
         }
 
@@ -504,9 +501,7 @@ public abstract class TacticianCard extends CustomCard {
         public boolean isModified(AbstractCard c) { return c instanceof TacticianCard && (current = (TacticianCard) c).isCustomVarModified(localKey); }
 
         @Override
-        public int value(AbstractCard c) {
-            return c instanceof TacticianCard ? ((TacticianCard) c).customVar(localKey) : 0;
-        }
+        public int value(AbstractCard c) { return c instanceof TacticianCard ? ((TacticianCard) c).customVar(localKey) : 0; }
 
         @Override
         public int baseValue(AbstractCard c) { return c instanceof TacticianCard ? ((TacticianCard) c).customVarBase(localKey) : 0; }
