@@ -234,7 +234,7 @@ public class EnemyWeaponHelper {
 				if (i == ATTACK) { w = new Weapon5WindPower(m); }
 				if (i == ATTACK_DEBUFF) { w = new Weapon2LancePower(m); }break;
 			case Deca.ID:
-				if (i == DEFEND) { w = new Weapon8DarkPower(m); }
+				if (i == DEFEND_BUFF) { w = new Weapon8DarkPower(m); }
 				if (i == ATTACK_DEBUFF) { w = new Weapon4BowPower(m); } break;
 			case Donu.ID:
 				if (i == BUFF) { w = new Weapon4BowPower(m); }

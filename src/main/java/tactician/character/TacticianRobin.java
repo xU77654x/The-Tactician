@@ -153,11 +153,11 @@ public class TacticianRobin extends CustomPlayer {
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT,
-                AbstractGameAction.AttackEffect.SMASH, // TODO: Wind attack effect.
+                AbstractGameAction.AttackEffect.BLUNT_LIGHT,
                 AbstractGameAction.AttackEffect.FIRE,
-                AbstractGameAction.AttackEffect.LIGHTNING,
-                AbstractGameAction.AttackEffect.POISON // TODO: Dark attack effect.
-                // TODO: Use Sword, Lance, Axe, Bow, Wind, Fire, Thunder, and Dark in that order once these effects are decided.
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
+                AbstractGameAction.AttackEffect.POISON
+                // TODO: Custom attack effects for the heart.
         };
     }
 
@@ -190,12 +190,8 @@ public class TacticianRobin extends CustomPlayer {
     public Color getSlashAttackColor() { return slashAttackColor; }
 
     @Override
-    public BitmapFont getEnergyNumFont() {
-        // Font used to display your current energy.
-        // energyNumFontRed, Blue, Green, and Purple are used by the basegame characters.
-        // It is possible to make your own, but not convenient.
-        return FontHelper.energyNumFontRed;
-    }
+    public BitmapFont getEnergyNumFont() { return FontHelper.energyNumFontRed; }
+    // energyNumFontRed, Blue, Green, and Purple are used by the basegame characters. It is possible to make your own, but not convenient.
 
     @Override
     public void doCharSelectScreenSelectEffect() {

@@ -28,13 +28,14 @@ public class SurpriseAttack extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.magicNumber = p.currentBlock;
-        addToBot(new PlaySoundAction("tactician:SurpriseAttack", 1.10f));
-        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
+        if (p.currentBlock > 0) {
+            this.magicNumber = p.currentBlock;
+            addToBot(new PlaySoundAction("tactician:SurpriseAttack", 1.10f));
+            addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
+        }
+        else { addToBot(new PlaySoundAction("tactician:Defend_Weak", 1.50f)); }
     }
 
     @Override
-    public AbstractCard makeCopy() {
-        return new SurpriseAttack();
-    }
+    public AbstractCard makeCopy() { return new SurpriseAttack(); }
 }

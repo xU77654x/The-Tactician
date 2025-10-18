@@ -15,8 +15,8 @@ import static tactician.TacticianMod.makeID;
 
 public class CorrosionPotion extends BasePotion {
 	public static final String ID = makeID(CorrosionPotion.class.getSimpleName());
-	private static final Color LIQUID_COLOR = PURPLE;
-	private static final Color HYBRID_COLOR = WHITE;
+	private static final Color LIQUID_COLOR = new Color(Color.PURPLE);
+	private static final Color HYBRID_COLOR = new Color(Color.WHITE);
 	private static final Color SPOTS_COLOR = null; // CardHelper.getColor(255, 0, 255);
 
 	public CorrosionPotion() {

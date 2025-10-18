@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import tactician.character.TacticianRobin;
-
 import static tactician.TacticianMod.makeID;
 
 public class FocusPotionT extends BasePotion {

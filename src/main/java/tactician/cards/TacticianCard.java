@@ -425,6 +425,7 @@ public abstract class TacticianCard extends CustomCard {
     }
 
     boolean inCalc = false;
+
     @Override
     public void applyPowers() {
         if (!inCalc) {
