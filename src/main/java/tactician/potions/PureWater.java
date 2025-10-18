@@ -19,15 +19,16 @@ import tactician.powers.weapons.*;
 import java.util.ArrayList;
 import static tactician.TacticianMod.makeID;
 
-public class DeflectPotion extends BasePotion {
-	public static final String ID = makeID(DeflectPotion.class.getSimpleName());
+public class PureWater extends BasePotion {
+	public static final String ID = makeID(PureWater.class.getSimpleName());
 	private static final Color LIQUID_COLOR = Color.BLUE;
 	private static final Color HYBRID_COLOR = Color.CORAL;
 	private static final Color SPOTS_COLOR = null; // CardHelper.getColor(255, 0, 255);
 
-	public DeflectPotion() {
-		super(ID, 16, PotionRarity.COMMON, PotionSize.SPIKY, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
+	public PureWater() {
+		super(ID, 16, PotionRarity.UNCOMMON, PotionSize.SPIKY, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
 		playerClass = TacticianRobin.Meta.TACTICIAN;
+		this.labOutlineColor = new Color(Color.PURPLE);
 		this.tips.add(new PowerTip(TipHelper.capitalize(BaseMod.getKeywordProper("tactician:deflect")), GameDictionary.keywords.get("tactician:deflect")));
 	}
 
@@ -55,5 +56,5 @@ public class DeflectPotion extends BasePotion {
 	}
 
 	@Override
-	public BasePotion makeCopy() { return new DeflectPotion(); }
+	public BasePotion makeCopy() { return new PureWater(); }
 }

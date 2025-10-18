@@ -12,14 +12,18 @@
       " #yFocus. At the end of your turn, lose #b",
       " #yFocus."]
   },
-  "${modID}:CorrosionPotion": {
-    "NAME": "Corrosion Potion",
-    "DESCRIPTIONS": ["Exhaust cards in your hand freely."]
-  },
-  "${modID}:DeflectPotion": {
-    "NAME": "Deflect Potion",
+  "${modID}:PureWater": {
+    "NAME": "Pure Water",
     "DESCRIPTIONS": [
       "Gain #b",
       " #yDeflect. Select a weapon type to equip."]
+  },
+  "${modID}:Concoction": {
+    "NAME": "Concoction",
+    "DESCRIPTIONS": [
+      "Heal #b",
+      " #yHP. You cannot lose #yStrength, #yFocus, or #yDexterity for #b",
+      " turns."
+    ]
   }
 }

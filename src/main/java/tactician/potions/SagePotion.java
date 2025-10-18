@@ -23,6 +23,7 @@ public class SagePotion extends BasePotion {
     public SagePotion() {
         super(ID, 5, PotionRarity.COMMON, PotionSize.SNECKO, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
         playerClass = TacticianRobin.Meta.TACTICIAN;
+        this.labOutlineColor = new Color(Color.PURPLE);
     }
 
     @Override

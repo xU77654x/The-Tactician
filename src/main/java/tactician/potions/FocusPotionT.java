@@ -24,7 +24,7 @@ public class FocusPotionT extends BasePotion {
     public FocusPotionT() {
         super(ID, 2, PotionRarity.COMMON, PotionSize.S, AbstractPotion.PotionColor.SWIFT);
         playerClass = TacticianRobin.Meta.TACTICIAN;
-        this.labOutlineColor = Settings.BLUE_RELIC_COLOR;
+        this.labOutlineColor = new Color(Color.PURPLE);
     }
 
     @Override

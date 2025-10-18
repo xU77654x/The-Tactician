@@ -144,7 +144,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 this.tags.add(CardTags.STRIKE);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[14];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6];
-                this.glowColor = Color.FIREBRICK;
+                this.glowColor = new Color(Color.FIREBRICK);
             }
             else if (AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { // Tempest Lance
                 if (this.upgraded) { setDamage(16); }
@@ -153,7 +153,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 this.cardsToPreview = new Anathema();
                 this.name = cardStrings.EXTENDED_DESCRIPTION[15];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[7];
-                this.glowColor = Color.NAVY;
+                this.glowColor = new Color(Color.NAVY);
             }
             else if (AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { // Smash
                 if (this.upgraded) { setDamage(10); }
@@ -163,7 +163,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 tags.add(CustomTags.AXE);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[16];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[8];
-                this.glowColor = Color.LIME;
+                this.glowColor = new Color(Color.LIME);
             }
             else if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { // Curved Shot
                 if (this.upgraded) { setDamage(9); }
@@ -174,7 +174,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 tags.add(CustomTags.BOW);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[17];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[9];
-                this.glowColor = Color.MAROON;
+                this.glowColor = new Color(Color.MAROON);
             }
             else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { // Elwind
                 if (this.upgraded) { setDamage(9); }
@@ -184,7 +184,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 tags.add(CustomTags.WIND);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[18];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[10];
-                this.glowColor = Color.valueOf("40FF80"); // Too similar to Color.TEAL, but not much can be done about this.
+                this.glowColor = new Color(Color.valueOf("40FF80")); // Too similar to Color.TEAL, but not much can be done about this.
             }
             else if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { // Arcfire
                 if (this.upgraded) { setDamage(10); }
@@ -194,7 +194,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 tags.add(CustomTags.FIRE);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[19];
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[11];
-                this.glowColor = Color.SCARLET;
+                this.glowColor = new Color(Color.SCARLET);
             }
             else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { // Thunder
                 if (this.upgraded) { setDamage(8); }
@@ -206,8 +206,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 this.name = cardStrings.EXTENDED_DESCRIPTION[20];
                 if (this.upgraded) { this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[23]; }
                 else { this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[12]; }
-
-                this.glowColor = Color.YELLOW;
+                this.glowColor = new Color(Color.YELLOW);
             }
             else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { // Flux
                 if (this.upgraded) { setDamage(6); }
@@ -217,13 +216,13 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 tags.add(CustomTags.DARK);
                 this.name =  cardStrings.EXTENDED_DESCRIPTION[21]; // Flux.class.getSimpleName();
                 this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[13];
-                this.glowColor = Color.PURPLE;
+                this.glowColor = new Color(Color.PURPLE);
             }
             else {
                 tags.add(CustomTags.COPY);
                 this.name = cardStrings.NAME;
                 this.rawDescription = cardStrings.DESCRIPTION;
-                this.glowColor = Color.TEAL;
+                this.glowColor = new Color(Color.TEAL);
             }
         }
         else {
@@ -258,7 +257,6 @@ public class TacticalAdvice extends Tactician9CopyCard {
         ArrayList<TooltipInfo> toolTipList = new ArrayList<>();
         if (this.upgraded) { toolTipList.add(new TooltipInfo(cardStrings.NAME, cardStrings.EXTENDED_DESCRIPTION[2])); }
         else { toolTipList.add(new TooltipInfo(cardStrings.NAME, cardStrings.EXTENDED_DESCRIPTION[1])); }
-
         return toolTipList;
     }
 
@@ -266,8 +264,9 @@ public class TacticalAdvice extends Tactician9CopyCard {
     public void applyPowers() {
         updateContents(false);
         int realDamage = baseDamage;
-        if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) && AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
+        if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID) && AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) {
             baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
+        }
         super.applyPowers();
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);
@@ -292,6 +291,5 @@ public class TacticalAdvice extends Tactician9CopyCard {
 
     @Override
     public AbstractCard makeCopy() { return new TacticalAdvice(); }
-
     // This card originally tried to copy from Rhythm Girl's Working Dough, but I changed the code to copy from Downfall: Gremlins' Gremlin Dance.
 }
