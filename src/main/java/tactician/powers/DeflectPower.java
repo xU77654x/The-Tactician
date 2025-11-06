@@ -21,7 +21,6 @@ import tactician.util.TextureLoader;
 import tactician.util.Wiz;
 import static java.lang.Math.max;
 import static tactician.TacticianMod.powerPath;
-import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 public class DeflectPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = TacticianMod.makeID("DeflectPower");
