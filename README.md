@@ -13,7 +13,7 @@ Robin, the legendary tactician of Ylisse, enters the Spire as a fully-developed 
 # Key Features
 
 - One character with 72 non-Basic cards and Ascension 10 already unlocked.
-- 10 unique relics; 4 are universal (Seraph Robe, Dracoshield, Energy Drop, Killing Edge).
+- 10 unique relics; 4 are universal (Seraph Robe, Dracoshield, Talisman, Killing Edge).
 - Custom event overrides on Winged Statue, Vampires(?), Council of Ghosts, and Falling.
 - Sprite patch for Lose Strength / Lose Dexterity to distinguish them on any character.
 
