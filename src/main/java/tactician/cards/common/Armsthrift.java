@@ -28,7 +28,7 @@ public class Armsthrift extends TacticianCard {
 
     public Armsthrift() {
         super(ID, info);
-        setMagic(4, 3);
+        setMagic(4, 4);
     }
 
     @Override

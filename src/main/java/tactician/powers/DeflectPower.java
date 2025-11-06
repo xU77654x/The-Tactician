@@ -16,10 +16,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
 import tactician.actions.PlaySoundAction;
+import tactician.character.TacticianRobin;
 import tactician.util.TextureLoader;
 import tactician.util.Wiz;
 import static java.lang.Math.max;
 import static tactician.TacticianMod.powerPath;
+import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
 public class DeflectPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = TacticianMod.makeID("DeflectPower");
@@ -42,7 +44,10 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
     }
 
     @Override
-    public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
+    public void updateDescription() {
+        if (AbstractDungeon.player.chosenClass == null || AbstractDungeon.player instanceof TacticianRobin) { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
+        else { this.description = DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]; }
+    }
 
     @Override
     public void playApplyPowerSfx() { }

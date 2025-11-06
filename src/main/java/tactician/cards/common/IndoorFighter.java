@@ -23,7 +23,7 @@ public class IndoorFighter extends TacticianCard {
 
     public IndoorFighter() {
         super(ID, info);
-        setMagic(9, 3);
+        setMagic(8, 4);
     }
 
     @Override

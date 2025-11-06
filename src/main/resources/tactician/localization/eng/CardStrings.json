@@ -66,7 +66,7 @@
 
   "${modID}:Solidarity": {
     "NAME": "Solidarity",
-    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Draw 2 cards. Add NL a Hex to your hand."
+    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Draw 2 cards. Add NL a [#e087a4]Hex to your hand."
   },
   "${modID}:Veteran": {
     "NAME": "Veteran",
@@ -81,7 +81,7 @@
   },
   "${modID}:TempestLance": {
     "NAME": "Tempest Lance",
-    "DESCRIPTION": "Deal !D! damage. NL Shuffle an Anathema to your draw pile."
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle an [#e087a4]Anathema to your draw pile."
   },
   "${modID}:Smash": {
     "NAME": "Smash",
@@ -103,8 +103,8 @@
   },
   "${modID}:Thunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}.",
+    "DESCRIPTION": "Deal !D! damage. NL Add a [#e087a4]Hex to your hand. Exhaust a card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Add NL a [#e087a4]Hex to your hand. {@@}Exhaust up to !M! card{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Thunder!"]
   },
   "${modID}:Flux": {
@@ -188,7 +188,7 @@
   },
   "${modID}:LevinSword": {
     "NAME": "Levin Sword",
-    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Add a Hex to your hand. Gain !M! Deflect."
+    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Add a [#e087a4]Hex to your hand. Gain !M! Deflect."
   },
   "${modID}:FlameLance": {
     "NAME": "Flame Lance",
@@ -196,7 +196,7 @@
   },
   "${modID}:HurricaneAxe": {
     "NAME": "Hurricane Axe",
-    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an Anathema to your hand. Exhaust a card."
+    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an [#e087a4]Anathema to your hand. Exhaust a card."
   },
   "${modID}:PlegianBow": {
     "NAME": "Plegian Bow",
@@ -228,11 +228,11 @@
   },
   "${modID}:EvenOddRhythm": {
     "NAME": "Even/Odd Rhythm",
-    "DESCRIPTION": "Retain. Gain !B! Block. NL Add a Curse card NL to your hand. NL Even Turn: Hex. NL Odd Turn: Anathema.",
+    "DESCRIPTION": "Retain. Gain !B! Block. NL Add a Curse card NL to your hand. NL Even Turn: [#e087a4]Hex. NL Odd Turn: [#e087a4]Anathema.",
     "EXTENDED_DESCRIPTION": ["Even Rhythm",
-    "Retain. NL Gain !B! Block. NL Add a Hex to your hand.",
+    "Retain. NL Gain !B! Block. NL Add a [#e087a4]Hex to your hand.",
     "Odd Rhythm",
-    "Retain. NL Gain !B! Block. NL Add an Anathema NL to your hand."]
+    "Retain. NL Gain !B! Block. NL Add an [#e087a4]Anathema NL to your hand."]
   },
   "${modID}:SurpriseAttack": {
     "NAME": "Surprise Attack",
@@ -244,8 +244,8 @@
   },
   "${modID}:Locktouch": {
     "NAME": "Locktouch",
-    "DESCRIPTION": "Add an Anathema and a Hex to your hand.",
-    "UPGRADE_DESCRIPTION": "Exhaust your held Statuses and Curses. NL Add an Anathema and a Hex to your hand."
+    "DESCRIPTION": "Add an [#e087a4]Anathema and a [#e087a4]Hex to your hand.",
+    "UPGRADE_DESCRIPTION": "Exhaust your held Statuses and Curses. NL Add an [#e087a4]Anathema and a [#e087a4]Hex to your hand."
   },
   "${modID}:Perceptive": {
     "NAME": "Perceptive",
@@ -267,13 +267,13 @@
   },
   "${modID}:Renewal": {
     "NAME": "Renewal",
-    "DESCRIPTION": "Reduce ALL of your NL debuffs by X. NL Shuffle an Anathema to your draw pile.",
-    "UPGRADE_DESCRIPTION": "Reduce ALL of your NL debuffs by X+1. NL Shuffle an Anathema to your draw pile."
+    "DESCRIPTION": "Reduce ALL of your NL debuffs by X. NL Shuffle an [#e087a4]Anathema to your draw pile.",
+    "UPGRADE_DESCRIPTION": "Reduce ALL of your NL debuffs by X+1. NL Shuffle an [#e087a4]Anathema to your draw pile."
   },
   "${modID}:Acrobat": {
     "NAME": "Acrobat",
-    "DESCRIPTION": "Gain X+1 [E]. NL Shuffle a Hex to NL your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}. NL Shuffle a Hex to NL your draw pile."
+    "DESCRIPTION": "Gain X+1 [E]. NL Shuffle a [#e087a4]Hex to NL your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}. NL Shuffle a [#e087a4]Hex to NL your draw pile."
   },
   "${modID}:MastersTactics": {
     "NAME": "Master's Tactics",
@@ -350,8 +350,8 @@
   },
   "${modID}:Thoron": {
     "NAME": "Thoron",
-    "DESCRIPTION": "${modID}:Favor. Deal !D! damage NL to ALL enemies twice. NL Shuffle a Hex to NL your draw pile.",
-    "UPGRADE_DESCRIPTION": "${modID}:Favor. Deal !D! damage NL to ALL enemies twice. Add a Hex to NL your hand.",
+    "DESCRIPTION": "${modID}:Favor. Deal !D! damage NL to ALL enemies twice. NL Shuffle a [#e087a4]Hex to NL your draw pile.",
+    "UPGRADE_DESCRIPTION": "${modID}:Favor. Deal !D! damage NL to ALL enemies twice. Add a [#e087a4]Hex to NL your hand.",
     "EXTENDED_DESCRIPTION": ["Thoron!"]
   },
   "${modID}:Goetia": {
@@ -374,7 +374,7 @@
   },
   "${modID}:TipTheScales": {
     "NAME": "Tip the Scales!",
-    "DESCRIPTION": "Unplayable. Retain. NL On Exhaust, add an Anathema to your hand and gain NL !M! Artifact.",
+    "DESCRIPTION": "Unplayable. Retain. NL On Exhaust, add an [#e087a4]Anathema to your hand and gain NL !M! Artifact.",
     "EXTENDED_DESCRIPTION": ["Time to tip the scales!",
       "I have to #rExhaust this card to gain its effect."]
   },
@@ -389,7 +389,7 @@
   },
   "${modID}:MasterSeal": {
     "NAME": "Master Seal",
-    "DESCRIPTION": "Gain 1 Ritual. NL {@@}Gain !M! Orb Slot{!M!|1=|@=s}. NL Add an Anathema and a Hex to your hand."
+    "DESCRIPTION": "Gain 1 Ritual. NL {@@}Gain !M! Orb Slot{!M!|1=|@=s}. NL Add an [#e087a4]Anathema and a [#e087a4]Hex to your hand."
   },
   "${modID}:ChaosStyle": {
     "NAME": "Chaos Style",
@@ -427,12 +427,12 @@
       "Arcfire!",
       "Thunder!",
       "Retain. Exhaust. NL Deal !D! damage, NL increased by your ${modID}:Deflect. NL Gain !M! ${modID}:Deflect.",
-      "Retain. Exhaust. NL Deal !D! damage. NL Shuffle an Anathema to your draw pile.",
+      "Retain. Exhaust. NL Deal !D! damage. NL Shuffle an [#e087a4]Anathema to your draw pile.",
       "Retain. Exhaust. NL Deal !D! damage. NL Gain !M! temp. Strength.",
       "Retain. Exhaust. NL Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable.",
       "Retain. Exhaust. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
       "Retain. Exhaust. NL Deal !D! damage. NL Gain !M! temp. Focus.",
-      "Retain. Exhaust. NL Deal !D! damage. NL Add a Hex to your hand. Exhaust a card.",
+      "Retain. Exhaust. NL Deal !D! damage. NL Add a [#e087a4]Hex to your hand. Exhaust a card.",
       "Retain. Exhaust. NL Gain !B! Block. NL Deal !D! damage.",
       "Wrath Strike",
       "Tempest Lance",
@@ -443,7 +443,7 @@
       "Thunder",
       "Flux",
       "I don't have a \"weapon type\"! NL Why do I even have this card?",
-      "Deal !D! damage. NL Add a Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}."
+      "Deal !D! damage. NL Add a [#e087a4]Hex to your hand. {@@}Exhaust up NL to !M! card{!M!|1=|@=s}."
     ]
   },
   "${modID}:DebugWeapon": {
@@ -522,7 +522,7 @@
   },
   "${modID}:TempBlueCandle": {
     "NAME": "Blue Candle",
-    "DESCRIPTION": "All Curses are playable, Exhaust, and cost 1 HP. Hex and Anathema only cost 1 HP.",
+    "DESCRIPTION": "All Curses are playable, Exhaust, and cost 1 HP. [#e087a4]Hex and [#e087a4]Anathema only cost 1 HP.",
     "EXTENDED_DESCRIPTION": ["All Curses are playable, Exhaust, and cost 1 HP."]
   },
   "${modID}:TempMedicalKit": {

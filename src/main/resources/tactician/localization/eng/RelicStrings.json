@@ -2,13 +2,13 @@
   "${modID}:SecretBook": {
     "NAME": "Secret Book",
     "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
-    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add an Anathema to your hand."]
+    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add an #pAnathema to your hand."]
   },
   "${modID}:Speedwing": {
     "NAME": "Speedwing",
     "FLAVOR": "\"Even I couldn't have seen this coming!\"",
-    "DESCRIPTIONS": ["At the start of combat, gain #b",
-      " #y${modID}:Deflect. The first time you play a card each combat, select a weapon type to equip."]
+    "DESCRIPTIONS": ["The first time you play a card each combat, gain #b",
+      " #y${modID}:Deflect and select a weapon type to equip."]
   },
   "${modID}:SeraphRobe": {
     "NAME": "Seraph Robe",
@@ -27,23 +27,25 @@
   "${modID}:BookOfNaga": {
     "NAME": "Book of Naga",
     "FLAVOR": "\"What's this? Hmm... Perhaps we could use it...\"",
-    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add a Hex to your hand."]
+    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add a #pHex to your hand."]
   },
   "${modID}:StatueFragment": {
     "NAME": "Statue Fragment",
     "FLAVOR": "\"Not even the finest treasures is worth getting a comrade killed...\"",
-    "DESCRIPTIONS": ["At the start of combat, add a Tactical Advice to your hand."]
+    "DESCRIPTIONS": ["At the start of combat, add a #yTactical #yAdvice to your hand."]
   },
   "${modID}:EnergyDrop": {
     "NAME": "Energy Drop",
     "FLAVOR": "\"I can tell I've gotten stronger.\"",
-    "DESCRIPTIONS": ["At the start of combat, gain #b1 #yStrength and add an Anger to your hand; it gets Ethereal."]
+    "DESCRIPTIONS": ["Whenever you play an Attack, gain #b",
+      " #yDeflect."]
   },
   "${modID}:Talisman": {
     "NAME": "Talisman",
     "FLAVOR": "\"We're not pawns of some scripted fate. I believe we're more. Much more...\"",
     "DESCRIPTIONS": ["Whenever you #yExhaust a card other than Necronomicurse, gain #b",
-      " #yTemporary #yHP."]
+      " #yTemporary #yHP and #b",
+      " #yBlock."]
   },
   "${modID}:KillingEdge": {
     "NAME": "Killing Edge",

@@ -156,6 +156,7 @@ public class Wiz {
         boolean copyFlag = true;
         if (AbstractDungeon.player.hasPower(ZealPower.POWER_ID)) { effect = valModify; }
         else if (!(AbstractDungeon.player instanceof TacticianRobin)) { // TODO: This effect does not display calculateCardDamage correctly until one card later, where the effect doesn't apply.
+
             if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty() && AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2) {
                 if ((AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).type == AbstractCard.CardType.POWER) { effect = valModify; }
             }

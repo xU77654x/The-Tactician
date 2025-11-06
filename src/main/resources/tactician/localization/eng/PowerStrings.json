@@ -38,8 +38,11 @@
 
   "${modID}:DeflectPower": {
     "NAME": "Deflect",
-    "DESCRIPTIONS": ["The next time you take Attack damage, deal ",
-      " damage back. NL A weapon-weak Attack only halves your Deflect."]
+    "DESCRIPTIONS": ["The next time you're attacked, deal #b",
+      " damage back. NL A weapon-weak Attack only halves your Deflect.",
+      "The next time you're attacked, deal #b",
+      " damage back. If the second-to-last card played was a Power, attacks only halve your Deflect."
+    ]
   },
   "${modID}:LoseFocusPower": {
     "NAME": "Focus Down",

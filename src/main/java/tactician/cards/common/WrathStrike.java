@@ -32,7 +32,7 @@ public class WrathStrike extends Tactician1SwordCard {
 
     public WrathStrike() {
         super(ID, info);
-        setDamage(5, 1);
+        setDamage(5, 2);
         setMagic(4, 2);
         tags.add(CardTags.STRIKE);
         tags.add(CustomTags.SWORD);
@@ -51,8 +51,7 @@ public class WrathStrike extends Tactician1SwordCard {
     @Override
     public void applyPowers() {
         int realDamage = baseDamage;
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
-            baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) { baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount; }
         super.applyPowers();
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);
@@ -62,9 +61,7 @@ public class WrathStrike extends Tactician1SwordCard {
     public void calculateCardDamage(AbstractMonster m) {
         int realDamage = baseDamage;
         baseDamage += Wiz.playerWeaponCalc(m, 1);
-
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
-            baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) { baseDamage += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount; }
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         this.isDamageModified = (damage != baseDamage);

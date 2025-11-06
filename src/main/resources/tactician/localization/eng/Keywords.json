@@ -87,7 +87,7 @@
     "ID": "deflect",
     "PROPER_NAME": "Deflect",
     "NAMES": ["Deflect"],
-    "DESCRIPTION": "The next time you take Attack damage, deal X damage back. NL A weapon-weak Attack only halves your Deflect."
+    "DESCRIPTION": "The next time you're attacked, deal X damage back. NL Weapon-weak attacks only halve your Deflect."
   },
 
   {
