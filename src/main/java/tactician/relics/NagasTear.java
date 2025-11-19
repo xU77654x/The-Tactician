@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.character.TacticianRobin;
 import static tactician.TacticianMod.makeID;
 
-public class NagasTear extends BaseRelic {
+public class NagasTear extends TacticianRelic {
     private static final String NAME = "NagasTear"; // Determines the filename and ID.
     public static final String ID = makeID(NAME); // Adds prefix to relic ID, resulting in modID:MyRelic
     private static final RelicTier RARITY = RelicTier.BOSS;
@@ -22,14 +22,13 @@ public class NagasTear extends BaseRelic {
     public NagasTear() { super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND); }
 
     @Override
-    public String getUpdatedDescription() {
-        return this.DESCRIPTIONS[0] + MAXHP + this.DESCRIPTIONS[1] + STAT + this.DESCRIPTIONS[2];
-    }
+    public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + MAXHP + this.DESCRIPTIONS[1] + STAT + this.DESCRIPTIONS[2]; }
 
     @Override
-    public void onEquip() {
-        AbstractDungeon.player.increaseMaxHp(MAXHP, true);
-    }
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+    @Override
+    public void onEquip() { AbstractDungeon.player.increaseMaxHp(MAXHP, true); }
 
     @Override
     public void atBattleStart() {
@@ -39,9 +38,6 @@ public class NagasTear extends BaseRelic {
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, STAT), STAT));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
-
-    @Override
-    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new NagasTear(); }

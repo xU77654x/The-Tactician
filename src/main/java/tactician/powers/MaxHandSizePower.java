@@ -37,7 +37,7 @@ public class MaxHandSizePower extends AbstractPower {
 	}
 
 	@Override
-	public void playApplyPowerSfx() {}
+	public void playApplyPowerSfx() { }
 
 		@Override
 	public void onInitialApplication() {

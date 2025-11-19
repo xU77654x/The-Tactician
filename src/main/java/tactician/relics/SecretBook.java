@@ -4,21 +4,21 @@ import basemod.helpers.CardPowerTip;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Anathema;
 import tactician.character.TacticianRobin;
+import tactician.util.Wiz;
 import static tactician.TacticianMod.makeID;
 
-public class SecretBook extends BaseRelic {
+public class SecretBook extends TacticianRelic {
 	private static final String NAME = "SecretBook";
 	public static final String ID = makeID(NAME);
 	private static final RelicTier RARITY = RelicTier.STARTER;
 	private static final LandingSound SOUND = LandingSound.CLINK;
-	public AbstractPlayer p;
+	private static final int FOCUS = 1;
 
 	public SecretBook() {
 		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
@@ -27,32 +27,35 @@ public class SecretBook extends BaseRelic {
 	}
 
 	@Override
-	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
+	public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + FOCUS + this.DESCRIPTIONS[1]; }
+
+	@Override
+	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+	@Override
+	public void onEquip() { if (Wiz.isInCombat()) { this.counter = 1; }}
 
 	@Override
 	public void atBattleStart() { this.counter = 0; }
 
 	@Override
 	public void atTurnStart() {
-		this.p = AbstractDungeon.player;
 		if (!this.grayscale) { this.counter++; }
 		if (this.counter == 2) {
 			flash();
-			addToTop(new ApplyPowerAction(p, p, new FocusPower(p, 1), 1));
+			addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FocusPower(AbstractDungeon.player, FOCUS), FOCUS));
 			addToTop(new MakeTempCardInHandAction(new Anathema(), 1));
-			addToTop(new RelicAboveCreatureAction(p, this));
+			addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 			this.counter = -1;
 			this.grayscale = true;
 		}
 	}
 
+	@Override
 	public void onVictory() {
 		this.counter = -1;
 		this.grayscale = false;
 	}
-
-	@Override
-	public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
 	@Override
 	public AbstractRelic makeCopy() { return new SecretBook(); }

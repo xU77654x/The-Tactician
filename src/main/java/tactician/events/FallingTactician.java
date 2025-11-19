@@ -32,7 +32,7 @@ public class FallingTactician extends AbstractImageEvent {
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[0]);
 	}
 
-	public void onEnterRoom() { if (Settings.AMBIANCE_ON) { CardCrawlGame.sound.play("EVENT_FALLING"); }}
+	public void onEnterRoom() { if (Settings.AMBIANCE_ON) { CardCrawlGame.sound.playV("EVENT_FALLING", 1.00F); }}
 
 	private void setCards() {
 		this.attack = CardHelper.hasCardWithType(AbstractCard.CardType.ATTACK);

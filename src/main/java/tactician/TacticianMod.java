@@ -16,8 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.events.*;
-import tactician.potions.BasePotion;
-import tactician.relics.BaseRelic;
+import tactician.potions.TacticianPotion;
+import tactician.relics.TacticianRelic;
 import tactician.util.GeneralUtils;
 import tactician.util.KeywordInfo;
 import tactician.util.TextureLoader;
@@ -190,7 +190,7 @@ public class TacticianMod implements
     }
 
     public static void registerPotions() {
-        new AutoAdd(modID).packageFilter(BasePotion.class).any(BasePotion.class, (info, potion) -> BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, potion.playerClass));
+        new AutoAdd(modID).packageFilter(TacticianPotion.class).any(TacticianPotion.class, (info, potion) -> BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, potion.playerClass));
         // This code runs for any classes that extend this class.
         // These three null parameters are a deprecated way to ste potion colors. If they're not null, they'll overwrite the color set in the potions themselves.
         // playerClass will make a potion character-specific. By default, it's null and will do nothing.
@@ -302,7 +302,7 @@ public class TacticianMod implements
 
     @Override
     public void receiveEditRelics() {
-        new AutoAdd(modID).any(BaseRelic.class, (info, relic) -> { // Loads files from this mod. Run this code for any classes that extend this class.
+        new AutoAdd(modID).any(TacticianRelic.class, (info, relic) -> { // Loads files from this mod. Run this code for any classes that extend this class.
             if (relic.pool != null) { BaseMod.addRelicToCustomPool(relic, relic.pool); } // Register a custom character specific relic
             else { BaseMod.addRelic(relic, relic.relicType); } // Register a shared or base game character specific relic.
             UnlockTracker.markRelicAsSeen(relic.relicId);

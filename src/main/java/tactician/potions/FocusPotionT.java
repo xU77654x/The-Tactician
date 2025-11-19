@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import tactician.character.TacticianRobin;
 import static tactician.TacticianMod.makeID;
 
-public class FocusPotionT extends BasePotion {
+public class FocusPotionT extends TacticianPotion {
     public static final String ID = makeID(FocusPotionT.class.getSimpleName());
     private static final Color LIQUID_COLOR = Color.BLUE;
     private static final Color HYBRID_COLOR = CardHelper.getColor(64, 64, 212);

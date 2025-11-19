@@ -11,7 +11,7 @@ import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import static tactician.TacticianMod.makeID;
 
-public class EnergyDrop extends BaseRelic {
+public class EnergyDrop extends TacticianRelic {
     private static final String NAME = "EnergyDrop";
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.RARE;
@@ -24,6 +24,9 @@ public class EnergyDrop extends BaseRelic {
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + DEFLECT + this.DESCRIPTIONS[1]; }
 
     @Override
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+    @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.ATTACK) {
             flash();
@@ -31,9 +34,6 @@ public class EnergyDrop extends BaseRelic {
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DeflectPower(DEFLECT), DEFLECT));
         }
     }
-
-    @Override
-    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new EnergyDrop(); }

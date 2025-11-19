@@ -13,10 +13,9 @@ public class ReduceDebuffsAction extends AbstractGameAction {
 	public ReduceDebuffsAction(AbstractCreature c, int amount) {
 		this.c = c;
 		this.duration = 0.5F;
-		this.amount=amount;
+		this.amount = amount;
 	}
 
-	// Jacked from Packmaster.
 	public void update() {
 		if (this.amount <= 0) {
 			this.isDone = true;

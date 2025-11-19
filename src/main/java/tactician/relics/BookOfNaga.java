@@ -4,21 +4,21 @@ import basemod.helpers.CardPowerTip;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.Hex;
 import tactician.character.TacticianRobin;
+import tactician.util.Wiz;
 import static tactician.TacticianMod.makeID;
 
-public class BookOfNaga extends BaseRelic {
+public class BookOfNaga extends TacticianRelic {
 	private static final String NAME = "BookOfNaga";
 	public static final String ID = makeID(NAME);
 	private static final RelicTier RARITY = RelicTier.UNCOMMON;
 	private static final LandingSound SOUND = LandingSound.CLINK;
-	public AbstractPlayer p;
+	private static final int FOCUS = 1;
 
 	public BookOfNaga() {
 		super(ID, NAME, TacticianRobin.Meta.CARD_COLOR, RARITY, SOUND);
@@ -30,17 +30,22 @@ public class BookOfNaga extends BaseRelic {
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
 
 	@Override
+	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+	@Override
+	public void onEquip() { if (Wiz.isInCombat()) { this.counter = 0; }}
+
+	@Override
 	public void atBattleStart() { this.counter = 0; }
 
 	@Override
 	public void atTurnStart() {
-		this.p = AbstractDungeon.player;
 		if (!this.grayscale) { this.counter++; }
 		if (this.counter == 2) {
 			flash();
-			addToTop(new ApplyPowerAction(p, p, new FocusPower(p, 1)));
+			addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FocusPower(AbstractDungeon.player, FOCUS), FOCUS));
 			addToTop(new MakeTempCardInHandAction(new Hex(), 1));
-			addToTop(new RelicAboveCreatureAction(p, this));
+			addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 			this.counter = -1;
 			this.grayscale = true;
 		}
@@ -50,22 +55,6 @@ public class BookOfNaga extends BaseRelic {
 		this.counter = -1;
 		this.grayscale = false;
 	}
-
-	@Override
-	public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
-
-	/*
-	@Override
-	public void onRightClick() {
-		if (Boolean.TRUE.equals(this.used)) { addToBot(new TalkAction(true, this.DESCRIPTIONS[2], 1.0F, 2.0F)); }
-		addToBot(new WaitAction(0.1F));
-		if (Boolean.TRUE.equals(!this.used) && (!AbstractDungeon.getCurrRoom().isBattleOver && AbstractDungeon.getCurrRoom().monsters != null && AbstractDungeon.getCurrRoom().monsters.monsters != null && !AbstractDungeon.getCurrRoom().monsters.monsters.isEmpty() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())) {
-			flash();
-			stopPulse();
-		}
-		else { addToBot(new TalkAction(true, "Let me think for NL another moment...", 1.0F, 2.0F)); }
-	} // Credit to Balls: Rubber Bouncy Ball for the code to determine if the room has living monsters as a check for right-click relics.
-	  // "public class SecretBook extends BaseRelic implements ClickableRelic" */
 
 	@Override
 	public AbstractRelic makeCopy() { return new BookOfNaga(); }

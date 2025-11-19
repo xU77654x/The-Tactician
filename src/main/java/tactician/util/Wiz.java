@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
@@ -70,8 +69,13 @@ public class Wiz {
     }
 
     public static boolean isInCombat() {
-        return (CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT);
+        AbstractRoom currentRoom = AbstractDungeon.getCurrRoom();
+        return (currentRoom != null && currentRoom.monsters != null && AbstractDungeon.player != null && !AbstractDungeon.player.isEscaping && !currentRoom.smoked && currentRoom.phase != AbstractRoom.RoomPhase.EVENT && !currentRoom.monsters.areMonstersDead());
     }
+
+    /*public static boolean isInCombat() {
+        return (CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT);
+    } */
 
     public static void topDeck(AbstractCard c, int i) { AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c, i, false, true)); }
 
@@ -157,8 +161,8 @@ public class Wiz {
         if (AbstractDungeon.player.hasPower(ZealPower.POWER_ID)) { effect = valModify; }
         else if (!(AbstractDungeon.player instanceof TacticianRobin)) { // TODO: This effect does not display calculateCardDamage correctly until one card later, where the effect doesn't apply.
 
-            if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty() && AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2) {
-                if ((AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).type == AbstractCard.CardType.POWER) { effect = valModify; }
+            if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty() && AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 3) {
+                if ((AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).type == AbstractCard.CardType.ATTACK && (AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 3)).type == AbstractCard.CardType.ATTACK) { effect = valModify; }
             }
             else { return 0; }
         }

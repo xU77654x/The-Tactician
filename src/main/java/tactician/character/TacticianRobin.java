@@ -6,7 +6,6 @@ import basemod.abstracts.CustomPlayer;
 import basemod.animations.AbstractAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -147,7 +146,6 @@ public class TacticianRobin extends CustomPlayer {
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        // These attack effects will be used when you attack the heart.
         return new AbstractGameAction.AttackEffect[] {
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL,
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
@@ -196,7 +194,7 @@ public class TacticianRobin extends CustomPlayer {
     @Override
     public void doCharSelectScreenSelectEffect() {
         // See SoundMaster for a full list of existing sound effects, or look at BaseMod's wiki for adding custom audio.
-        CardCrawlGame.sound.playA("tactician:TacticianSelect", MathUtils.random(0F, 0F));
+        CardCrawlGame.sound.playV("tactician:TacticianSelect", 0.97F);
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
 

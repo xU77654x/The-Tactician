@@ -27,7 +27,7 @@ public class ExhaustCopyEffect extends AbstractGameEffect {
         AbstractDungeon.effectsQueue.add(new CardPoofEffect(this.card.target_x, this.card.target_y));
         this.card.drawScale = 0.75F;
         this.card.targetDrawScale = 0.75F;
-        CardCrawlGame.sound.play("CARD_OBTAIN");
+        CardCrawlGame.sound.playV("CARD_OBTAIN", 1.00F);
         if (this.card.type != AbstractCard.CardType.CURSE && this.card.type != AbstractCard.CardType.STATUS && AbstractDungeon.player.hasPower("MasterRealityPower")) { this.card.upgrade(); }
         AbstractDungeon.player.exhaustPile.addToTop(srcCard); // Changed to Exhaust pile.
     }

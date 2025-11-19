@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 
 import java.lang.reflect.Field;
 
-public abstract class BasePotion extends AbstractPotion {
+public abstract class TacticianPotion extends AbstractPotion {
     private static final Field containerImg, outlineImg, liquidImg, hybridImg, spotsImg;
     static {
         try {
@@ -36,14 +36,14 @@ public abstract class BasePotion extends AbstractPotion {
     public int basePotency;
     public AbstractPlayer.PlayerClass playerClass = null;
 
-    public BasePotion(String id, int potency, PotionRarity rarity, PotionSize shape, Color liquidColor, Color hybridColor, Color spotsColor) {
+    public TacticianPotion(String id, int potency, PotionRarity rarity, PotionSize shape, Color liquidColor, Color hybridColor, Color spotsColor) {
         super("", id, rarity, shape, PotionEffect.NONE, liquidColor, hybridColor, spotsColor);
         basePotency = potency;
         checkColors();
         initializeData();
     }
 
-    public BasePotion(String id, int potency, PotionRarity rarity, PotionSize size, PotionColor color) {
+    public TacticianPotion(String id, int potency, PotionRarity rarity, PotionSize size, PotionColor color) {
         super("", id, rarity, size, color);
         basePotency = potency;
         checkColors();

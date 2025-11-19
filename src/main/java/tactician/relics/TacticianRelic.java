@@ -10,21 +10,21 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import static tactician.TacticianMod.relicPath;
 
-public abstract class BaseRelic extends CustomRelic {
+public abstract class TacticianRelic extends CustomRelic {
     public AbstractCard.CardColor pool = null;
     public RelicType relicType = RelicType.SHARED;
     protected String imageName;
 
     // Character specific relics
-    public BaseRelic(String id, String imageName, AbstractCard.CardColor pool, RelicTier tier, LandingSound sfx) {
+    public TacticianRelic(String id, String imageName, AbstractCard.CardColor pool, RelicTier tier, LandingSound sfx) {
         this(id, imageName, tier, sfx);
         setPool(pool);
     }
 
-    public BaseRelic(String id, RelicTier tier, LandingSound sfx) { this(id, GeneralUtils.removePrefix(id), tier, sfx); }
+    public TacticianRelic(String id, RelicTier tier, LandingSound sfx) { this(id, GeneralUtils.removePrefix(id), tier, sfx); }
 
     // To use a basegame relic image, just pass in the image's name used by a basegame relic instead of the ID. eg. "calendar.png"
-    public BaseRelic(String id, String imageName, RelicTier tier, LandingSound sfx) {
+    public TacticianRelic(String id, String imageName, RelicTier tier, LandingSound sfx) {
         super(testStrings(id), notPng(imageName) ? "" : imageName, tier, sfx);
         this.imageName = imageName;
         if (notPng(imageName)) { loadTexture(); }

@@ -19,7 +19,7 @@ import tactician.powers.weapons.*;
 import java.util.ArrayList;
 import static tactician.TacticianMod.makeID;
 
-public class PureWater extends BasePotion {
+public class PureWater extends TacticianPotion {
 	public static final String ID = makeID(PureWater.class.getSimpleName());
 	private static final Color LIQUID_COLOR = Color.BLUE;
 	private static final Color HYBRID_COLOR = Color.CORAL;
@@ -56,5 +56,5 @@ public class PureWater extends BasePotion {
 	}
 
 	@Override
-	public BasePotion makeCopy() { return new PureWater(); }
+	public TacticianPotion makeCopy() { return new PureWater(); }
 }

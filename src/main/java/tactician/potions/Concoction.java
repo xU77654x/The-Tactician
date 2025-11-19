@@ -10,7 +10,7 @@ import tactician.character.TacticianRobin;
 import tactician.powers.ShovePower;
 import static tactician.TacticianMod.makeID;
 
-public class Concoction extends BasePotion {
+public class Concoction extends TacticianPotion {
 	public static final String ID = makeID(Concoction.class.getSimpleName());
 	private static final Color LIQUID_COLOR = new Color(Color.BROWN);
 	private static final Color HYBRID_COLOR = new Color(Color.WHITE);
@@ -40,5 +40,5 @@ public class Concoction extends BasePotion {
 	}
 
 	@Override
-	public BasePotion makeCopy() { return new Concoction(); }
+	public TacticianPotion makeCopy() { return new Concoction(); }
 }

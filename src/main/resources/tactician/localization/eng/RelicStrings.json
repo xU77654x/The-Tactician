@@ -2,7 +2,8 @@
   "${modID}:SecretBook": {
     "NAME": "Secret Book",
     "FLAVOR": "\"I reviewed some historical battle texts. One can glean many tactics from the past.\"",
-    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add an #pAnathema to your hand."]
+    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b",
+      " #y${modID}:Focus and add an #pAnathema to your hand."]
   },
   "${modID}:Speedwing": {
     "NAME": "Speedwing",
@@ -21,13 +22,14 @@
     "NAME": "Dracoshield",
     "FLAVOR": "\"All right! I managed to sneak some practice in.\"",
     "DESCRIPTIONS": ["Every time you play #b",
-      " Attacks in a single turn, gain #b",
+      " #yAttacks in a single turn, gain #b",
       " #yBlur."]
   },
   "${modID}:BookOfNaga": {
     "NAME": "Book of Naga",
     "FLAVOR": "\"What's this? Hmm... Perhaps we could use it...\"",
-    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b1 #y${modID}:Focus and add a #pHex to your hand."]
+    "DESCRIPTIONS": ["At the start of your 2nd turn, gain #b",
+      " #y${modID}:Focus and add a #pHex to your hand."]
   },
   "${modID}:StatueFragment": {
     "NAME": "Statue Fragment",
@@ -37,26 +39,27 @@
   "${modID}:EnergyDrop": {
     "NAME": "Energy Drop",
     "FLAVOR": "\"I can tell I've gotten stronger.\"",
-    "DESCRIPTIONS": ["Whenever you play an Attack, gain #b",
+    "DESCRIPTIONS": ["Whenever you play an #yAttack, gain #b",
       " #yDeflect."]
   },
   "${modID}:Talisman": {
     "NAME": "Talisman",
     "FLAVOR": "\"We're not pawns of some scripted fate. I believe we're more. Much more...\"",
-    "DESCRIPTIONS": ["Whenever you #yExhaust a card other than Necronomicurse, gain #b",
+    "DESCRIPTIONS": ["Whenever you #yExhaust a card other than #rNecronomicurse, gain #b",
       " #yTemporary #yHP and #b",
       " #yBlock."]
   },
   "${modID}:KillingEdge": {
     "NAME": "Killing Edge",
     "FLAVOR": "\"Pick a god and pray!\"",
-    "DESCRIPTIONS": ["At the start of combat, lose 1 #yDexterity. Every #b12th Attack you play deals triple damage."]
+    "DESCRIPTIONS": ["At the start of combat, lose #b",
+      " #yDexterity. Every #b12th #yAttack you play deals triple damage."]
   },
   "${modID}:NagasTear": {
     "NAME": "Naga's Tear",
     "FLAVOR": "\"Our bonds give me strength!\"",
-    "DESCRIPTIONS": ["Upon pickup, raise your Max HP by #b",
-      ". At the start of combat, gain #b",
+    "DESCRIPTIONS": ["Upon pickup, gain #b",
+      " Max HP. At the start of combat, gain #b",
       " #yStrength, #yFocus, and #yDexterity."]
   }
 }

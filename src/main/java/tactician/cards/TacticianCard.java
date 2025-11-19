@@ -46,21 +46,17 @@ public abstract class TacticianCard extends CustomCard {
 
     final protected Map<String, LocalVarInfo> cardVariables = new HashMap<>();
 
-    public TacticianCard(String ID, CardStats info) {
-        this(ID, info, getCardTextureString(removePrefix(ID), info.cardType));
-    }
+    public TacticianCard(String ID, CardStats info) { this(ID, info, getCardTextureString(removePrefix(ID), info.cardType)); }
     public TacticianCard(String ID, CardStats info, String cardImage) {
         this(ID, info.baseCost, info.cardType, info.cardTarget, info.cardRarity, info.cardColor, cardImage);
     }
     public TacticianCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color) {
         this(ID, cost, cardType, target, rarity, color, getCardTextureString(removePrefix(ID), cardType));
     }
-    public TacticianCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, String cardImage)
-    {
+    public TacticianCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, String cardImage) {
         super(ID, getName(ID), cardImage, cost, getInitialDescription(ID), cardType, color, rarity, target);
         this.cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
         this.originalName = cardStrings.NAME;
-
         this.baseCost = cost;
         this.upgradesDescription = cardStrings.UPGRADE_DESCRIPTION != null;
         this.upgradeCost = false;
@@ -78,16 +74,14 @@ public abstract class TacticianCard extends CustomCard {
     }
     private static String getInitialDescription(String ID) { return CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION; }
 
-    //Methods meant for constructor use
+    // Methods intended for constructor use.
     protected final void setDamage(int damage)
     {
         this.setDamage(damage, 0);
     }
-    protected final void setDamage(int damage, int damageUpgrade)
-    {
+    protected final void setDamage(int damage, int damageUpgrade) {
         this.baseDamage = this.damage = damage;
-        if (damageUpgrade != 0)
-        {
+        if (damageUpgrade != 0) {
             this.upgradeDamage = true;
             this.damageUpgrade = damageUpgrade;
         }
@@ -97,11 +91,9 @@ public abstract class TacticianCard extends CustomCard {
     {
         this.setBlock(block, 0);
     }
-    protected final void setBlock(int block, int blockUpgrade)
-    {
+    protected final void setBlock(int block, int blockUpgrade) {
         this.baseBlock = this.block = block;
-        if (blockUpgrade != 0)
-        {
+        if (blockUpgrade != 0) {
             this.upgradeBlock = true;
             this.blockUpgrade = blockUpgrade;
         }
@@ -111,11 +103,9 @@ public abstract class TacticianCard extends CustomCard {
     {
         this.setMagic(magic, 0);
     }
-    protected final void setMagic(int magic, int magicUpgrade)
-    {
+    protected final void setMagic(int magic, int magicUpgrade) {
         this.baseMagicNumber = this.magicNumber = magic;
-        if (magicUpgrade != 0)
-        {
+        if (magicUpgrade != 0) {
             this.upgradeMagic = true;
             this.magicUpgrade = magicUpgrade;
         }
@@ -126,7 +116,6 @@ public abstract class TacticianCard extends CustomCard {
     }
     protected final void setCustomVar(String key, int base, int upgrade) {
         setCustomVarValue(key, base, upgrade);
-
         if (!customVars.containsKey(key)) {
             QuickDynamicVariable var = new QuickDynamicVariable(key);
             customVars.put(key, var);
@@ -135,26 +124,16 @@ public abstract class TacticianCard extends CustomCard {
         }
     }
 
-    protected enum VariableType {
-        DAMAGE,
-        BLOCK,
-        MAGIC
-    }
+    protected enum VariableType { DAMAGE, BLOCK, MAGIC }
     protected final void setCustomVar(String key, VariableType type, int base) {
         setCustomVar(key, type, base, 0);
     }
     protected final void setCustomVar(String key, VariableType type, int base, int upgrade) {
         setCustomVarValue(key, base, upgrade);
-
         switch (type) {
-            case DAMAGE:
-                calculateVarAsDamage(key);
-                break;
-            case BLOCK:
-                calculateVarAsBlock(key);
-                break;
+            case DAMAGE: calculateVarAsDamage(key); break;
+            case BLOCK: calculateVarAsBlock(key); break;
         }
-
         if (!customVars.containsKey(key)) {
             QuickDynamicVariable var = new QuickDynamicVariable(key);
             customVars.put(key, var);
@@ -189,8 +168,7 @@ public abstract class TacticianCard extends CustomCard {
                     int result = c.damage;
                     c.damage = origVal;
                     return result;
-                });
-                break;
+                }); break;
             case BLOCK:
                 setVarCalculation(key, (c, m, baseVal)->{
                     int origBase = c.baseBlock, origVal = c.block;
@@ -202,16 +180,14 @@ public abstract class TacticianCard extends CustomCard {
                     int result = c.block;
                     c.block = origVal;
                     return result;
-                });
-                break;
+                }); break;
             default:
                 setVarCalculation(key, (c, m, baseVal)->{
                     int tmp = baseVal;
                     tmp = preCalc.apply(c, m, tmp);
                     tmp = postCalc.apply(c, m, tmp);
                     return tmp;
-                });
-                break;
+                }); break;
         }
 
         if (!customVars.containsKey(key)) {
@@ -242,13 +218,11 @@ public abstract class TacticianCard extends CustomCard {
     protected final void colorCustomVar(String key, Color normalColor, Color increasedColor, Color decreasedColor, Color upgradedColor) {
         LocalVarInfo var = getCustomVar(key);
         if (var == null) { throw new IllegalArgumentException("Attempted to set color of variable that hasn't been registered."); }
-
         var.normalColor = normalColor;
         var.increasedColor = increasedColor;
         var.decreasedColor = decreasedColor;
         var.upgradedColor = upgradedColor;
     }
-
 
     private LocalVarInfo getCustomVar(String key) { return cardVariables.get(key); }
 
@@ -267,6 +241,7 @@ public abstract class TacticianCard extends CustomCard {
             return result;
         });
     }
+
     protected void calculateVarAsBlock(String key) {
         setVarCalculation(key, (c, m, base)->{
             int origBase = c.baseBlock, origVal = c.block;
@@ -282,7 +257,6 @@ public abstract class TacticianCard extends CustomCard {
     protected void setVarCalculation(String key, TriFunction<TacticianCard, AbstractMonster, Integer, Integer> calculation) {
         cardVariables.get(key).calculation = calculation;
     }
-
     public int customVarBase(String key) {
         LocalVarInfo var = cardVariables.get(key);
         if (var == null) { return -1; }
@@ -309,8 +283,7 @@ public abstract class TacticianCard extends CustomCard {
         return var.upgraded;
     }
 
-    protected final void setCostUpgrade(int costUpgrade)
-    {
+    protected final void setCostUpgrade(int costUpgrade) {
         this.costUpgrade = costUpgrade;
         this.upgradeCost = true;
     }
@@ -318,26 +291,22 @@ public abstract class TacticianCard extends CustomCard {
     protected final void setEthereal(boolean ethereal) { this.setEthereal(ethereal, ethereal); }
     protected final void setInnate(boolean innate) {this.setInnate(innate, innate); }
     protected final void setSelfRetain(boolean retain) {this.setSelfRetain(retain, retain); }
-    protected final void setExhaust(boolean baseExhaust, boolean upgExhaust)
-    {
+    protected final void setExhaust(boolean baseExhaust, boolean upgExhaust) {
         this.baseExhaust = baseExhaust;
         this.upgExhaust = upgExhaust;
         this.exhaust = baseExhaust;
     }
-    protected final void setEthereal(boolean baseEthereal, boolean upgEthereal)
-    {
+    protected final void setEthereal(boolean baseEthereal, boolean upgEthereal) {
         this.baseEthereal = baseEthereal;
         this.upgEthereal = upgEthereal;
         this.isEthereal = baseEthereal;
     }
-    protected void setInnate(boolean baseInnate, boolean upgInnate)
-    {
+    protected void setInnate(boolean baseInnate, boolean upgInnate) {
         this.baseInnate = baseInnate;
         this.upgInnate = upgInnate;
         this.isInnate = baseInnate;
     }
-    protected void setSelfRetain(boolean baseRetain, boolean upgRetain)
-    {
+    protected void setSelfRetain(boolean baseRetain, boolean upgRetain) {
         this.baseRetain = baseRetain;
         this.upgRetain = upgRetain;
         this.selfRetain = baseRetain;
@@ -346,9 +315,7 @@ public abstract class TacticianCard extends CustomCard {
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         AbstractCard card = super.makeStatEquivalentCopy();
-
-        if (card instanceof TacticianCard)
-        {
+        if (card instanceof TacticianCard) {
             card.rawDescription = this.rawDescription;
             ((TacticianCard) card).upgradesDescription = this.upgradesDescription;
             ((TacticianCard) card).baseCost = this.baseCost;
@@ -370,8 +337,7 @@ public abstract class TacticianCard extends CustomCard {
             ((TacticianCard) card).upgRetain = this.upgRetain;
 
             for (Map.Entry<String, LocalVarInfo> varEntry : cardVariables.entrySet()) {
-                LocalVarInfo target = ((TacticianCard) card).getCustomVar(varEntry.getKey()),
-                        current = varEntry.getValue();
+                LocalVarInfo target = ((TacticianCard) card).getCustomVar(varEntry.getKey()), current = varEntry.getValue();
                 if (target == null) {
                     ((TacticianCard) card).setCustomVar(varEntry.getKey(), current.base, current.upgrade);
                     target = ((TacticianCard) card).getCustomVar(varEntry.getKey());
@@ -394,7 +360,6 @@ public abstract class TacticianCard extends CustomCard {
                 if (cardStrings.UPGRADE_DESCRIPTION == null) { TacticianMod.logger.error("Card " + cardID + " upgrades description and has null upgrade description."); }
                 else { this.rawDescription = cardStrings.UPGRADE_DESCRIPTION; }
             }
-
             if (upgradeCost) {
                 if (isCostModified && this.cost < this.baseCost && this.cost >= 0) {
                     int diff = this.costUpgrade - this.baseCost; // This is how the upgrade alters card cost.
@@ -407,7 +372,6 @@ public abstract class TacticianCard extends CustomCard {
             if (upgradeDamage) { this.upgradeDamage(damageUpgrade); }
             if (upgradeBlock) { this.upgradeBlock(blockUpgrade); }
             if (upgradeMagic) { this.upgradeMagicNumber(magicUpgrade); }
-
             for (LocalVarInfo var : cardVariables.values()) {
                 if (var.upgrade != 0) {
                     var.base += var.upgrade;
@@ -415,7 +379,6 @@ public abstract class TacticianCard extends CustomCard {
                     var.upgraded = true;
                 }
             }
-
             if (baseExhaust ^ upgExhaust) { this.exhaust = upgExhaust; }
             if (baseInnate ^ upgInnate) { this.isInnate = upgInnate; }
             if (baseEthereal ^ upgEthereal) { this.isEthereal = upgEthereal; }
@@ -425,21 +388,16 @@ public abstract class TacticianCard extends CustomCard {
     }
 
     boolean inCalc = false;
-
     @Override
     public void applyPowers() {
         if (!inCalc) {
             inCalc = true;
-            for (LocalVarInfo var : cardVariables.values()) {
-                var.value = var.calculation.apply(this, null, var.base);
-            }
+            for (LocalVarInfo var : cardVariables.values()) { var.value = var.calculation.apply(this, null, var.base); }
             if (isMultiDamage) {
                 ArrayList<AbstractMonster> monsters = AbstractDungeon.getCurrRoom().monsters.monsters;
                 AbstractMonster m;
                 for (LocalVarInfo var : cardVariables.values()) {
-                    if (var.aoeValue == null || var.aoeValue.length != monsters.size())
-                        var.aoeValue = new int[monsters.size()];
-
+                    if (var.aoeValue == null || var.aoeValue.length != monsters.size()) { var.aoeValue = new int[monsters.size()]; }
                     for (int i = 0; i < monsters.size(); ++i) {
                         m = monsters.get(i);
                         var.aoeValue[i] = var.calculation.apply(this, m, var.base);
@@ -544,7 +502,6 @@ public abstract class TacticianCard extends CustomCard {
         Color upgradedColor = Settings.GREEN_TEXT_COLOR;
         Color increasedColor = Settings.GREEN_TEXT_COLOR;
         Color decreasedColor = Settings.RED_TEXT_COLOR;
-
         TriFunction<TacticianCard, AbstractMonster, Integer, Integer> calculation = LocalVarInfo::noCalc;
 
         public LocalVarInfo(int base, int upgrade) {

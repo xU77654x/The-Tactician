@@ -14,7 +14,7 @@ import tactician.character.TacticianRobin;
 import tactician.powers.LoseFocusPower;
 import static tactician.TacticianMod.makeID;
 
-public class SagePotion extends BasePotion {
+public class SagePotion extends TacticianPotion {
     public static final String ID = makeID(SagePotion.class.getSimpleName());
     private static final Color LIQUID_COLOR = Color.valueOf("0d429dff");
     private static final Color HYBRID_COLOR = CardHelper.getColor(64, 64, 212);

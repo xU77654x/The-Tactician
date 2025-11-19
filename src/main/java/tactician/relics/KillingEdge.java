@@ -12,7 +12,7 @@ import tactician.actions.PlaySoundAction;
 import tactician.powers.KillingEdgePower;
 import static tactician.TacticianMod.makeID;
 
-public class KillingEdge extends BaseRelic {
+public class KillingEdge extends TacticianRelic {
 	private static final String NAME = "KillingEdge";
 	public static final String ID = makeID(NAME);
 	private static final RelicTier RARITY = RelicTier.SHOP;
@@ -25,8 +25,24 @@ public class KillingEdge extends BaseRelic {
 	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
 
 	@Override
+	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+	@Override
 	public void onEquip() { this.counter = 0; }
 
+	@Override
+	public void atBattleStart() {
+		addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, -1), -1));
+		if (this.counter == COUNTER - 1) {
+			beginPulse();
+			this.pulse = true;
+			AbstractDungeon.player.hand.refreshHandLayout();
+			addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f));
+			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
+		}
+	}
+
+	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card.type == AbstractCard.CardType.ATTACK) {
 			this.counter++;
@@ -45,20 +61,6 @@ public class KillingEdge extends BaseRelic {
 			}
 		}
 	}
-
-	public void atBattleStart() {
-		addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, -1), -1));
-		if (this.counter == COUNTER - 1) {
-			beginPulse();
-			this.pulse = true;
-			AbstractDungeon.player.hand.refreshHandLayout();
-			addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f));
-			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
-		}
-	}
-
-	@Override
-	public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
 	@Override
 	public AbstractRelic makeCopy() { return new KillingEdge(); }

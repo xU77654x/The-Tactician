@@ -55,7 +55,7 @@ public class TutorialTactician extends FtueTip {
 		AbstractDungeon.overlayMenu.showBlackScreen();
 		this.x = 0.0F;
 		AbstractDungeon.overlayMenu.proceedButton.show();
-		CardCrawlGame.sound.play("tactician:Zeal");
+		CardCrawlGame.sound.playV("tactician:Zeal", 1.00F);
 		AbstractDungeon.overlayMenu.proceedButton.setLabel(labelnext);
 	}
 
@@ -69,7 +69,7 @@ public class TutorialTactician extends FtueTip {
 		if ((AbstractDungeon.overlayMenu.proceedButton.isHovered && InputHelper.justClickedLeft) || CInputActionSet.proceed.isJustPressed()) {
 			CInputActionSet.proceed.unpress();
 			if (this.currentSlot == (-tutorialPage + 1)) {
-				CardCrawlGame.sound.play("tactician:Hex");
+				CardCrawlGame.sound.playV("tactician:Hex", 1.00F);
 				AbstractDungeon.closeCurrentScreen();
 				AbstractDungeon.overlayMenu.proceedButton.hide();
 				AbstractDungeon.effectList.clear();
@@ -78,7 +78,7 @@ public class TutorialTactician extends FtueTip {
 			}
 			AbstractDungeon.overlayMenu.proceedButton.hideInstantly();
 			AbstractDungeon.overlayMenu.proceedButton.show();
-			CardCrawlGame.sound.play("tactician:Anathema");
+			CardCrawlGame.sound.playV("tactician:Anathema", 1.00F);
 			this.currentSlot--;
 			this.startX = this.x;
 			this.targetX = (this.currentSlot * Settings.WIDTH);

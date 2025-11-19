@@ -47,16 +47,12 @@ public class GrandmasterFormPower extends AbstractPower {
 		this.counter += stackAmount;
 	}
 
-	@SuppressWarnings("UnnecessaryReturnStatement")
 	@Override
 	public void onExhaust(AbstractCard card) {
-		if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-			if (this.counter <= 0) { return; }
-			else {
-				flash();
-				addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.amount), this.amount));
-				this.counter--;
-			}
+		if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && this.counter > 0) {
+			flash();
+			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, this.amount), this.amount));
+			this.counter--;
 		}
 	}
 

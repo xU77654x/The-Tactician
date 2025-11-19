@@ -36,7 +36,7 @@ public class GhostsTactician extends AbstractImageEvent {
 		this.imageEventText.setDialogOption(vanilla_ES.OPTIONS[2]);
 	}
 
-	public void onEnterRoom() { if (Settings.AMBIANCE_ON) { CardCrawlGame.sound.play("EVENT_GHOSTS"); }}
+	public void onEnterRoom() { if (Settings.AMBIANCE_ON) { CardCrawlGame.sound.playV("EVENT_GHOSTS", 1.00F); }}
 
 	protected void buttonEffect(int buttonPressed) {
 		switch (this.screenNum) {

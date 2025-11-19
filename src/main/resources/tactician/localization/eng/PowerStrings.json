@@ -41,7 +41,7 @@
     "DESCRIPTIONS": ["The next time you're attacked, deal #b",
       " damage back. NL A weapon-weak Attack only halves your Deflect.",
       "The next time you're attacked, deal #b",
-      " damage back. If the second-to-last card played was a Power, attacks only halve your Deflect."
+      " damage back. If the last two cards played were Attacks, enemy attacks only halve your Deflect."
     ]
   },
   "${modID}:LoseFocusPower": {

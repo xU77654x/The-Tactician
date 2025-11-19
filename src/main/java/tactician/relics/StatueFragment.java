@@ -8,10 +8,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.TacticalAdvice;
 import tactician.character.TacticianRobin;
+import tactician.util.Wiz;
 
 import static tactician.TacticianMod.makeID;
 
-public class StatueFragment extends BaseRelic{
+public class StatueFragment extends TacticianRelic {
     private static final String NAME = "StatueFragment";
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.SPECIAL;
@@ -27,14 +28,17 @@ public class StatueFragment extends BaseRelic{
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
 
     @Override
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+    @Override
+    public void onEquip() { if (Wiz.isInCombat()) { atBattleStart(); }}
+
+    @Override
     public void atBattleStart() {
         flash();
         addToTop(new MakeTempCardInHandAction(new TacticalAdvice(), 1));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
-
-    @Override
-    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() {

@@ -14,10 +14,12 @@ import tactician.cards.cardchoice.*;
 import tactician.character.TacticianRobin;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.*;
+import tactician.util.Wiz;
+
 import java.util.ArrayList;
 import static tactician.TacticianMod.makeID;
 
-public class Speedwing extends BaseRelic {
+public class Speedwing extends TacticianRelic {
     private static final String NAME = "Speedwing"; // Determines the filename and ID.
     public static final String ID = makeID(NAME); // Adds prefix to relic ID, resulting in modID:MyRelic
     private static final RelicTier RARITY = RelicTier.COMMON;
@@ -28,6 +30,12 @@ public class Speedwing extends BaseRelic {
 
     @Override
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + DEFLECT + this.DESCRIPTIONS[1]; }
+
+    @Override
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+    @Override
+    public void onEquip() { if (Wiz.isInCombat()) { this.counter = 0; }}
 
     @Override
     public void atBattleStart() { this.counter = 0; }
@@ -63,9 +71,6 @@ public class Speedwing extends BaseRelic {
         this.counter = 0;
         this.grayscale = false;
     }
-
-    @Override
-    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new Speedwing(); }

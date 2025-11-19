@@ -10,7 +10,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import java.util.Objects;
 import static tactician.TacticianMod.makeID;
 
-public class Talisman extends BaseRelic {
+public class Talisman extends TacticianRelic {
     private static final String NAME = "Talisman";
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.RARE;
@@ -24,6 +24,9 @@ public class Talisman extends BaseRelic {
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + TEMPHP + this.DESCRIPTIONS[1] + BLOCK + this.DESCRIPTIONS[2]; }
 
     @Override
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+
+    @Override
     public void onExhaust(AbstractCard card) {
         if (!Objects.equals(card.cardID, Necronomicurse.ID)) {
             flash();
@@ -31,9 +34,6 @@ public class Talisman extends BaseRelic {
             addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, BLOCK));
         }
     }
-
-    @Override
-    public void playLandingSFX() { CardCrawlGame.sound.play("tactician:LevelUpFE8"); }
 
     @Override
     public AbstractRelic makeCopy() { return new Talisman(); }
