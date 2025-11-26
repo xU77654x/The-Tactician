@@ -25,7 +25,7 @@ public class NagasTear extends TacticianRelic {
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + MAXHP + this.DESCRIPTIONS[1] + STAT + this.DESCRIPTIONS[2]; }
 
     @Override
-    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
     @Override
     public void onEquip() { AbstractDungeon.player.increaseMaxHp(MAXHP, true); }

@@ -44,9 +44,11 @@ public class Thoron extends Tactician7ThunderCard {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             addToBot(new VFXAction(p, new ThoronEffect("tactician:Thoron_Cast", 1.50f), 0.01F));
             for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
-                calculateCardDamage(mo);
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+                if (!mo.isDeadOrEscaped()) {
+                    calculateCardDamage(mo);
+                    addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+                    addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+                }
             }
             if (this.upgraded) { addToBot(new MakeTempCardInHandAction(new Hex(), 1)); }
             else { addToBot(new MakeTempCardInDrawPileAction(new Hex(), 1, true, true)); }

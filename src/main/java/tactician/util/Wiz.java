@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
@@ -69,13 +70,8 @@ public class Wiz {
     }
 
     public static boolean isInCombat() {
-        AbstractRoom currentRoom = AbstractDungeon.getCurrRoom();
-        return (currentRoom != null && currentRoom.monsters != null && AbstractDungeon.player != null && !AbstractDungeon.player.isEscaping && !currentRoom.smoked && currentRoom.phase != AbstractRoom.RoomPhase.EVENT && !currentRoom.monsters.areMonstersDead());
-    }
-
-    /*public static boolean isInCombat() {
         return (CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT);
-    } */
+    }
 
     public static void topDeck(AbstractCard c, int i) { AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c, i, false, true)); }
 
@@ -102,7 +98,7 @@ public class Wiz {
                 weakest = m;
                 continue;
             }
-            if (weakest.currentHealth > m.currentHealth) { weakest = m; }
+            if (weakest.currentHealth > m.currentHealth || weakest.isDeadOrEscaped()) { weakest = m; }
         }
         return weakest;
     }
@@ -114,7 +110,7 @@ public class Wiz {
                 strongest = m;
                 continue;
             }
-            if (strongest.currentHealth < m.currentHealth) { strongest = m; }
+            if (strongest.currentHealth < m.currentHealth|| strongest.isDeadOrEscaped()) { strongest = m; }
         }
         return strongest;
     }

@@ -35,7 +35,7 @@ public class PartOfThePlan extends TacticianCard {
             addToBot(new PlaySoundAction("tactician:PartOfThePlan", 1.50f));
             addToBot(new ApplyPowerAction(p, p, new BarricadePower(p)));
         }
-        for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { if (!mo.hasPower(BarricadePower.POWER_ID)) { addToBot(new ApplyPowerAction(mo, p, new BarricadePower(mo))); }}
+        for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { if (!mo.hasPower(BarricadePower.POWER_ID) && !mo.isDeadOrEscaped()) { addToBot(new ApplyPowerAction(mo, p, new BarricadePower(mo))); }}
     }
 
     @Override

@@ -21,7 +21,7 @@ public class SeraphRobe extends TacticianRelic {
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + HEAL + this.DESCRIPTIONS[1] + GOLD + this.DESCRIPTIONS[2]; }
 
     @Override
-    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
     public boolean canSpawn() { return (Settings.isEndless || AbstractDungeon.floorNum <= 33); } // Cannot spawn on or after the boss chest of Act 2.
 

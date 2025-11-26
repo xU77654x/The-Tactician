@@ -27,13 +27,14 @@ public class BookOfNaga extends TacticianRelic {
 	}
 
 	@Override
-	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
+	public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + FOCUS + this.DESCRIPTIONS[1]; }
 
 	@Override
-	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
+	/*
 	@Override
-	public void onEquip() { if (Wiz.isInCombat()) { this.counter = 0; }}
+	public void onEquip() { if (Wiz.isInCombat()) { this.counter = 0; }} */
 
 	@Override
 	public void atBattleStart() { this.counter = 0; }

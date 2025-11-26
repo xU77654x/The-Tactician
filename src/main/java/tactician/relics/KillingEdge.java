@@ -18,21 +18,22 @@ public class KillingEdge extends TacticianRelic {
 	private static final RelicTier RARITY = RelicTier.SHOP;
 	private static final LandingSound SOUND = LandingSound.CLINK;
 	private static final int COUNTER = 12;
+	private static final int DEXTERITY = 1;
 
 	public KillingEdge() { super(ID, NAME, RARITY, SOUND); }
 
 	@Override
-	public String getUpdatedDescription() { return this.DESCRIPTIONS[0]; }
+	public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + DEXTERITY + this.DESCRIPTIONS[1]; }
 
 	@Override
-	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
 	@Override
 	public void onEquip() { this.counter = 0; }
 
 	@Override
 	public void atBattleStart() {
-		addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, -1), -1));
+		addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, -DEXTERITY), -DEXTERITY));
 		if (this.counter == COUNTER - 1) {
 			beginPulse();
 			this.pulse = true;

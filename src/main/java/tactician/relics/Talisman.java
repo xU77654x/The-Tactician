@@ -24,7 +24,7 @@ public class Talisman extends TacticianRelic {
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + TEMPHP + this.DESCRIPTIONS[1] + BLOCK + this.DESCRIPTIONS[2]; }
 
     @Override
-    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
     @Override
     public void onExhaust(AbstractCard card) {

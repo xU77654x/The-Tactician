@@ -32,10 +32,10 @@ public class Speedwing extends TacticianRelic {
     public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + DEFLECT + this.DESCRIPTIONS[1]; }
 
     @Override
-    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.95F); }
+    public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
-    @Override
-    public void onEquip() { if (Wiz.isInCombat()) { this.counter = 0; }}
+    /*@Override
+    public void onEquip() { if (Wiz.isInCombat()) { this.counter = 0; }} */
 
     @Override
     public void atBattleStart() { this.counter = 0; }

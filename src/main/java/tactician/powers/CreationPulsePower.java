@@ -46,15 +46,15 @@ public class CreationPulsePower extends AbstractPower implements OnReceivePowerP
 
 	@Override
 	public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-		if (power.ID.equals(LoseStrengthPower.POWER_ID) && stackAmount > 0) { for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
+		if (power.ID.equals(LoseStrengthPower.POWER_ID) && stackAmount > 0) { for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { if (!mo.isDeadOrEscaped()) {
 			addToBot(new ApplyPowerAction(mo, this.owner, new VulnerablePower(mo, this.amount, false), this.amount, true, AbstractGameAction.AttackEffect.NONE)); }
-		}
-		if (power.ID.equals(LoseDexterityPower.POWER_ID) && stackAmount > 0) { for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
+		}}
+		if (power.ID.equals(LoseDexterityPower.POWER_ID) && stackAmount > 0) { for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { if (!mo.isDeadOrEscaped()) {
 			addToBot(new ApplyPowerAction(mo, this.owner, new WeakPower(mo, this.amount, false), this.amount, true, AbstractGameAction.AttackEffect.NONE)); }
-		}
-		if (power.ID.equals(LoseFocusPower.POWER_ID) && stackAmount > 0) { for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
+		}}
+		if (power.ID.equals(LoseFocusPower.POWER_ID) && stackAmount > 0) { for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) { if (!mo.isDeadOrEscaped()) {
 			addToBot(new ApplyPowerAction(mo, this.owner, new LockOnPower(mo, this.amount), this.amount, true, AbstractGameAction.AttackEffect.NONE)); }
-		}
+		}}
 		return OnReceivePowerPower.super.onReceivePowerStacks(power, target, source, stackAmount);
 	}
 }
