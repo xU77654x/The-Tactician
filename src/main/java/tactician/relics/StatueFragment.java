@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.cards.other.TacticalAdvice;
 import tactician.character.TacticianRobin;
-import tactician.util.Wiz;
 
 import static tactician.TacticianMod.makeID;
 
