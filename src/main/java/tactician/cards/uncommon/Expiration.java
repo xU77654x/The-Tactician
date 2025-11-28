@@ -7,12 +7,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.Circlet;
-import com.megacrit.cardcrawl.relics.MedicalKit;
 import tactician.actions.EasyModalChoiceAction;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.cards.cardchoice.TempBlueCandle;
-import tactician.cards.cardchoice.TempMedicalKit;
 import tactician.cards.cardchoice.TempCirclet;
 import tactician.character.TacticianRobin;
 import tactician.powers.ExpirationPower;
@@ -37,12 +35,11 @@ public class Expiration extends TacticianCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID)) || Boolean.FALSE.equals(p.hasRelic(MedicalKit.ID))) {
+        if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID))) {
             ArrayList<AbstractCard> easyCardList = new ArrayList<>();
-            if (Boolean.FALSE.equals(p.hasRelic(BlueCandle.ID))) { easyCardList.add(new TempBlueCandle(() -> FragileRelics.obtainFragileRelic(new BlueCandle()))); }
-            if (Boolean.FALSE.equals(p.hasRelic(MedicalKit.ID))) { easyCardList.add(new TempMedicalKit(() -> FragileRelics.obtainFragileRelic(new MedicalKit()))); }
+            easyCardList.add(new TempBlueCandle(() -> FragileRelics.obtainFragileRelic(new BlueCandle())));
             easyCardList.add(new TempCirclet(() -> FragileRelics.obtainFragileRelic(new Circlet())));
-            addToTop(new EasyModalChoiceAction(easyCardList));
+            addToTop(new EasyModalChoiceAction(easyCardList, 1, "Select a relic to gain."));
         }
         else { addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F)); }
         addToBot(new PlaySoundAction("tactician:Expiration", 1.25f));

@@ -73,6 +73,11 @@ public class Wiz {
         return (CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT);
     }
 
+    public static boolean isInCombatRelic() {
+        AbstractRoom currentRoom = AbstractDungeon.getCurrRoom();
+        return (CardCrawlGame.isInARun() && currentRoom != null && currentRoom.monsters != null && AbstractDungeon.player != null && !AbstractDungeon.player.isEscaping && !currentRoom.smoked && currentRoom.phase != AbstractRoom.RoomPhase.EVENT && !currentRoom.monsters.areMonstersDead());
+    }
+
     public static void topDeck(AbstractCard c, int i) { AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c, i, false, true)); }
 
     public static void topDeck(AbstractCard c) { topDeck(c, 1); }

@@ -3,10 +3,12 @@ package tactician.cards.uncommon;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
+import tactician.powers.DeflectPower;
 import tactician.powers.VantagePower;
 import tactician.util.CardStats;
 
@@ -22,13 +24,15 @@ public class Vantage extends TacticianCard {
 
     public Vantage() {
         super(ID, info);
-        setMagic(3, 2);
+        setMagic(4, 4);
+        setSelfRetain(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new PlaySoundAction("tactician:Vantage", 1.00f));
-        addToBot(new ApplyPowerAction(p, p, new VantagePower(this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new VantagePower(AbstractDungeon.player)));
     }
 
     @Override

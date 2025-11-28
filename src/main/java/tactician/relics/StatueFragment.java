@@ -30,8 +30,8 @@ public class StatueFragment extends TacticianRelic {
     @Override
     public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
-    /*@Override
-    public void onEquip() { if (Wiz.isInCombat()) { atBattleStart(); }} */
+    @Override
+    public void onEquip() { addToTop(new MakeTempCardInHandAction(new TacticalAdvice(), 1)); }
 
     @Override
     public void atBattleStart() {

@@ -75,8 +75,7 @@
   },
   "${modID}:VantagePower": {
     "NAME": "Vantage",
-    "DESCRIPTIONS": ["When you lose #yDeflect from an enemy attack, lose #b",
-      " less."]
+    "DESCRIPTIONS": ["Your #yDeflect damages ALL enemies."]
   },
   "${modID}:MaxHandSizePower": {
     "NAME": "Max Hand Size Plus",

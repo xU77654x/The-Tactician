@@ -294,7 +294,7 @@
   },
   "${modID}:Vantage": {
     "NAME": "Vantage",
-    "DESCRIPTION": "Whenever you lose ${modID}:Deflect from an enemy attack, lose !M! less. ${modID}:Deflect damages NL ALL enemies."
+    "DESCRIPTION": "Retain. NL Gain !M! ${modID}:Deflect. NL Your ${modID}:Deflect NL damages ALL enemies."
   },
   "${modID}:CreationPulse": {
     "NAME": "Creation Pulse",
@@ -302,8 +302,8 @@
   },
   "${modID}:Expiration": {
     "NAME": "Expiration",
-    "DESCRIPTION": "Gain a Blue Candle or Medical Kit for the combat. When you Exhaust a card, ALL enemies lose !M! HP.",
-    "EXTENDED_DESCRIPTION": ["It seems that I already have both of these relics."]
+    "DESCRIPTION": "Choose to gain a Blue Candle for the rest of combat. When you Exhaust a card, ALL enemies lose !M! HP.",
+    "EXTENDED_DESCRIPTION": ["It seems that I already have a Blue Candle."]
   },
   "${modID}:DeathBlow": {
     "NAME": "Death Blow",

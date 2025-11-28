@@ -32,8 +32,14 @@ public class SecretBook extends TacticianRelic {
 	@Override
 	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
-	/*@Override
-	public void onEquip() { if (CardCrawlGame.isInARun()) { if (Wiz.isInCombat()) { this.counter = 1; }}} */
+	@Override
+	public void onEquip() {
+		if (AbstractDungeon.currMapNode == null) { this.counter = -1; }
+		else {
+			if (Wiz.isInCombatRelic()) { this.counter = 1; }
+			else { this.counter = -1; }
+		}
+	}
 
 	@Override
 	public void atBattleStart() { this.counter = 0; }

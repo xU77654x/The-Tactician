@@ -2,8 +2,8 @@ package tactician.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import tactician.TacticianMod;
@@ -18,11 +18,11 @@ public class VantagePower extends AbstractPower {
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-	public VantagePower(int amount) {
+	public VantagePower(AbstractCreature owner) {
 		this.name = NAME;
 		this.ID = POWER_ID;
-		this.owner = AbstractDungeon.player;
-		this.amount = amount;
+		this.owner = owner;
+		this.amount = -1;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
 		this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 64, 64);
@@ -31,7 +31,7 @@ public class VantagePower extends AbstractPower {
 	}
 
 	@Override
-	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]; }
+	public void updateDescription() { this.description = DESCRIPTIONS[0]; }
 
 	@Override
 	public void playApplyPowerSfx() { }

@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.actions.PlaySoundAction;
 import tactician.powers.KillingEdgePower;
+import tactician.util.Wiz;
+
 import static tactician.TacticianMod.makeID;
 
 public class KillingEdge extends TacticianRelic {
@@ -17,30 +19,30 @@ public class KillingEdge extends TacticianRelic {
 	public static final String ID = makeID(NAME);
 	private static final RelicTier RARITY = RelicTier.SHOP;
 	private static final LandingSound SOUND = LandingSound.CLINK;
-	private static final int COUNTER = 12;
+	private static final int COUNTER = 8;
 	private static final int DEXTERITY = 1;
 
 	public KillingEdge() { super(ID, NAME, RARITY, SOUND); }
 
 	@Override
-	public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + DEXTERITY + this.DESCRIPTIONS[1]; }
+	public String getUpdatedDescription() { return this.DESCRIPTIONS[0] + DEXTERITY + this.DESCRIPTIONS[1] + COUNTER + this.DESCRIPTIONS[2]; }
 
 	@Override
 	public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
 	@Override
-	public void onEquip() { this.counter = 0; }
+	public void onEquip() {
+		if (AbstractDungeon.currMapNode == null) { this.counter = -1; }
+		else {
+			if (Wiz.isInCombatRelic()) { atBattleStart(); }
+			else { this.counter = -1; }
+		}
+	}
 
 	@Override
 	public void atBattleStart() {
+		this.counter = 0;
 		addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, -DEXTERITY), -DEXTERITY));
-		if (this.counter == COUNTER - 1) {
-			beginPulse();
-			this.pulse = true;
-			AbstractDungeon.player.hand.refreshHandLayout();
-			addToBot(new PlaySoundAction("tactician:Luna_KillingEdgeGain", 1.00f));
-			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KillingEdgePower(AbstractDungeon.player, 1), 1));
-		}
 	}
 
 	@Override
@@ -62,6 +64,9 @@ public class KillingEdge extends TacticianRelic {
 			}
 		}
 	}
+
+	@Override
+	public void onVictory() { this.counter = -1; }
 
 	@Override
 	public AbstractRelic makeCopy() { return new KillingEdge(); }

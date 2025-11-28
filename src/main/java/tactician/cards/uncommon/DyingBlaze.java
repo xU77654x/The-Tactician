@@ -28,12 +28,12 @@ public class DyingBlaze extends Tactician6FireCard {
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            0
+            1
     );
 
     public DyingBlaze() {
         super(ID, info);
-        setDamage(3, 2);
+        setDamage(8, 3);
         setMagic(2, 1);
         tags.add(CustomTags.FIRE);
     }

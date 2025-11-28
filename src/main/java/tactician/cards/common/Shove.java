@@ -28,7 +28,7 @@ public class Shove extends Tactician9CopyCard {
 
     public Shove() {
         super(ID, info);
-        setDamage(5, 3);
+        setDamage(3, 3);
         setMagic(1, 0);
         tags.add(CustomTags.COPY);
         this.isMultiDamage = true;

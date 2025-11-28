@@ -2,6 +2,7 @@ package tactician.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -50,7 +51,7 @@ public class KillingEdgePower extends AbstractPower {
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card.type == AbstractCard.CardType.ATTACK) {
 			addToBot(new WaitAction(1.0F));
-			addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+			addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
 		}
 	}
 

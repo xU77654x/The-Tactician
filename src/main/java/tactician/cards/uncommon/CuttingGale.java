@@ -27,11 +27,11 @@ public class CuttingGale extends Tactician5WindCard {
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            2
+            1
     );
     public CuttingGale() {
         super(ID, info);
-        setDamage(10, 3);
+        setDamage(5, 3);
         tags.add(CustomTags.WIND);
     }
 

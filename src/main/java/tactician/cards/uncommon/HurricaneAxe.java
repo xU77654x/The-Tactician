@@ -38,7 +38,7 @@ public class HurricaneAxe extends TacticianCard {
 
     public HurricaneAxe() {
         super(ID, info);
-        setDamage(14, 4);
+        setDamage(13, 4);
         this.cardsToPreview = new Anathema();
     }
 

@@ -53,7 +53,8 @@
     "NAME": "Killing Edge",
     "FLAVOR": "\"Pick a god and pray!\"",
     "DESCRIPTIONS": ["At the start of combat, lose #b",
-      " #yDexterity. Every #b12th #yAttack you play deals triple damage."]
+      " #yDexterity. Every ",
+      "th #yAttack you play deals triple damage. Resets at the end of combat."]
   },
   "${modID}:NagasTear": {
     "NAME": "Naga's Tear",

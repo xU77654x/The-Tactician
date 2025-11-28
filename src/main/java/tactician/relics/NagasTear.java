@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import tactician.character.TacticianRobin;
+import tactician.util.Wiz;
+
 import static tactician.TacticianMod.makeID;
 
 public class NagasTear extends TacticianRelic {
@@ -28,7 +30,10 @@ public class NagasTear extends TacticianRelic {
     public void playLandingSFX() { CardCrawlGame.sound.playV("tactician:LevelUpFE8", 0.80F); }
 
     @Override
-    public void onEquip() { AbstractDungeon.player.increaseMaxHp(MAXHP, true); }
+    public void onEquip() {
+        AbstractDungeon.player.increaseMaxHp(MAXHP, true);
+        if (AbstractDungeon.currMapNode != null) { if (Wiz.isInCombatRelic()) { atBattleStart(); } }
+    }
 
     @Override
     public void atBattleStart() {

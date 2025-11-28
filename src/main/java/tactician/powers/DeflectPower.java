@@ -69,26 +69,14 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
             AbstractMonster m = (AbstractMonster)info.owner;
             int weaponStrong = max(0, Wiz.playerWeaponCalc(m, 9));
             if (weaponStrong == 0) {
-                if (this.owner.hasPower(VantagePower.POWER_ID)) {
-                    int acrobat = this.owner.getPower(VantagePower.POWER_ID).amount;
-                    if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, deflect - acrobat)); }
-                    addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-                }
-                else {
-                    addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-                    addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-                }
+                addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+                if (this.owner.hasPower(VantagePower.POWER_ID)) { addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
+                else { addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
             }
-            else { // Ignore this error; IntelliJ is lying.
-                if (this.owner.hasPower(VantagePower.POWER_ID)) {
-                    int acrobat = this.owner.getPower(VantagePower.POWER_ID).amount;
-                    if (deflect > acrobat) { addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2) - acrobat)); }
-                    addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-                }
-                else {
-                    addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2)));
-                    addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-                }
+            else {
+                addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2)));
+                if (this.owner.hasPower(VantagePower.POWER_ID)) { addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
+                else { addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
                 addToTop(new WaitAction(0.1F));
                 addToTop(new PlaySoundAction("tactician:DeflectReceiveHit", 1.25f));
             }
