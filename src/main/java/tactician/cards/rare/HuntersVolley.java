@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
+import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import tactician.cards.Tactician4BowCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
@@ -42,6 +43,7 @@ public class HuntersVolley extends Tactician4BowCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Wiz.getCopyColor()));
         addToBot(new VFXAction(new PlayVoiceEffect("CA_Bow")));
         calculateCardDamage(m);
         addToBot(new VFXAction(new TacticianBowEffect(m.hb.cX, m.hb.cY, "tactician:HuntersVolley_Hit1", 1.00f, Color.SCARLET.cpy())));

@@ -9,12 +9,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlameBarrierEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician6FireCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
+import tactician.effects.cards.fire.BolganoneEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon6FirePower;
 import tactician.util.CardStats;
@@ -40,10 +42,11 @@ public class Bolganone extends Tactician6FireCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Wiz.getCopyColor()));
         addToBot(new VFXAction(new PlayVoiceEffect("Bolganone")));
         calculateCardDamage(m);
         addToBot(new PlaySoundAction("tactician:Bolganone", 1.50f));
-        addToBot(new VFXAction(new FlameBarrierEffect(m.hb.cX, m.hb.cY - 50), 0.0F));
+        addToBot(new VFXAction(new BolganoneEffect(m.hb.cX, m.hb.cY - 50), 0.0F));
         addToBot(new VFXAction(new InflameEffect(m), 0.25F));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
 

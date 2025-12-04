@@ -39,16 +39,16 @@ public class RightClickPatch {
 		}
 	}
 
-	public static void onRightClick() { if (RightClickPatch.action == null && card.hasTag(CustomTags.MUTATE )) {
+	public static void onRightClick() { if (RightClickPatch.action == null && card.hasTag(CustomTags.MUTATE)) {
 		boolean upgraded = card.upgraded;
-		if (Objects.equals(card.cardID, Strike1Sword.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend1Sword(), upgraded)); }
-		if (Objects.equals(card.cardID, Strike2Lance.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend2Lance(), upgraded)); }
-		if (Objects.equals(card.cardID, Strike3Axe.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend3Axe(), upgraded)); }
-		if (Objects.equals(card.cardID, Strike4Bow.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend4Bow(), upgraded)); }
-		if (Objects.equals(card.cardID, Defend5Wind.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike5Wind(), upgraded)); }
-		if (Objects.equals(card.cardID, Defend6Fire.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike6Fire(), upgraded)); }
-		if (Objects.equals(card.cardID, Defend7Thunder.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike7Thunder(), upgraded)); }
-		if (Objects.equals(card.cardID, Defend8Dark.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike8Dark(), upgraded)); }
+		if (Objects.equals(card.cardID, Strike1Sword.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend1Sword(), upgraded, false)); }
+		if (Objects.equals(card.cardID, Strike2Lance.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend2Lance(), upgraded, false)); }
+		if (Objects.equals(card.cardID, Strike3Axe.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend3Axe(), upgraded, false)); }
+		if (Objects.equals(card.cardID, Strike4Bow.ID)) { Wiz.atb(new TacticianMutateAction(card, new Defend4Bow(), upgraded, false)); }
+		if (Objects.equals(card.cardID, Defend5Wind.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike5Wind(), upgraded, false)); }
+		if (Objects.equals(card.cardID, Defend6Fire.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike6Fire(), upgraded, false)); }
+		if (Objects.equals(card.cardID, Defend7Thunder.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike7Thunder(), upgraded, false)); }
+		if (Objects.equals(card.cardID, Defend8Dark.ID)) { Wiz.atb(new TacticianMutateAction(card, new Strike8Dark(), upgraded, false)); }
 	}
 	}
 }

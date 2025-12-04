@@ -117,7 +117,7 @@
   },
   "${modID}:Reposition": {
     "NAME": "Reposition",
-    "DESCRIPTION": "Gain !B! Block. Dexterity grants Deflect instead of additional Block."
+    "DESCRIPTION": "Gain !B! Block. Dexterity grants ${modID}:Deflect instead of additional Block."
   },
   "${modID}:Discipline": {
     "NAME": "Discipline",
@@ -154,7 +154,7 @@
 
   "${modID}:CrosswiseCut": {
     "NAME": "Crosswise Cut",
-    "DESCRIPTION": "Deal !D! damage twice. NL Gain !M! ${modID}:Deflect."
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage again for each of your NL unique debuffs."
   },
   "${modID}:FrozenLance": {
     "NAME": "Frozen Lance",
@@ -188,7 +188,7 @@
   },
   "${modID}:LevinSword": {
     "NAME": "Levin Sword",
-    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Add a [#e087a4]Hex to your hand. Gain !M! Deflect."
+    "DESCRIPTION": "Select one of NL ${modID}:Sword or ${modID}:Thunder. NL Deal !D! damage. NL Add a [#e087a4]Hex to your hand. Gain !M! ${modID}:Deflect."
   },
   "${modID}:FlameLance": {
     "NAME": "Flame Lance",
@@ -244,8 +244,8 @@
   },
   "${modID}:Locktouch": {
     "NAME": "Locktouch",
-    "DESCRIPTION": "Add an [#e087a4]Anathema and a [#e087a4]Hex to your hand.",
-    "UPGRADE_DESCRIPTION": "Exhaust your held Statuses and Curses. NL Add an [#e087a4]Anathema and a [#e087a4]Hex to your hand."
+    "DESCRIPTION": "Add an [#e087a4]Anathema and a [#e087a4]Hex to your hand. NL Exhaustive !stslib:ex!.",
+    "UPGRADE_DESCRIPTION": "Exhaust your held Statuses and Curses. NL Add an [#e087a4]Anathema and a [#e087a4]Hex to your hand. NL Exhaustive !stslib:ex!."
   },
   "${modID}:Perceptive": {
     "NAME": "Perceptive",
@@ -340,11 +340,11 @@
   },
   "${modID}:Excalibur": {
     "NAME": "Excalibur",
-    "DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL {@@}At the start of your NL turn, draw 1 card. NL If weapon-strong, gain NL !M! ${modID}:Max_Hand_Size."
+    "DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL At the start of your NL turn, draw 1 card. NL If weapon-strong, gain NL !M! ${modID}:Max_Hand_Size."
   },
   "${modID}:Bolganone": {
     "NAME": "Bolganone",
-    "DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL If weapon-strong, NL gain !M! Deflect. NL Double your ${modID}:Deflect.",
+    "DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL If weapon-strong, NL gain !M! ${modID}:Deflect. NL Double your ${modID}:Deflect.",
     "UPGRADE_DESCRIPTION": "${modID}:Favor. Deal !D! damage. NL If weapon-strong, NL gain !M! ${modID}:Deflect. NL Triple your ${modID}:Deflect.",
     "EXTENDED_DESCRIPTION": ["Bolganone!"]
   },
@@ -532,5 +532,41 @@
   "${modID}:TempCirclet": {
     "NAME": "Circlet",
     "DESCRIPTION": "Gain a fragile Circlet."
+  },
+
+  "${modID}:Swap": {
+    "NAME": "Swap",
+    "DESCRIPTION": "Retain. NL Deal !D! damage. NL Reset your held Strikes NL and Defends to their default state."
+  },
+  "${modID}:DrawBack": {
+    "NAME": "Draw Back",
+    "DESCRIPTION": "stslib:Grave. NL Trigger your Orbs’ passive abilities. NL Gain !M! Weak."
+  },
+  "${modID}:Lunge": {
+    "NAME": "Lunge",
+    "DESCRIPTION": "Deal !D! damage. NL If weapon-strong, NL gain !${modID}:magicDeflect! ${modID}:Deflect. NL {@@}If weapon-weak, NL draw !M! card{!M!|1=|@=s}."
+  },
+  "${modID}:ConqueringFate": {
+    "NAME": "Conquering Fate",
+    "DESCRIPTION": "Deal !D! damage. NL {@@}Retain your hand for NL !M! turn{!M!|1=|@=s}. Select a NL weapon type to equip."
+  },
+  "${modID}:Sol": {
+    "NAME": "Sol",
+    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL ${modID}:Deflect lost this turn converts into Block NL for next turn.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain !M! ${modID}:Deflect. NL ${modID}:Deflect lost this turn converts into Block NL for next turn."
+  },
+  "${modID}:CantoControl": {
+    "NAME": "Canto Control",
+    "DESCRIPTION": "{@@}Whenever you NL Exhaust a Curse, NL draw !M! card{!M!|1=|@=s}.",
+    "UPGRADE_DESCRIPTION": "Innate. NL {@@}Whenever you NL Exhaust a Curse, NL draw !M! card{!M!|1=|@=s}."
+  },
+  "${modID}:Glacies": {
+    "NAME": "Glacies",
+    "DESCRIPTION": "Gain !B! Block. NL Trigger your first NL Orb !M! times. NL If weapon-strong, do this for all Orbs."
+  },
+  "${modID}:Deliverer": {
+    "NAME": "Deliverer",
+    "DESCRIPTION": "Whenever you lose NL Strength / Dexterity, NL gain !M! Block and NL !${modID}:magicStat! Dexterity / Strength.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you lose NL Strength / Dexterity, NL gain !M! Block and NL !${modID}:magicStat! Dexterity / Strength."
   }
 }

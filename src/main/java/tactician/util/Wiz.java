@@ -2,6 +2,7 @@ package tactician.util;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomSavable;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -217,6 +218,19 @@ public class Wiz {
             }
         } while(copyFlag);
         return effect;
+    }
+
+    public static Color getCopyColor() {
+        Color color = Color.LIGHT_GRAY.cpy();
+        if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { color = Color.RED.cpy(); }
+        else if (AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { color = Color.BLUE.cpy(); }
+        else if (AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { color = Color.GREEN.cpy(); }
+        else if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { color = Color.PINK.cpy(); }
+        else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { color = Color.CYAN.cpy(); }
+        else if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { color = Color.ORANGE.cpy(); }
+        else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { color = Color.YELLOW.cpy(); }
+        else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { color = Color.PURPLE.cpy(); }
+        return color;
     }
 
     public static int savedWeapon = 0;

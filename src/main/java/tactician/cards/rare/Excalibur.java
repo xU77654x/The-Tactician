@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawPower;
+import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.Tactician5WindCard;
 import tactician.character.TacticianRobin;
@@ -42,6 +43,7 @@ public class Excalibur extends Tactician5WindCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Wiz.getCopyColor()));
         addToBot(new PlaySoundAction("tactician:Excalibur_Cast", 1.33f));
         addToBot(new VFXAction(new PlayVoiceEffect("CA_MiscMagic")));
         calculateCardDamage(m);

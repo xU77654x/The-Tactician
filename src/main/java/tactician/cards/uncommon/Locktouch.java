@@ -1,5 +1,6 @@
 package tactician.cards.uncommon;
 
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -25,6 +26,8 @@ public class Locktouch extends TacticianCard {
 
 	public Locktouch() {
 		super(ID, info);
+		setMagic(3, 0);
+		ExhaustiveVariable.setBaseValue(this, this.magicNumber);
 	}
 
 	@Override

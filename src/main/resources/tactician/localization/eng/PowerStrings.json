@@ -140,5 +140,24 @@
     "DESCRIPTIONS": ["Your next attack deals triple damage.",
     "Your next #b",
     " attacks deal triple damage."]
+  },
+
+  "${modID}:SolPower": {
+    "NAME": "Sol",
+    "DESCRIPTIONS": ["#yDeflect lost this turn converts into #yBlock next turn.",
+      "#yDeflect lost for #b",
+      " turns converts into #yBlock next turn."]
+  },
+  "${modID}:CantoControlPower": {
+    "NAME": "Canto Control",
+    "DESCRIPTIONS": ["Whenever you #yExhaust a Curse, draw #b",
+      " card.",
+      " cards."]
+  },
+  "${modID}:DelivererPower": {
+    "NAME": "Deliverer",
+    "DESCRIPTIONS": ["Whenever you lose #yStrength, gain #b",
+      " #yBlock and #b1 #yDexterity. Whenever you lose #yDexterity, gain #b",
+      " #yBlock and #b1 #yStrength."]
   }
 }

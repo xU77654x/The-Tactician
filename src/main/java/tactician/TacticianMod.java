@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.jetbrains.annotations.NotNull;
 import tactician.cards.TacticianCard;
+import tactician.cards.additional.Swap;
 import tactician.character.TacticianRobin;
 import tactician.events.*;
 import tactician.potions.TacticianPotion;
@@ -57,6 +58,7 @@ public class TacticianMod implements
         StartGameSubscriber
 
 {
+    public static TacticianMod thismod;
     public static ModInfo info;
     public static String modID;
     static { loadModInfo(); }
@@ -66,42 +68,38 @@ public class TacticianMod implements
 
     public static Properties defaultSettings = new Properties();
     public static final String SKIP_TUTORIALS_SETTING = "Skip Tutorial";
-    public static Boolean skipTutorialsPlaceholder = true;
-    public static Boolean globalRelicsPlaceholder = true;
-    public static Boolean tempStatPatchPlaceholder = true;
-    public static ModLabeledToggleButton skipTutorials;
-    public static ModLabeledToggleButton globalRelics;
-    public static ModLabeledToggleButton tempStatPatch;
-    public static SpireConfig modConfig = null;
+    public static Boolean skipTutorials = true;
+    public static Boolean globalRelics = true;
+    public static Boolean tempStatPatch = true;
+    public static Boolean extraCardsTactician = true;
+    public static ModLabeledToggleButton skipTutorialsButton;
+    public static ModLabeledToggleButton globalRelicsButton;
+    public static ModLabeledToggleButton tempStatPatchButton;
+    public static ModLabeledToggleButton extraCardsTacticianButton;
+    public static SpireConfig config = null;
     public static WeaponTypeChart weaponTriangleChart;
 
     // This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
-        new TacticianMod();
+        thismod = new TacticianMod();
         TacticianRobin.Meta.registerColor();
+        try {
+            config = new SpireConfig(modID, makeID("Config"), defaultSettings);
+            defaultSettings.setProperty("Skip Tutorial", "FALSE");
+            defaultSettings.setProperty("Global Relics", "TRUE");
+            defaultSettings.setProperty("Temp Stat Patch", "TRUE");
+            defaultSettings.setProperty("Extra Cards Tactician", "FALSE");
+            skipTutorials = config.getBool("Skip Tutorial");
+            globalRelics = config.getBool("Global Relics");
+            tempStatPatch = config.getBool("Temp Stat Patch");
+            extraCardsTactician = config.getBool("Extra Cards Tactician");
+        }
+        catch (Exception e) { e.printStackTrace(); }
     }
 
     public TacticianMod() {
         BaseMod.subscribe(this); // This will make BaseMod trigger all the subscribers at their appropriate times.
 		logger.info("{} subscribed to BaseMod.", modID); // logger.info(modID + " subscribed to BaseMod.");
-        defaultSettings.setProperty("Skip Tutorial", "FALSE");
-        try {
-            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
-            skipTutorialsPlaceholder = config.getBool("Skip Tutorial");
-        }
-        catch (IOException e) { e.printStackTrace(); }
-        defaultSettings.setProperty("Global Relics", "TRUE");
-        try {
-            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
-            globalRelicsPlaceholder = config.getBool("Global Relics");
-        }
-        catch (IOException e) { e.printStackTrace(); }
-        defaultSettings.setProperty("Temp Stat Patch", "TRUE");
-        try {
-            SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
-            tempStatPatchPlaceholder = config.getBool("Temp Stat Patch");
-        }
-        catch (IOException e) { e.printStackTrace(); }
     }
 
     @Override
@@ -118,38 +116,45 @@ public class TacticianMod implements
         BaseMod.addEvent(new AddEventParams.Builder(FallingTactician.ID, FallingTactician.class).playerClass(TACTICIAN).overrideEvent(Falling.ID).create());
         registerPotions(); // Custom events and potions here.
 
-        skipTutorials = new ModLabeledToggleButton("Disable the Tutorial", 350.0F, 750.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, skipTutorialsPlaceholder, settingsPanel, label -> {}, button -> {
-            skipTutorialsPlaceholder = button.enabled;
+        skipTutorialsButton = new ModLabeledToggleButton("Disable the Tutorial", 350.0F, 750.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, skipTutorials, settingsPanel, label -> {}, button -> {
+            skipTutorials = button.enabled;
             try {
-                SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
-                config.setBool("Skip Tutorial", skipTutorialsPlaceholder);
+                config.setBool("Skip Tutorial", skipTutorials);
                 config.save();
             }
             catch (Exception e) { e.printStackTrace(); }
         });
-        settingsPanel.addUIElement(skipTutorials);
+        settingsPanel.addUIElement(skipTutorialsButton);
 
-        globalRelics = new ModLabeledToggleButton("All characters can obtain global relics. (Applies to current run; does not require title restart.)", 350.0F, 700.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, globalRelicsPlaceholder, settingsPanel, label -> {}, button -> {
-            globalRelicsPlaceholder = button.enabled;
+        globalRelicsButton = new ModLabeledToggleButton("All characters can obtain global relics. (Applies to current run. Restart not required.)", 350.0F, 700.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, globalRelics, settingsPanel, label -> {}, button -> {
+            globalRelics = button.enabled;
             try {
-                SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
-                config.setBool("Global Relics", globalRelicsPlaceholder);
+                config.setBool("Global Relics", globalRelics);
                 config.save();
             }
             catch (Exception e) { e.printStackTrace(); }
         });
-        settingsPanel.addUIElement(globalRelics);
+        settingsPanel.addUIElement(globalRelicsButton);
 
-        tempStatPatch = new ModLabeledToggleButton("Enable custom sprites for temp. Strength / Dexterity on all characters.", 350.0F, 650.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, globalRelicsPlaceholder, settingsPanel, label -> {}, button -> {
-            tempStatPatchPlaceholder = button.enabled;
+        tempStatPatchButton = new ModLabeledToggleButton("Enable custom sprites for temp. Strength / Dexterity on all characters.", 350.0F, 650.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, tempStatPatch, settingsPanel, label -> {}, button -> {
+            tempStatPatch = button.enabled;
             try {
-                SpireConfig config = new SpireConfig(modID, makeID("Config"), defaultSettings);
-                config.setBool("Temp Stat Patch", tempStatPatchPlaceholder);
+                config.setBool("Temp Stat Patch", tempStatPatch);
                 config.save();
             }
             catch (Exception e) { e.printStackTrace(); }
         });
-        settingsPanel.addUIElement(tempStatPatch);
+        settingsPanel.addUIElement(tempStatPatchButton);
+
+        extraCardsTacticianButton = new ModLabeledToggleButton("Add an additional 8 cards to the Tactician's card pool. (Restart required.)", 350.0F, 600.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, extraCardsTactician, settingsPanel, label -> {}, button -> {
+            extraCardsTactician = button.enabled;
+            try {
+                config.setBool("Extra Cards Tactician", extraCardsTactician);
+                config.save();
+            }
+            catch (Exception e) { e.printStackTrace(); }
+        });
+        settingsPanel.addUIElement(extraCardsTacticianButton);
 
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, settingsPanel);
     }
@@ -157,17 +162,14 @@ public class TacticianMod implements
     @Override
     public void receiveStartGame() {
         BaseMod.removeTopPanelItem(weaponTriangleChart);
-        if (AbstractDungeon.player.chosenClass == TACTICIAN) {
-            BaseMod.addTopPanelItem(weaponTriangleChart);
-        }
+        if (AbstractDungeon.player.chosenClass == TACTICIAN) { BaseMod.addTopPanelItem(weaponTriangleChart); }
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
-        // if (AbstractDungeon.ascensionLevel == 0 && floorNum == 1 && AbstractDungeon.player instanceof TacticianRobin) { AbstractDungeon.ftue = new TutorialTactician(); }
-        if (!skipTutorials.toggle.enabled && AbstractDungeon.player instanceof TacticianRobin) {
+        if (!skipTutorialsButton.toggle.enabled && AbstractDungeon.player instanceof TacticianRobin) {
             AbstractDungeon.ftue = new TutorialTactician();
-            skipTutorials.toggle.toggle();
+            skipTutorialsButton.toggle.toggle();
         }
     }
 
@@ -294,19 +296,16 @@ public class TacticianMod implements
 
     @Override
     public void receiveEditCards() {
-        new AutoAdd(modID) // Loads files from this mod
-            .packageFilter(TacticianCard.class) // In the same package as this class
-            .setDefaultSeen(true) // And marks them as seen in the compendium
-            .cards(); // Adds the cards
+        if (extraCardsTactician) { new AutoAdd(modID).packageFilter(TacticianCard.class).setDefaultSeen(true).cards(); }
+        else { new AutoAdd(modID).packageFilter(TacticianCard.class).notPackageFilter(Swap.class).setDefaultSeen(true).cards(); }
     }
 
     @Override
     public void receiveEditRelics() {
-        new AutoAdd(modID).any(TacticianRelic.class, (info, relic) -> { // Loads files from this mod. Run this code for any classes that extend this class.
+        new AutoAdd(modID).any(TacticianRelic.class, (info, relic) -> { // Loads files; runs for any classes that extend this class.
             if (relic.pool != null) { BaseMod.addRelicToCustomPool(relic, relic.pool); } // Register a custom character specific relic
             else { BaseMod.addRelic(relic, relic.relicType); } // Register a shared or base game character specific relic.
-            UnlockTracker.markRelicAsSeen(relic.relicId);
-            // If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
+            UnlockTracker.markRelicAsSeen(relic.relicId); // If annotated with @AutoAdd.Seen, the class is marked as seen.
         });
     }
 
@@ -412,6 +411,19 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:ChaosStyle", "tactician/audio/effect/ChaosStyle.ogg");
         BaseMod.addAudio("tactician:QuickBurn", "tactician/audio/effect/QuickBurn.ogg");
         BaseMod.addAudio("tactician:GrandmasterForm", "tactician/audio/effect/GrandmasterForm.ogg");
+
+        // Additional Cards
+        BaseMod.addAudio("tactician:Swap", "tactician/audio/effect/Swap.ogg");
+        BaseMod.addAudio("tactician:Swap_Strong", "tactician/audio/effect/Swap_Strong.ogg");
+        BaseMod.addAudio("tactician:Swap_Neutral", "tactician/audio/effect/Swap_Neutral.ogg");
+        BaseMod.addAudio("tactician:Swap_Weak", "tactician/audio/effect/Swap_Weak.ogg");
+        BaseMod.addAudio("tactician:DrawBack", "tactician/audio/effect/DrawBack.ogg");
+        BaseMod.addAudio("tactician:Lunge", "tactician/audio/effect/Lunge.ogg");
+        BaseMod.addAudio("tactician:ConqueringFate", "tactician/audio/effect/ConqueringFate.ogg");
+        BaseMod.addAudio("tactician:Sol", "tactician/audio/effect/Sol.ogg");
+        BaseMod.addAudio("tactician:CantoControl", "tactician/audio/effect/CantoControl.ogg");
+        BaseMod.addAudio("tactician:Glacies", "tactician/audio/effect/Glacies.ogg");
+        BaseMod.addAudio("tactician:Deliverer", "tactician/audio/effect/Deliverer.ogg");
 
         // Other Cards and Powers
         BaseMod.addAudio("tactician:Hex", "tactician/audio/effect/Hex.ogg");

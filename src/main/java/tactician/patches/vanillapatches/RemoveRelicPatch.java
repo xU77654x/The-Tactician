@@ -7,14 +7,9 @@ import com.megacrit.cardcrawl.relics.BlueCandle;
 import com.megacrit.cardcrawl.relics.RunicDome;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import tactician.relics.Dracoshield;
-import tactician.relics.EnergyDrop;
-import tactician.relics.KillingEdge;
-import tactician.relics.SeraphRobe;
-
+import tactician.relics.*;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import static tactician.TacticianMod.globalRelics;
 import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 
@@ -22,10 +17,10 @@ import static tactician.character.TacticianRobin.Meta.TACTICIAN;
 public class RemoveRelicPatch {
 	@SpireInsertPatch(locator = Locator.class)
 	public static void Insert() {
-		if (!globalRelics.toggle.enabled && AbstractDungeon.player.chosenClass != TACTICIAN) {
+		if (!globalRelics && AbstractDungeon.player.chosenClass != TACTICIAN) {
 			AbstractDungeon.relicsToRemoveOnStart.add(SeraphRobe.ID);
 			AbstractDungeon.relicsToRemoveOnStart.add(Dracoshield.ID);
-			AbstractDungeon.relicsToRemoveOnStart.add(EnergyDrop.ID);
+			AbstractDungeon.relicsToRemoveOnStart.add(Talisman.ID);
 			AbstractDungeon.relicsToRemoveOnStart.add(KillingEdge.ID);
 		}
 

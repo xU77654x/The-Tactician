@@ -3,10 +3,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 import tactician.TacticianMod;
 import tactician.actions.PlaySoundAction;
 import tactician.character.TacticianRobin;
@@ -69,11 +67,13 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
             AbstractMonster m = (AbstractMonster)info.owner;
             int weaponStrong = max(0, Wiz.playerWeaponCalc(m, 9));
             if (weaponStrong == 0) {
+                if (this.owner.hasPower(SolPower.POWER_ID)) { addToTop(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, this.amount), this.amount)); }
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
                 if (this.owner.hasPower(VantagePower.POWER_ID)) { addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
                 else { addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
             }
             else {
+                if (this.owner.hasPower(SolPower.POWER_ID)) { addToTop(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, this.amount), deflect / 2)); }
                 addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2)));
                 if (this.owner.hasPower(VantagePower.POWER_ID)) { addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
                 else { addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }

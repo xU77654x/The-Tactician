@@ -40,7 +40,6 @@ public class CuttingGaleEffect extends AbstractGameEffect {
 		this.timer -= Gdx.graphics.getDeltaTime();
 		if (this.timer < 0.0F) {
 			this.timer += 0.05F;
-			if (this.count == 0) { AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(this.windColor.cpy())); }
 			AbstractDungeon.effectsQueue.add(new WindyParticleEffect(this.windColor.cpy(), false));
 			this.count++;
 			if (this.count == 10) {

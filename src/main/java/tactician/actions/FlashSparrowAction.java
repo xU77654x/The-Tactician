@@ -26,22 +26,12 @@ public class FlashSparrowAction extends AbstractGameAction {
 	}
 
 	public void update() {
-		Color color = Color.LIGHT_GRAY.cpy();
-		if (AbstractDungeon.player.hasPower(Weapon1SwordPower.POWER_ID)) { color = Color.RED.cpy(); }
-		else if (AbstractDungeon.player.hasPower(Weapon2LancePower.POWER_ID)) { color = Color.BLUE.cpy(); }
-		else if (AbstractDungeon.player.hasPower(Weapon3AxePower.POWER_ID)) { color = Color.GREEN.cpy(); }
-		else if (AbstractDungeon.player.hasPower(Weapon4BowPower.POWER_ID)) { color = Color.PINK.cpy(); }
-		else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { color = Color.CYAN.cpy(); }
-		else if (AbstractDungeon.player.hasPower(Weapon6FirePower.POWER_ID)) { color = Color.ORANGE.cpy(); }
-		else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { color = Color.YELLOW.cpy(); }
-		else if (AbstractDungeon.player.hasPower(Weapon8DarkPower.POWER_ID)) { color = Color.PURPLE.cpy(); }
-
 		if ( Wiz.playerWeaponCalc(this.m, 9) > 0) {
 			addToTop(new DrawCardAction(1));
 			addToTop(new GainEnergyAction(1));
 		}
 		addToTop(new DamageAction(this.target, this.info, AttackEffect.NONE));
-		addToTop(new VFXAction(new FlashSparrowEffect(target.hb.cX, target.hb.cY, "tactician:FlashSparrow", 1.33f, color)));
+		addToTop(new VFXAction(new FlashSparrowEffect(target.hb.cX, target.hb.cY, "tactician:FlashSparrow", 1.33f, Wiz.getCopyColor())));
 
 		this.isDone = true;
 	}

@@ -12,13 +12,15 @@ public class TacticianMutateAction extends AbstractGameAction {
 	private final AbstractCard mutatedCard;
 	private final AbstractCard resultCard;
 	private final boolean applyUpgrade;
+	private final boolean effect;
 
-	public TacticianMutateAction(AbstractCard mutatedCard, AbstractCard resultCard, boolean upgraded) {
+	public TacticianMutateAction(AbstractCard mutatedCard, AbstractCard resultCard, boolean upgraded, boolean effect) {
 		this.actionType = AbstractGameAction.ActionType.SPECIAL;
 		this.duration = Settings.ACTION_DUR_XFAST;
 		this.mutatedCard = mutatedCard;
 		this.resultCard = resultCard;
 		this.applyUpgrade = upgraded;
+		this.effect = effect;
 	}
 
 	public void update() {
@@ -33,7 +35,7 @@ public class TacticianMutateAction extends AbstractGameAction {
 			copyModifiers(mutatedCard, resultCard, true, false, false);
 			if (AbstractDungeon.player.hoveredCard == this.mutatedCard) { AbstractDungeon.player.releaseCard(); }
 			AbstractDungeon.actionManager.cardQueue.removeIf(q -> (q.card == this.mutatedCard));
-			AbstractDungeon.effectList.add(new PurgeCardEffect(mutatedCard)); // Remove the old card from the hand.
+			if (this.effect) { AbstractDungeon.effectList.add(new PurgeCardEffect(mutatedCard)); } // Remove the old card from the hand.
 
 			AbstractCard card = resultCard; // Add the new card to the hand.
 			if (applyUpgrade) { card.upgrade(); }

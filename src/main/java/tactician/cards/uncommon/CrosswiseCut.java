@@ -42,11 +42,17 @@ public class CrosswiseCut extends Tactician1SwordCard {
         addToBot(new VFXAction(new PlayVoiceEffect("CA_Sword")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon1SwordPower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon1SwordPower(p))); }
         calculateCardDamage(m);
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut1", 1.75F, 135.0F, -375.0F, -375F, 3.0F, Color.ROYAL.cpy()), 0.00F));
+        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut1", 1.875F, 135.0F, -375.0F, -375F, 3.0F, Color.ROYAL.cpy()), 0.00F));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut2", 1.875F, 225.0F, 375.0F, -375F, 3.0F, Color.ROYAL.cpy()), 0.00F));
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
+        boolean even = true;
+        for (int i = Wiz.countDebuffs(p); i > 0; i--) {
+            if (even) { addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut2", 1.875F, 225.0F, 375.0F, -375F, 3.0F, Color.ROYAL.cpy()), 0.00F)); }
+            else { addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX, m.hb.cY, "tactician:CrosswiseCut1", 1.875F, 135.0F, -375.0F, -375F, 3.0F, Color.ROYAL.cpy()), 0.00F)); }
+            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
+            even = !even;
+        }
+
+        // addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
     }
 
     @Override

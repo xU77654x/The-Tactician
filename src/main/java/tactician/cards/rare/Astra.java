@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import tactician.cards.Tactician1SwordCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
@@ -38,6 +39,7 @@ public class Astra extends Tactician1SwordCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Wiz.getCopyColor()));
         addToBot(new VFXAction(new PlayVoiceEffect("CA_Sword")));
         calculateCardDamage(m);
         addToBot(new VFXAction(new TacticianSwordLanceEffect(m.hb.cX + 40, m.hb.cY + 30, "tactician:Astra_Hit1", 1.25F, 198.0F, 0F, 0F, 2.5F, Color.YELLOW.cpy()), 0.00F));

@@ -28,7 +28,7 @@ public class Ignis extends TacticianCard {
     public Ignis() {
         super(ID, info);
         setExhaust(true, false);
-        setMagic(0, 5);
+        setMagic(0, 3);
         this.p = AbstractDungeon.player;
     }
 

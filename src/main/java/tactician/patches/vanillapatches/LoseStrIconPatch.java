@@ -18,7 +18,7 @@ public class LoseStrIconPatch {
 	public static class replaceTexture {
 		@SpirePostfixPatch
 		public static void OverwriteLoseStrIcon(LoseStrengthPower _inst) {
-			if (tempStatPatch.toggle.enabled || AbstractDungeon.player.chosenClass == TACTICIAN) {
+			if (tempStatPatch || AbstractDungeon.player.chosenClass == TACTICIAN) {
 				_inst.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 90, 90);
 				_inst.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 			}
