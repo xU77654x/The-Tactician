@@ -246,7 +246,7 @@ public class Wiz {
     }
 
     public static void applyNextCombatWeapon() {
-        if (floorNum == 1) { savedWeapon = 0; } // TODO: Account for Downfall route's starting campfire.
+        if (floorNum == 1) { savedWeapon = 0; }
         switch(savedWeapon) { // Required to do this nonsense due to SaveFile crashing from using AbstractPower instead of an integer.
             case 1: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon1SwordPower(AbstractDungeon.player))); break;
             case 2: Wiz.atb(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new Weapon2LancePower(AbstractDungeon.player))); break;

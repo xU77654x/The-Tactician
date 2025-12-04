@@ -20,7 +20,7 @@ public class FirstIntentWeaponPatch {
 		public static void Insert(AbstractMonster _inst) {
 			if (AbstractDungeon.player instanceof TacticianRobin) {
 				AbstractPower w = EnemyWeaponHelper.enemyWeaponCalc(_inst, _inst.intent);
-				if (!Objects.equals(w.ID, StrengthPower.POWER_ID)) { AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(_inst, _inst, w)); }
+				if (!Objects.equals(w.ID, StrengthPower.POWER_ID)) { AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(_inst, _inst, w)); }
 			}
 		}
 	}

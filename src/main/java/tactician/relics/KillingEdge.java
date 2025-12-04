@@ -42,6 +42,8 @@ public class KillingEdge extends TacticianRelic {
 	@Override
 	public void atBattleStart() {
 		this.counter = 0;
+		stopPulse();
+		this.pulse = false;
 		addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, -DEXTERITY), -DEXTERITY));
 	}
 
@@ -66,7 +68,11 @@ public class KillingEdge extends TacticianRelic {
 	}
 
 	@Override
-	public void onVictory() { this.counter = -1; }
+	public void onVictory() {
+		this.counter = -1;
+		stopPulse();
+		this.pulse = false;
+	}
 
 	@Override
 	public AbstractRelic makeCopy() { return new KillingEdge(); }
