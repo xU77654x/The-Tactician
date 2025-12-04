@@ -71,12 +71,10 @@ public class TacticianMod implements
     public static Boolean globalRelics = true;
     public static Boolean tempStatPatch = true;
     public static Boolean extraCardsTactician = true;
-    public static Boolean combatEventFix = true;
     public static ModLabeledToggleButton skipTutorialsButton;
     public static ModLabeledToggleButton globalRelicsButton;
     public static ModLabeledToggleButton tempStatPatchButton;
     public static ModLabeledToggleButton extraCardsTacticianButton;
-    public static ModLabeledToggleButton combatEventFixButton;
     public static SpireConfig config = null;
     public static WeaponTypeChart weaponTriangleChart;
 
@@ -89,12 +87,10 @@ public class TacticianMod implements
             defaultSettings.setProperty("Skip Tutorial", "FALSE");
             defaultSettings.setProperty("Global Relics", "TRUE");
             defaultSettings.setProperty("Temp Stat Patch", "TRUE");
-            defaultSettings.setProperty("Combat Event Fix", "TRUE");
             defaultSettings.setProperty("Extra Cards Tactician", "FALSE");
             skipTutorials = config.getBool("Skip Tutorial");
             globalRelics = config.getBool("Global Relics");
             tempStatPatch = config.getBool("Temp Stat Patch");
-            combatEventFix = config.getBool("Combat Event Fix");
             extraCardsTactician = config.getBool("Extra Cards Tactician");
         }
         catch (Exception e) { e.printStackTrace(); }
@@ -148,16 +144,6 @@ public class TacticianMod implements
             catch (Exception e) { e.printStackTrace(); }
         });
         settingsPanel.addUIElement(tempStatPatchButton);
-
-        combatEventFixButton = new ModLabeledToggleButton("Enable softlock prevention for fleeing combat-based events.", 350.0F, 600.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, combatEventFix, settingsPanel, label -> {}, button -> {
-            combatEventFix = button.enabled;
-            try {
-                config.setBool("Combat Event Fix", combatEventFix);
-                config.save();
-            }
-            catch (Exception e) { e.printStackTrace(); }
-        });
-        settingsPanel.addUIElement(combatEventFixButton);
 
         extraCardsTacticianButton = new ModLabeledToggleButton("Add an additional 8 cards to the Tactician's card pool. (Restart required.)", 350.0F, 550.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, extraCardsTactician, settingsPanel, label -> {}, button -> {
             extraCardsTactician = button.enabled;

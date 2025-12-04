@@ -261,9 +261,5 @@ public class Wiz {
     }
 
     @SpirePatch(clz = AbstractPlayer.class, method = "applyStartOfCombatLogic", paramtypez = {})
-    public static class OnStartOfCombatTactician {
-        public static void Prefix(AbstractPlayer __instance) {
-            if (AbstractDungeon.player instanceof TacticianRobin) { Wiz.applyNextCombatWeapon(); }
-        }
-    }
+    public static class OnStartOfCombatTactician {  public static void Prefix(AbstractPlayer __instance) { if (AbstractDungeon.player instanceof TacticianRobin) { Wiz.applyNextCombatWeapon(); }}}
 }
