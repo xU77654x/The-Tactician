@@ -1,6 +1,5 @@
 package tactician.cards.additional;
 
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -13,10 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.cards.Tactician9CopyCard;
 import tactician.character.TacticianRobin;
-import tactician.effects.cards.FlashSparrowEffect;
 import tactician.effects.cards.LungeEffect;
 import tactician.powers.DeflectPower;
-import tactician.powers.weapons.*;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;

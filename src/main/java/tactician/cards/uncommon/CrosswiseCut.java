@@ -14,7 +14,6 @@ import tactician.cards.Tactician1SwordCard;
 import tactician.character.TacticianRobin;
 import tactician.effects.PlayVoiceEffect;
 import tactician.effects.cards.TacticianSwordLanceEffect;
-import tactician.powers.DeflectPower;
 import tactician.powers.weapons.Weapon1SwordPower;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;

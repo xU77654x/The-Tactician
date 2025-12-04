@@ -1,7 +1,7 @@
 package tactician.cards.additional;
 
-import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,6 +14,7 @@ import tactician.cards.Tactician9CopyCard;
 import tactician.cards.basic.defends.*;
 import tactician.cards.basic.strikes.*;
 import tactician.character.TacticianRobin;
+import tactician.effects.cards.SwapEffect;
 import tactician.util.CardStats;
 import tactician.util.CustomTags;
 import tactician.util.Wiz;
@@ -43,8 +44,7 @@ public class Swap extends Tactician9CopyCard {
 		if ( Wiz.playerWeaponCalc(m, 9) > 0) { sound = "tactician:Swap_Strong"; }
 		if ( Wiz.playerWeaponCalc(m, 9) < 0) { sound = "tactician:Swap_Weak"; }
 		addToBot(new WaitAction(0.20F));
-		// TODO: SwapVFX
-		addToBot(new PlaySoundAction(sound, 1.10F));
+		addToBot(new VFXAction(new SwapEffect(m, m.hb.cX, m.hb.cY, sound, Wiz.getCopyColor())));
 		addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
 
 		for (AbstractCard card : p.hand.group) {

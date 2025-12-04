@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import tactician.actions.PlaySoundAction;
 import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
-import tactician.effects.cards.LunaEffect;
 import tactician.effects.cards.SolEffect;
 import tactician.powers.DeflectPower;
 import tactician.powers.SolPower;
