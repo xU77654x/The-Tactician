@@ -67,13 +67,13 @@ public class DeflectPower extends AbstractPower implements CloneablePowerInterfa
             AbstractMonster m = (AbstractMonster)info.owner;
             int weaponStrong = max(0, Wiz.playerWeaponCalc(m, 9));
             if (weaponStrong == 0) {
-                if (this.owner.hasPower(SolPower.POWER_ID)) { addToTop(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, this.amount), this.amount)); }
+                if (this.owner.hasPower(SolPower.POWER_ID) && deflect > 0) { addToTop(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, deflect), deflect)); }
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
                 if (this.owner.hasPower(VantagePower.POWER_ID)) { addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
                 else { addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
             }
             else {
-                if (this.owner.hasPower(SolPower.POWER_ID)) { addToTop(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, this.amount), deflect / 2)); }
+                if (this.owner.hasPower(SolPower.POWER_ID) && deflect > 1) { addToTop(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, deflect / 2), deflect / 2)); }
                 addToTop(new ReducePowerAction(this.owner, this.owner, this, (deflect / 2)));
                 if (this.owner.hasPower(VantagePower.POWER_ID)) { addToTop(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }
                 else { addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true)); }

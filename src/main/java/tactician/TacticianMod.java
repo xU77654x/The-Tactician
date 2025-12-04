@@ -373,7 +373,7 @@ public class TacticianMod implements
         BaseMod.addAudio("tactician:SpecialDance", "tactician/audio/effect/SpecialDance.ogg");
         BaseMod.addAudio("tactician:Renewal", "tactician/audio/effect/Renewal.ogg");
         BaseMod.addAudio("tactician:Acrobat", "tactician/audio/effect/Acrobat.ogg");
-        BaseMod.addAudio("tactician:MastersTactics", "tactician/audio/effect/MastersTactics.ogg");
+        BaseMod.addAudio("tactician:ExaltsTactics", "tactician/audio/effect/ExaltsTactics.ogg");
         BaseMod.addAudio("tactician:Prescience", "tactician/audio/effect/Prescience.ogg");
         BaseMod.addAudio("tactician:Patience", "tactician/audio/effect/Patience.ogg");
         BaseMod.addAudio("tactician:Vantage", "tactician/audio/effect/Vantage.ogg");

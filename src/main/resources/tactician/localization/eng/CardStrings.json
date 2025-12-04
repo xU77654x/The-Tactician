@@ -275,8 +275,8 @@
     "DESCRIPTION": "Gain X+1 [E]. NL Shuffle a [#e087a4]Hex to NL your draw pile.",
     "UPGRADE_DESCRIPTION": "Gain X+1 [E]. NL {@@}Draw !M! card{!M!|1=|@=s}. NL Shuffle a [#e087a4]Hex to NL your draw pile."
   },
-  "${modID}:MastersTactics": {
-    "NAME": "Master's Tactics",
+  "${modID}:ExaltsTactics": {
+    "NAME": "Exalt's Tactics",
     "DESCRIPTION": "Increase your hand size by !M! for the rest of combat. NL {@@}Draw !M! card{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": [
       "Max Hand Size Up",

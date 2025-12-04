@@ -22,7 +22,7 @@ public class Deliverer extends TacticianCard {
 
 	public Deliverer() {
 		super(ID, info);
-		setMagic(3, 0);
+		setMagic(2, 0);
 		setCustomVar("magicStat", 1, 0);
 		setInnate(false, true);
 	}
@@ -31,7 +31,7 @@ public class Deliverer extends TacticianCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		addToBot(new PlaySoundAction("tactician:Deliverer", 1.00F));
 		// TODO: Deliverer VFX
-		addToBot(new ApplyPowerAction(p, p, new DelivererPower(this.magicNumber), this.magicNumber));
+		addToBot(new ApplyPowerAction(p, p, new DelivererPower(this.magicNumber, customVar("magicStat"))));
 	}
 
 	@Override

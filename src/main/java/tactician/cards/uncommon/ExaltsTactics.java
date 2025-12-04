@@ -11,12 +11,11 @@ import tactician.cards.TacticianCard;
 import tactician.character.TacticianRobin;
 import tactician.powers.MaxHandSizePower;
 import tactician.util.CardStats;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MastersTactics extends TacticianCard {
-    public static final String ID = makeID(MastersTactics.class.getSimpleName());
+public class ExaltsTactics extends TacticianCard {
+    public static final String ID = makeID(ExaltsTactics.class.getSimpleName());
     private static final CardStats info = new CardStats(
             TacticianRobin.Meta.CARD_COLOR,
             CardType.POWER,
@@ -25,7 +24,7 @@ public class MastersTactics extends TacticianCard {
             1
     );
 
-    public MastersTactics() {
+    public ExaltsTactics() {
         super(ID, info);
         setMagic(2, 1);
 
@@ -33,7 +32,7 @@ public class MastersTactics extends TacticianCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new MaxHandSizePower(this.magicNumber), this.magicNumber));
-        addToBot(new PlaySoundAction("tactician:MastersTactics", 1.00f));
+        addToBot(new PlaySoundAction("tactician:ExaltsTactics", 1.00f));
         addToBot(new DrawCardAction(this.magicNumber));
     }
 
@@ -45,6 +44,6 @@ public class MastersTactics extends TacticianCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new MastersTactics();
+        return new ExaltsTactics();
     }
 }
