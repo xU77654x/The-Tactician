@@ -145,7 +145,7 @@ public class TacticianMod implements
         });
         settingsPanel.addUIElement(tempStatPatchButton);
 
-        extraCardsTacticianButton = new ModLabeledToggleButton("Add an additional 8 cards to the Tactician's card pool. (Restart required.)", 350.0F, 550.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, extraCardsTactician, settingsPanel, label -> {}, button -> {
+        extraCardsTacticianButton = new ModLabeledToggleButton("Add an additional 8 cards to the Tactician's card pool. (Restart required.)", 350.0F, 600.0F, Settings.CREAM_COLOR, FontHelper.charDescFont, extraCardsTactician, settingsPanel, label -> {}, button -> {
             extraCardsTactician = button.enabled;
             try {
                 config.setBool("Extra Cards Tactician", extraCardsTactician);
