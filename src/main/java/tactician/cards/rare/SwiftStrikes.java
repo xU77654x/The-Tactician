@@ -55,8 +55,7 @@ public class SwiftStrikes extends Tactician2LanceCard {
     @Override
     public void applyPowers() {
         int realBlock = baseBlock;
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
-            baseBlock += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) { baseBlock += (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount / 2); }
         super.applyPowers();
         baseBlock = realBlock;
         this.isBlockModified = (block != baseBlock);
@@ -68,8 +67,7 @@ public class SwiftStrikes extends Tactician2LanceCard {
         int realBlock = baseBlock;
         baseDamage += Wiz.playerWeaponCalc(m, 9);
         baseBlock += Wiz.playerWeaponCalc(m, 9);
-        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID))
-            baseBlock += AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount;
+        if (AbstractDungeon.player.hasPower(DeflectPower.POWER_ID)) { baseBlock += (AbstractDungeon.player.getPower(DeflectPower.POWER_ID).amount / 2); }
         super.calculateCardDamage(m);
         baseDamage = realDamage;
         baseBlock = realBlock;

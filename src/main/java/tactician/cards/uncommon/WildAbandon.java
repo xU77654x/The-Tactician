@@ -31,7 +31,7 @@ public class WildAbandon extends Tactician3AxeCard {
 
     public WildAbandon() {
         super(ID, info);
-        setDamage(9, 3);
+        setDamage(8, 3);
         tags.add(CustomTags.AXE);
         this.isMultiDamage = true;
     }

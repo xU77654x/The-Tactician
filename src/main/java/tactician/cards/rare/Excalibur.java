@@ -36,7 +36,7 @@ public class Excalibur extends Tactician5WindCard {
 
     public Excalibur() {
         super(ID, info);
-        setDamage(10, 5);
+        setDamage(8, 6);
         setMagic(1, 1);
         tags.add(CustomTags.WIND);
     }

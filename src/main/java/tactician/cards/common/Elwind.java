@@ -32,7 +32,7 @@ public class Elwind extends Tactician5WindCard {
 
     public Elwind() {
         super(ID, info);
-        setDamage(7, 2);
+        setDamage(7, 1);
         setMagic(2, 1);
         tags.add(CustomTags.WIND);
     }

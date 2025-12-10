@@ -31,8 +31,7 @@ public class CrosswiseCut extends Tactician1SwordCard {
 
     public CrosswiseCut() {
         super(ID, info);
-        setDamage(4, 1);
-        setMagic(4, 2);
+        setDamage(4, 2);
         tags.add(CustomTags.SWORD);
     }
 
@@ -52,6 +51,28 @@ public class CrosswiseCut extends Tactician1SwordCard {
         }
 
         // addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
+    }
+
+    @Override
+    public void onMoveToDiscard() {
+        this.rawDescription = cardStrings.DESCRIPTION;
+        initializeDescription();
+    }
+
+    @Override
+    public void triggerOnExhaust() {
+        this.rawDescription = cardStrings.DESCRIPTION;
+        initializeDescription();
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        int debuffs = Wiz.countDebuffs(AbstractDungeon.player);
+        this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[0] + debuffs;
+        if (debuffs == 1) { this.rawDescription += cardStrings.EXTENDED_DESCRIPTION[1]; }
+        else { this.rawDescription += cardStrings.EXTENDED_DESCRIPTION[2]; }
+        initializeDescription();
     }
 
     @Override

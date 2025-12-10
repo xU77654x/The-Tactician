@@ -129,7 +129,7 @@
   },
   "${modID}:AlertStance": {
     "NAME": "Alert Stance",
-    "DESCRIPTION": "Gain !B! Block. NL Retain your hand NL this turn. NL End your turn."
+    "DESCRIPTION": "Gain !B! Block. NL {@@}Retain your hand NL for !M! turn{!M!|1=|@=s}. NL End your turn."
   },
   "${modID}:Tantivy": {
     "NAME": "Tantivy",
@@ -154,7 +154,12 @@
 
   "${modID}:CrosswiseCut": {
     "NAME": "Crosswise Cut",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage again for each of your NL unique debuffs."
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage again for each of your NL unique debuffs.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (You have ",
+      " debuff.)",
+      " debuffs.)"
+      ]
   },
   "${modID}:FrozenLance": {
     "NAME": "Frozen Lance",
@@ -328,7 +333,7 @@
   },
   "${modID}:SwiftStrikes": {
     "NAME": "Swift Strikes",
-    "DESCRIPTION": "${modID}:Favor. Gain !B! Block, increased by your ${modID}:Deflect. NL Deal !D! damage twice."
+    "DESCRIPTION": "${modID}:Favor. Gain !B! Block, increased by half NL of your ${modID}:Deflect. NL Deal !D! damage twice."
   },
   "${modID}:ExhaustiveStrike": {
     "NAME": "Exhaustive Strike",
