@@ -49,8 +49,6 @@ public class CrosswiseCut extends Tactician1SwordCard {
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             even = !even;
         }
-
-        // addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber)));
     }
 
     @Override
