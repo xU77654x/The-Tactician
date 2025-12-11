@@ -285,7 +285,7 @@
     "DESCRIPTION": "Increase your hand size by !M! for the rest of combat. NL {@@}Draw !M! card{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": [
       "Max Hand Size Up",
-      "Increase your hand size NL for the rest of combat."
+      "Increase your hand size NL for the rest of combat. Your hand size cannot exceed #b20."
     ]
   },
   "${modID}:Prescience": {
