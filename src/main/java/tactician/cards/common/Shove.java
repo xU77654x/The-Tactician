@@ -37,7 +37,7 @@ public class Shove extends Tactician9CopyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
+            for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
                 if (!mo.isDeadOrEscaped()) {
                     calculateCardDamage(mo);
                     addToBot(new VFXAction(new ShoveEffect(mo.hb.cX, mo.hb.cY, "tactician:Shove", 1.50f)));

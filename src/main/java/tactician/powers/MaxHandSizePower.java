@@ -18,12 +18,15 @@ public class MaxHandSizePower extends AbstractPower {
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+	public int excess;
+	public static final int MAXIMUM = 20;
 
 	public MaxHandSizePower(int amount) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = AbstractDungeon.player;
 		this.amount = amount;
+		this.excess = 0;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
 		this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 85, 85);
@@ -33,7 +36,7 @@ public class MaxHandSizePower extends AbstractPower {
 
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + MAXIMUM + DESCRIPTIONS[2];
 	}
 
 	@Override
@@ -43,29 +46,43 @@ public class MaxHandSizePower extends AbstractPower {
 	public void onInitialApplication() {
 		super.onInitialApplication();
 		BaseMod.MAX_HAND_SIZE += this.amount;
+		if (BaseMod.MAX_HAND_SIZE > MAXIMUM) {
+			this.excess += BaseMod.MAX_HAND_SIZE - MAXIMUM;
+			BaseMod.MAX_HAND_SIZE = MAXIMUM;
+		}
 	}
 
 	@Override
 	public void onRemove() {
 		super.onRemove();
-		BaseMod.MAX_HAND_SIZE -= this.amount;
+		BaseMod.MAX_HAND_SIZE -= (this.amount - this.excess);
+		this.excess = 0;
 	}
 
 	@Override
 	public void stackPower(int stackAmount) {
 		super.stackPower(stackAmount);
 		BaseMod.MAX_HAND_SIZE += stackAmount;
+		if (BaseMod.MAX_HAND_SIZE > MAXIMUM) {
+			this.excess += BaseMod.MAX_HAND_SIZE - MAXIMUM;
+			BaseMod.MAX_HAND_SIZE = MAXIMUM;
+		}
 	}
 
 	@Override
 	public void reducePower(int reduceAmount) {
 		super.reducePower(reduceAmount);
-		BaseMod.MAX_HAND_SIZE -= reduceAmount;
+		int remainder = reduceAmount - this.excess;
+		if (remainder <= 0) { this.excess -= reduceAmount; }
+		else {
+			BaseMod.MAX_HAND_SIZE -= remainder;
+			this.excess = 0;
+		}
 	}
 
 	@Override
 	public void onVictory() {
 		super.onVictory();
-		BaseMod.MAX_HAND_SIZE -= this.amount;
+		BaseMod.MAX_HAND_SIZE -= (this.amount - this.excess);
 	}
 }

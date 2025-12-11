@@ -80,7 +80,8 @@
   "${modID}:MaxHandSizePower": {
     "NAME": "Max Hand Size Plus",
     "DESCRIPTIONS": ["Increase your hand size by #b",
-      " for the rest of combat."]
+      " for the rest of combat. Your hand size cannot exceed #b",
+      "."]
   },
   "${modID}:ExpirationPower": {
     "NAME": "Expiration",

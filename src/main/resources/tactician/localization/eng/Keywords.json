@@ -97,7 +97,7 @@
       "Max Hand Size",
       "Max_Hand_Size"
     ],
-    "DESCRIPTION": "Increase your hand size NL for the rest of combat."
+    "DESCRIPTION": "Increase your hand size NL for the rest of combat. Your hand size cannot exceed 20."
   },
 
   {

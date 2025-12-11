@@ -41,7 +41,7 @@ public class WildAbandon extends Tactician3AxeCard {
         addToBot(new VFXAction(new PlayVoiceEffect("CA_Axe")));
         if (AbstractDungeon.player instanceof TacticianRobin && !p.hasPower(Weapon3AxePower.POWER_ID)) { addToBot(new ApplyPowerAction(p, p, new Weapon3AxePower(p))); }
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            for (AbstractMonster mo : (AbstractDungeon.getMonsters()).monsters) {
+            for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
                 if (!mo.isDeadOrEscaped()) {
                     calculateCardDamage(mo);
                     addToBot(new VFXAction(new WildAbandonEffect(mo.hb.cX, mo.hb.cY, "tactician:WildAbandon", 1.10f)));
