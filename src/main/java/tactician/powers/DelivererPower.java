@@ -25,7 +25,7 @@ public class DelivererPower extends TwoAmountPower implements OnReceivePowerPowe
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-	private int secondGain;
+	private final int secondGain;
 
 	public DelivererPower(int block, int stat) {
 		this.name = NAME;
