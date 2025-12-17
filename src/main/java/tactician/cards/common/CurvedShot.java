@@ -35,7 +35,7 @@ public class CurvedShot extends Tactician4BowCard {
         super(ID, info);
         setDamage(6, 3);
         setBlock(3, 0);
-        setMagic(4, -1);
+        setMagic(4, -2);
         tags.add(CustomTags.BOW);
     }
 

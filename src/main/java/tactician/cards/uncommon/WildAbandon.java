@@ -31,7 +31,8 @@ public class WildAbandon extends Tactician3AxeCard {
 
     public WildAbandon() {
         super(ID, info);
-        setDamage(8, 3);
+        setDamage(7, 3);
+        setMagic(1, 0);
         tags.add(CustomTags.AXE);
         this.isMultiDamage = true;
     }
@@ -49,7 +50,7 @@ public class WildAbandon extends Tactician3AxeCard {
                 }
             }
         }
-        addToBot(new ExhaustAction(1, false));
+        addToBot(new ExhaustAction(this.magicNumber, false));
     }
 
     @Override

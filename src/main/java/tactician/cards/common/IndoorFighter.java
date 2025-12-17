@@ -23,7 +23,7 @@ public class IndoorFighter extends TacticianCard {
 
     public IndoorFighter() {
         super(ID, info);
-        setMagic(8, 4);
+        setMagic(6, 4);
     }
 
     @Override
@@ -31,11 +31,6 @@ public class IndoorFighter extends TacticianCard {
         addToBot(new PlaySoundAction("tactician:IndoorFighter", 1.25f));
         addToBot(new ExhaustAction(1, false));
         addToBot(new ApplyPowerAction(p, p, new DeflectPower(this.magicNumber), this.magicNumber));
-
-        /* Discard a card:
-        addToBot(new HandSelectAction(3, c -> true, list -> {
-        },null, "Discard.", false, true, true));
-         */
     }
 
     @Override

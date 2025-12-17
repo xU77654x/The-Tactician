@@ -34,7 +34,7 @@ public class ConqueringFate extends Tactician9CopyCard {
 
 	public ConqueringFate() {
 		super(ID, info);
-		setDamage(21, 6);
+		setDamage(24, 6);
 		setMagic(1, 0);
 		tags.add(CustomTags.COPY);
 	}

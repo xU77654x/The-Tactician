@@ -36,7 +36,7 @@ public class FlameLance extends TacticianCard {
 
     public FlameLance() {
         super(ID, info);
-        setDamage(16, 4);
+        setDamage(18, 5);
         setMagic(3, 0);
     }
 

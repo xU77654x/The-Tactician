@@ -37,7 +37,7 @@ public class PlegianBow extends TacticianCard {
 
     public PlegianBow() {
         super(ID, info);
-        setDamage(14, 4);
+        setDamage(14, 5);
         setMagic(3, 0);
     }
 

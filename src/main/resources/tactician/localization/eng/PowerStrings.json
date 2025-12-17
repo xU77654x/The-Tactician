@@ -157,9 +157,7 @@
   },
   "${modID}:DelivererPower": {
     "NAME": "Deliverer",
-    "DESCRIPTIONS": ["Whenever you lose #yStrength, gain #b",
-      " #yBlock and #b",
-      " #yDexterity. Whenever you lose #yDexterity, gain #b",
+    "DESCRIPTIONS": ["Whenever you lose #yStrength or #yDexterity, gain #b",
       " #yBlock and #b",
       " #yStrength."]
   }

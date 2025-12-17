@@ -38,7 +38,8 @@ public class HurricaneAxe extends TacticianCard {
 
     public HurricaneAxe() {
         super(ID, info);
-        setDamage(13, 4);
+        setDamage(12, 5);
+        setMagic(1, 0);
         this.cardsToPreview = new Anathema();
     }
 
@@ -68,7 +69,7 @@ public class HurricaneAxe extends TacticianCard {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         }
         addToBot(new MakeTempCardInHandAction(new Anathema()));
-        addToBot(new ExhaustAction(1, false));
+        addToBot(new ExhaustAction(this.magicNumber, false));
     }
 
     @Override

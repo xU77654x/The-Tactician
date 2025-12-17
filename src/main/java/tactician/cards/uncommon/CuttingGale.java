@@ -32,6 +32,7 @@ public class CuttingGale extends Tactician5WindCard {
     public CuttingGale() {
         super(ID, info);
         setDamage(5, 3);
+        setMagic(1, 0);
         tags.add(CustomTags.WIND);
     }
 
@@ -42,9 +43,9 @@ public class CuttingGale extends Tactician5WindCard {
         calculateCardDamage(m);
         addToBot(new VFXAction(new CuttingGaleEffect(m.hb.cX, m.hb.cY, "tactician:CuttingGale", 1.50f)));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
-        addToBot(new RandomExhumeAction(1, false));
-        if (this.upgraded) { addToBot(new ExhaustAction(1, true)); }
-        else { addToBot(new ExhaustAction(1, false)); }
+        addToBot(new RandomExhumeAction(this.magicNumber, false));
+        if (this.upgraded) { addToBot(new ExhaustAction(this.magicNumber, true)); }
+        else { addToBot(new ExhaustAction(this.magicNumber, false)); }
     }
 
     @Override

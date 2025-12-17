@@ -38,7 +38,7 @@ public class LevinSword extends TacticianCard {
 
     public LevinSword() {
         super(ID, info);
-        setDamage(15, 4);
+        setDamage(16, 5);
         setMagic(4, 0);
         this.cardsToPreview = new Hex();
     }

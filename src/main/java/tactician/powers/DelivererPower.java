@@ -43,7 +43,7 @@ public class DelivererPower extends TwoAmountPower implements OnReceivePowerPowe
 	}
 
 	@Override
-	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount2 + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3] + this.amount2 + DESCRIPTIONS[4]; }
+	public void updateDescription() { this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount2 + DESCRIPTIONS[2]; }
 
 	@Override
 	public void playApplyPowerSfx() { }
@@ -53,7 +53,6 @@ public class DelivererPower extends TwoAmountPower implements OnReceivePowerPowe
 		this.fontScale = 8.0F;
 		this.amount += stackAmount;
 		this.amount2 += secondGain;
-		addToTop(new PlaySoundAction("tactician:DeflectGain", 1.67F));
 	}
 
 	@Override
@@ -63,9 +62,9 @@ public class DelivererPower extends TwoAmountPower implements OnReceivePowerPowe
 	public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
 		if (Objects.equals(power.ID, StrengthPower.POWER_ID) && stackAmount < 0) {
 			addToBot(new GainBlockAction(AbstractDungeon.player, this.amount));
-			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, this.amount2), this.amount2));
+			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, this.amount2), this.amount2));
 		}
-		if (Objects.equals(power.ID, DexterityPower.POWER_ID) && stackAmount < 0) {
+		else if (Objects.equals(power.ID, DexterityPower.POWER_ID) && stackAmount < 0) {
 			addToBot(new GainBlockAction(AbstractDungeon.player, this.amount));
 			addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, this.amount2), this.amount2));
 		}

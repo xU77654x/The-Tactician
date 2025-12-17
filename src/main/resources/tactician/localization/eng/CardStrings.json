@@ -70,8 +70,8 @@
   },
   "${modID}:Veteran": {
     "NAME": "Veteran",
-    "DESCRIPTION": "Exhaust a card. If you don't Exhaust a Curse, NL gain !M! temp. Strength. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Exhaust a card. NL Gain !M! temp. Strength. NL Exhaust.",
+    "DESCRIPTION": "Exhaust 1 card. If you don't Exhaust a Curse, NL gain !M! temp. Strength. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Exhaust 1 card. NL Gain !M! temp. Strength. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Exhaust"]
   },
 
@@ -103,7 +103,7 @@
   },
   "${modID}:Thunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "Deal !D! damage. NL Add a [#e087a4]Hex to your hand. Exhaust a card.",
+    "DESCRIPTION": "Deal !D! damage. NL Add a [#e087a4]Hex to your hand. {@@}Exhaust !M! card{!M!|1=|@=s}.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. Add NL a [#e087a4]Hex to your hand. {@@}Exhaust up to !M! card{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Thunder!"]
   },
@@ -149,7 +149,7 @@
   },
   "${modID}:IndoorFighter": {
     "NAME": "Indoor Fighter",
-    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Exhaust a card."
+    "DESCRIPTION": "Gain !M! ${modID}:Deflect. NL Exhaust 1 card."
   },
 
   "${modID}:CrosswiseCut": {
@@ -167,7 +167,7 @@
   },
   "${modID}:WildAbandon": {
     "NAME": "Wild Abandon",
-    "DESCRIPTION": "Deal !D! damage NL to ALL enemies. NL Exhaust a card."
+    "DESCRIPTION": "Deal !D! damage NL to ALL enemies. NL {@@}Exhaust !M! card{!M!|1=|@=s}."
   },
   "${modID}:WaningShot": {
     "NAME": "Waning Shot",
@@ -175,8 +175,8 @@
   },
   "${modID}:CuttingGale": {
     "NAME": "Cutting Gale",
-    "DESCRIPTION": "Deal !D! damage. NL Exhume a random non-Status/Heal card. NL Exhaust a card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhume a random non-Status/Heal card. NL Exhaust up to 1 card."
+    "DESCRIPTION": "Deal !D! damage. NL {@@}Exhume !M! random non-Status/Heal card{!M!|1=|@=s}. NL {@@}Exhaust !M! card{!M!|1=|@=s}.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL {@@}Exhume !M! random non-Status/Heal card{!M!|1=|@=s}. NL {@@}Exhaust up to !M! card{!M!|1=|@=s}."
   },
   "${modID}:DyingBlaze": {
     "NAME": "Dying Blaze",
@@ -197,11 +197,11 @@
   },
   "${modID}:FlameLance": {
     "NAME": "Flame Lance",
-    "DESCRIPTION": "Select one of NL ${modID}:Lance or ${modID}:Fire. NL Deal !D! damage. NL Gain an Orb Slot NL for !M! turns."
+    "DESCRIPTION": "Select one of NL ${modID}:Lance or ${modID}:Fire. NL Deal !D! damage. Gain NL {@@}1 Orb Slot for !M! turn{!M!|1=|@=s}."
   },
   "${modID}:HurricaneAxe": {
     "NAME": "Hurricane Axe",
-    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an [#e087a4]Anathema to your hand. Exhaust a card."
+    "DESCRIPTION": "Select one of NL ${modID}:Axe or ${modID}:Wind. NL Deal !D! damage. Add an [#e087a4]Anathema to your hand. {@@}Exhaust !M! card{!M!|1=|@=s}."
   },
   "${modID}:PlegianBow": {
     "NAME": "Plegian Bow",
@@ -437,7 +437,7 @@
       "Retain. Exhaust. NL Gain !B! Block. NL Deal !D! damage. NL Consume !M! ${modID}:Deflect to NL apply 2 Vulnerable.",
       "Retain. Exhaust. NL Deal !D! damage. NL {@@}Next turn, NL draw !M! card{!M!|1=|@=s}.",
       "Retain. Exhaust. NL Deal !D! damage. NL Gain !M! temp. Focus.",
-      "Retain. Exhaust. NL Deal !D! damage. NL Add a [#e087a4]Hex to your hand. Exhaust a card.",
+      "Retain. Exhaust. NL Deal !D! damage. NL Add a [#e087a4]Hex to your hand. {@@}Exhaust !M! card{!M!|1=|@=s}.",
       "Retain. Exhaust. NL Gain !B! Block. NL Deal !D! damage.",
       "Wrath Strike",
       "Tempest Lance",
@@ -571,7 +571,7 @@
   },
   "${modID}:Deliverer": {
     "NAME": "Deliverer",
-    "DESCRIPTION": "Whenever you lose NL Strength / Dexterity, NL gain !M! Block and NL !${modID}:magicStat! Dexterity / Strength.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you lose NL Strength / Dexterity, NL gain !M! Block and NL !${modID}:magicStat! Dexterity / Strength."
+    "DESCRIPTION": "Whenever you lose NL Strength or Dexterity, NL gain !M! Block and NL !${modID}:magicStat! Strength.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you lose NL Strength or Dexterity, NL gain !M! Block and NL !${modID}:magicStat! Strength."
   }
 }

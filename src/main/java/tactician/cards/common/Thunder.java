@@ -30,7 +30,7 @@ public class Thunder extends Tactician7ThunderCard {
 
     public Thunder() {
         super(ID, info);
-        setDamage(6, 2);
+        setDamage(6, 1);
         setMagic(1, 1);
         this.cardsToPreview = new Hex();
         tags.add(CustomTags.THUNDER);

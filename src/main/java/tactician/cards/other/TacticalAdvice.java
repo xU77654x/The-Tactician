@@ -169,7 +169,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 if (this.upgraded) { setDamage(9); }
                 else { setDamage(6); }
                 setBlock(3, 0);
-                if (this.upgraded) { setMagic(3); } // -1 !M! on upgrade.
+                if (this.upgraded) { setMagic(2); } // -2 !M! on upgrade.
                 else { setMagic(4); }
                 tags.add(CustomTags.BOW);
                 this.name = cardStrings.EXTENDED_DESCRIPTION[17];
@@ -177,8 +177,8 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 this.glowColor = new Color(Color.MAROON);
             }
             else if (AbstractDungeon.player.hasPower(Weapon5WindPower.POWER_ID)) { // Elwind
-                if (this.upgraded) { setDamage(9); }
-                else { setDamage(7); }
+                if (this.upgraded) { setDamage(7); }
+                else { setDamage(6); }
                 if (this.upgraded) { setMagic(3); }
                 else { setMagic(2); }
                 tags.add(CustomTags.WIND);
@@ -197,7 +197,7 @@ public class TacticalAdvice extends Tactician9CopyCard {
                 this.glowColor = new Color(Color.SCARLET);
             }
             else if (AbstractDungeon.player.hasPower(Weapon7ThunderPower.POWER_ID)) { // Thunder
-                if (this.upgraded) { setDamage(8); }
+                if (this.upgraded) { setDamage(7); }
                 else { setDamage(6); }
                 if (this.upgraded) { setMagic(2); }
                 else { setMagic(1); }
