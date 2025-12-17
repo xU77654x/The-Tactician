@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import tactician.TacticianMod;
-import tactician.actions.PlaySoundAction;
 import tactician.util.TextureLoader;
 import java.util.Objects;
 import static tactician.TacticianMod.powerPath;
